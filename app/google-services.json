@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "642322497692",
+    "firebase_url": "https://motor-insurance-calculat-eb04c.firebaseio.com",
+    "project_id": "motor-insurance-calculat-eb04c",
+    "storage_bucket": "motor-insurance-calculat-eb04c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642322497692:android:6b061db02ea1ab49",
+        "android_client_info": {
+          "package_name": "com.avidprogrammers.insurancepremiumcalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642322497692-inf3or5nksur96ia87b5bkgmudrghbsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHSChPqYVJ7JoONni0nfsPWDTVFvun80Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

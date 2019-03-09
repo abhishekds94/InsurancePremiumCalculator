@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.avidprogrammers.insurancepremiumcalculator">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/applogo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/applogo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4189677300594650~5425391128" />
+
+        <!--
+                    <meta-data
+                    android:name="com.google.android.gms.ads.APPLICATION_ID"
+                    android:value="ca-app-pub-3940256099942544~3347511713" />
+        -->
+
+        <receiver
+            android:name=".ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Firebase Notifications -->
+        <service android:name="com.avidprogrammers.service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".MainActivity"
+            android:excludeFromRecents="true" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:windowSoftInputMode="adjustPan" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/path_provider" />
+        </provider>
+
+        <!-- homeactivity -->
+
+        <activity
+            android:name=".home_activity"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+
+        <!-- motorcycle -->
+
+        <activity
+            android:name=".CC_motorcycle"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- motorcycle upto75cc -->
+
+        <activity
+            android:name=".pt_motorcycle_upto75"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_motorcycle_upto75"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_motorcycle_upto75"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_motorcycle_upto75"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_motorcycle_calc_upto75"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- motorcycle upto150cc -->
+
+        <activity
+            android:name=".pt_motorcycle_upto150"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_motorcycle_upto150"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_motorcycle_upto150"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_motorcycle_upto150"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- motorcycle upto350cc -->
+
+        <activity
+            android:name=".pt_motorcycle_upto350"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_motorcycle_upto350"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_motorcycle_upto350"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_motorcycle_upto350"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- motorcycle 350abovecc -->
+
+        <activity
+            android:name=".pt_motorcycle_350above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_motorcycle_350above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_motorcycle_350above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_motorcycle_350above"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- car -->
+
+        <activity
+            android:name=".CC_car"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- car upto1000cc -->
+
+        <activity
+            android:name=".pt_car_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_car_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_car_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_car_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_car_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- car upto1500cc -->
+
+        <activity
+            android:name=".pt_car_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_car_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_car_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_car_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_car_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- car above1500cc -->
+
+        <activity
+            android:name=".pt_car_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_car_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_car_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_car_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_car_above1500"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Taxi upto6 -->
+
+        <activity
+            android:name=".CC_taxi_upto6"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- taxi_upto6 upto1000cc -->
+
+        <activity
+            android:name=".pt_taxi_upto6_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_taxi_upto6_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_taxi_upto6_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_taxi_upto6_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_taxi_upto6_upto1000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- taxi_upto6 upto1500cc -->
+
+        <activity
+            android:name=".pt_taxi_upto6_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_taxi_upto6_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_taxi_upto6_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_taxi_upto6_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_taxi_upto6_upto1500"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- taxi_upto6 above1500cc -->
+
+        <activity
+            android:name=".pt_taxi_upto6_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_taxi_upto6_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_taxi_upto6_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_taxi_upto6_above1500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_taxi_upto6_above1500"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Bus -->
+
+        <activity
+            android:name=".CC_bus"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- bus_upto18 -->
+
+        <activity
+            android:name=".pt_bus_upto18"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_bus_upto18"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_bus_upto18"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_bus_upto18"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_bus_upto18"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- bus_upto36 -->
+
+        <activity
+            android:name=".pt_bus_upto36"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_bus_upto36"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_bus_upto36"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_bus_upto36"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_bus_upto36"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- bus_upto60 -->
+
+        <activity
+            android:name=".pt_bus_upto60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_bus_upto60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_bus_upto60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_bus_upto60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_bus_upto60"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- bus_above60 -->
+
+        <activity
+            android:name=".pt_bus_above60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_bus_above60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_bus_above60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_bus_above60"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_bus_above60"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial Public -->
+        <activity
+            android:name=".CC_commercialvehiclepublic"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial Public upto 7500 -->
+
+        <activity
+            android:name=".pt_commercialvehiclepublic_upto7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_public_7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_public_7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_public_7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_public_7500"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial Public upto 12000 -->
+
+        <activity
+            android:name=".pt_commercialvehiclepublic_upto12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_public_12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_public_12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_public_12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_public_12000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial Public upto 20000 -->
+
+        <activity
+            android:name=".pt_commercialvehiclepublic_upto20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_public_20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_public_20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_public_20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_public_20000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial Public upto 40000 -->
+
+        <activity
+            android:name=".pt_commercialvehiclepublic_upto40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_public_40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_public_40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_public_40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_public_40000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial Public  40000above -->
+
+        <activity
+            android:name=".pt_commercialvehiclepublic_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_public_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_public_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_public_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_public_40000above"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial private -->
+        <activity
+            android:name=".CC_commercialvehicleprivate"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial private upto 7500 -->
+
+        <activity
+            android:name=".pt_commercialvehicleprivate_upto7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_private_7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_private_7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_private_7500"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_private_7500"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial private upto 12000 -->
+
+        <activity
+            android:name=".pt_commercialvehicleprivate_upto12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_private_12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_private_12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_private_12000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_private_12000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial private upto 20000 -->
+
+        <activity
+            android:name=".pt_commercialvehicleprivate_upto20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_private_20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_private_20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_private_20000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_private_20000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial private upto 40000 -->
+
+        <activity
+            android:name=".pt_commercialvehicleprivate_upto40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_private_40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_private_40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_private_40000"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_private_40000"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Commercial private  40000above -->
+
+        <activity
+            android:name=".pt_commercialvehicleprivate_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_com_goods_private_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_com_goods_private_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_com_goods_private_40000above"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_com_goods_private_40000above"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- agri -->
+
+        <activity
+            android:name=".pt_agri"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_agri"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_agri"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_agri"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_agri"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Auto Private -->
+
+        <activity
+            android:name=".pt_goodsauto_private"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_goodsauto_private"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_goodsauto_private"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_goodsauto_private"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_goodsauto_private"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Goods Auto public -->
+
+        <activity
+            android:name=".pt_goodsauto_public"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_goodsauto_public"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_goodsauto_public"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_goodsauto_public"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_goodsauto_public"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Passenger Auto upto6 -->
+
+        <activity
+            android:name=".CC_passauto"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pt_passauto_upto6"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".pp_passauto_upto6"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lp_passauto_upto6"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".lpdisplay_passauto_upto6"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ppdisplay_passauto_upto6"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".coming_soon1"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".coming_soon2"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".coming_soon3"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Include the AdActivity configChanges and theme. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <activity android:name="com.avidprogrammers.utils.PermissionsActivity" />
+
+        <activity android:name=".privacy" />
+
+        <activity android:name=".terms" />
+
+        <activity android:name=".NotificationActivity" />
+
+        <activity android:name=".WebViewActivity" />
+
+        <activity android:name=".lp_motorcycle_calc_upto150" />
+
+        <activity android:name=".lp_motorcycle_calc_upto350" />
+
+        <activity android:name=".lp_motorcycle_calc_350above"/>
+
+        <!--Long term policies-->
+        <activity android:name=".longterm_bp_motorcycle_350above"/>
+
+        <activity android:name=".longterm_bp_motorcycle_upto350"/>
+
+        <activity android:name=".longterm_bp_motorcycle_upto150"/>
+
+        <activity android:name=".longterm_bp_motorcycle_upto75"/>
+
+        <activity android:name=".longterm_bpdisplay_motorcycle_350above"/>
+
+        <activity android:name=".longterm_bpdisplay_motorcycle_upto350"/>
+
+        <activity android:name=".longterm_bpdisplay_motorcycle_upto150"/>
+
+        <activity android:name=".longterm_bpdisplay_motorcycle_upto75"/>
+
+        <activity android:name=".longterm_pp_motorcycle_350above"/>
+
+        <activity android:name=".longterm_pp_motorcycle_upto350"/>
+
+        <activity android:name=".longterm_pp_motorcycle_upto150"/>
+
+        <activity android:name=".longterm_pp_motorcycle_upto75"/>
+
+        <activity android:name=".longterm_ppdisplay_motorcycle_350above"/>
+
+        <activity android:name=".longterm_ppdisplay_motorcycle_upto350"/>
+
+        <activity android:name=".longterm_ppdisplay_motorcycle_upto150"/>
+
+        <activity android:name=".longterm_ppdisplay_motorcycle_upto75"/>
+
+        <activity android:name=".longterm_CC_motorcycle"/>
+
+        <activity android:name=".longterm_pt_motorcycle_350above"/>
+
+        <activity android:name=".longterm_pt_motorcycle_upto350"/>
+
+        <activity android:name=".longterm_pt_motorcycle_upto150"/>
+
+        <activity android:name=".longterm_pt_motorcycle_upto75"/>
+
+        <activity android:name=".longterm_vehicle"/>
+
+
+        <!--Car-->
+
+        <activity android:name=".longterm_bp_car_above1500"/>
+
+        <activity android:name=".longterm_bp_car_upto1500"/>
+
+        <activity android:name=".longterm_bp_car_upto1000"/>
+
+        <activity android:name=".longterm_bpdisplay_car_above1500"/>
+
+        <activity android:name=".longterm_bpdisplay_car_upto1500"/>
+
+        <activity android:name=".longterm_bpdisplay_car_upto1000"/>
+
+        <activity android:name=".longterm_pp_car_above1500"/>
+
+        <activity android:name=".longterm_pp_car_upto1500"/>
+
+        <activity android:name=".longterm_pp_car_upto1000"/>
+
+        <activity android:name=".longterm_ppdisplay_car_above1500"/>
+
+        <activity android:name=".longterm_ppdisplay_car_upto1500"/>
+
+        <activity android:name=".longterm_ppdisplay_car_upto1000"/>
+
+        <activity android:name=".longterm_CC_car"/>
+
+        <activity android:name=".longterm_pt_car_above1500"/>
+
+        <activity android:name=".longterm_pt_car_upto1500"/>
+
+        <activity android:name=".longterm_pt_car_upto1000"/>
+
+    </application>
+
+</manifest>

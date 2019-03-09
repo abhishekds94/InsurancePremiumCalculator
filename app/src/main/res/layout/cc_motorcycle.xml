@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="50sp"
+    android:background="#EAFAF1">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#2E8B57" />
+
+        <TextView
+            android:layout_height="32sp"
+            android:layout_width="match_parent"
+            android:text="@string/select_vehicle_cc"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:background="#EAFAF1"
+            android:textColor="#000"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#2E8B57"
+            android:paddingTop="5dp"/>
+
+
+
+        <Button
+        android:id="@+id/motorcycle_upto75"
+        android:layout_width = "match_parent"
+        android:layout_height = "60dp"
+        android:layout_weight = "1"
+        android:text="@string/upto_75_cc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/border"/>
+
+    <Button
+        android:id="@+id/motorcycle_upto150"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/motorcycle"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="@string/upto_150_cc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border"
+        tools:layout_editor_absoluteX="-165dp"
+        tools:layout_editor_absoluteY="551dp" />
+
+    <Button
+        android:id="@+id/motorcycle_upto350"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/privatecar"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="@string/upto_350_cc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border"
+        tools:layout_editor_absoluteX="-165dp"
+        tools:layout_editor_absoluteY="551dp" />
+
+
+    <Button
+        android:id="@+id/motorcycle_above350"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="@string/above_350_cc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border"
+        tools:layout_editor_absoluteX="-165dp"
+        tools:layout_editor_absoluteY="551dp"
+        android:layout_below="@+id/taxiupto6"
+        android:layout_alignParentStart="true" />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="#3CB371"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+
+</RelativeLayout>

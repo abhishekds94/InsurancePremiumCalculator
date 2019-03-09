@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.avidprogrammers.insurancepremiumcalculator.MainActivity"
+    android:background="#EAFAF1">
+
+    <TextView
+        android:id="@+id/splash_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="28sp"
+        android:text="Motor Insurance Premium\nCalculator"
+        android:textColor="#000"
+        android:gravity="center_horizontal"/>
+
+
+    <ImageView
+        android:id="@+id/splash_logo"
+        android:layout_width="500px"
+        android:layout_height="500px"
+        android:layout_marginTop="160dp"
+        android:gravity="center_horizontal"
+        android:src="@drawable/applogo"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/splash_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:textSize="18sp"
+        android:textColor="#454545"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:text="Developed by :\nSheshagiri D K &amp; Abhishek D S\n+91 9448628559 &amp; +91 7019489512\ndksheshagiri@orientalinsurance.co.in &amp; abhishekds94@gmail.com\nShimoga, Karnataka"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAFAF1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#2E8B57"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:layout_height="35sp"
+            android:layout_width="match_parent"
+            android:text="@string/select_policy_type"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:background="#EAFAF1"
+            android:textColor="#000"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#2E8B57"
+            android:paddingTop="9dp" />
+
+        <Button
+            android:id="@+id/pp_commercialvehicleprivate_upto20000"
+            android:layout_width = "match_parent"
+            android:layout_height = "60dp"
+            android:text="@string/package_policy"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/border"/>
+
+        <Button
+            android:id="@+id/lp_commercialvehicleprivate_upto20000"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/packagepolicy"
+            android:layout_marginTop="30dp"
+            android:text="@string/liability_policy"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border" />
+
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="#3CB371"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+</RelativeLayout>

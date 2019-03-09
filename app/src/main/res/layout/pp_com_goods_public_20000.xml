@@ -1,0 +1,484 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="15sp"
+    android:background="#EAFAF1">
+
+    <ScrollView
+        android:id="@+id/pp_com_goods_public_20000_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15sp"
+            android:paddingRight="15sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="15sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/idv"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_tractor_act"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:hint="@string/in_rupees"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:nextFocusDown="@+id/pp_com_goods_public_20000_gvw_value"
+                    android:textAlignment="center"
+                    android:textColor="#000">
+
+                    <requestFocus />
+                </EditText>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rupee_symbol"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="5sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/gvw"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_gvw_value"
+                    android:nextFocusDown="@+id/pp_com_goods_public_20000_uwd_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:descendantFocusability="blocksDescendants"
+                    android:hint="@string/_12001_20000_kgs"
+                    android:textColor="#000"
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_of_purchase"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_date_value"
+                    android:nextFocusDown="@+id/pp_com_goods_public_20000_uwd_value"
+                    android:layout_marginLeft="10dp"
+                    android:hint="@string/dd_mm_yyyy"
+                    android:focusable="false"
+                    android:textColor="#000"
+                    android:textAlignment="center"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/pp_com_goods_public_20000_date_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="#3498DB"
+                    android:onClick="showDatePickerDialog"
+                    android:text="@string/date"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/zone"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/pp_com_goods_public_20000_zone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation='horizontal'
+                    android:layout_marginLeft="10dp">
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_idv_value_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zone_a"/>
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_idv_value_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zone_b"
+                        android:layout_marginLeft="8dp"/>
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_idv_value_C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zone_c"
+                        android:checked="true"
+                        android:layout_marginLeft="8dp"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nil_depreciation"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/pp_com_goods_public_20000_nd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation='horizontal'
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_nd_value_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_nd_value_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/no"
+                        android:layout_marginLeft="8dp"/>
+
+                </RadioGroup>
+
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_nd_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    android:descendantFocusability="blocksDescendants"
+                    android:focusable="false"
+                    android:hint="@string/value"
+                    android:text="@string/val_zero"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+
+                <TextView
+                    android:id="@+id/percen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_symbol"
+                    android:visibility="invisible"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/u_w_discount"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_uwd_value"
+                    android:nextFocusDown="@+id/pp_com_goods_public_20000_coolie"
+                    android:inputType="numberDecimal"
+                    android:layout_weight="1"
+                    android:hint="@string/in_percentage"
+                    android:maxLines="1"
+                    android:textColor="#000"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_symbol"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/n_c_b"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+
+                <Spinner
+                    android:id="@+id/pp_com_goods_public_20000_ncb_value"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="15sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pa_to_owner_driver"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/pp_com_goods_public_20000_paod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation='horizontal'
+                    android:layout_marginTop="10dp">
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_paod_value_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no"
+                        android:layout_weight="1"/>
+
+                    <RadioButton
+                        android:id="@+id/pp_com_goods_public_20000_paod_value_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes"
+                        android:checked="true"
+                        android:layout_weight="1"/>
+
+                </RadioGroup>
+
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_paod_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:focusable="true"
+                    android:inputType="numberDecimal"
+                    android:text="@string/paod_val_s"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rupee_symbol"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seating_capacity"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_coolie"
+                    android:nextFocusDown="@+id/pp_com_goods_public_20000_nfpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/coolie"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plus_symbol"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000_nfpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/nfpp"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plus_symbol"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pp_com_goods_public_20000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:focusable="false"
+                    android:inputType="numberDecimal"
+                    android:text="@string/val_one"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                android:paddingTop="10dp"
+                android:text="@string/red_warn_line"
+                android:textColor="#ff0000"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/pp_com_goods_public_20000_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/calculate"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="27dp"
+                android:layout_marginBottom="67dp"
+                android:focusableInTouchMode="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:background="#3498DB"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="#3CB371"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+
+</RelativeLayout>
