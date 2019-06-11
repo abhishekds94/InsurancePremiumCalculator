@@ -129,7 +129,7 @@ public class lp_taxi_upto6_upto1000 extends AppCompatActivity implements View.On
             b.putString("lp_taxi_upto6_upto1000_paod", lp_taxi_upto6_upto1000_paod.getText().toString());
             b.putString("lp_taxi_upto6_upto1000_ll", lp_taxi_upto6_upto1000_ll.getText().toString());
             b.putString("lp_taxi_upto6_upto1000_tax", lp_taxi_upto6_upto1000_tax.getText().toString());
-            b.putString("lp_taxi_upto6_scpassengers_upto1000",String.valueOf(Integer.parseInt(lp_taxi_upto6_scpassengers_upto1000.getText().toString()) * 1046));
+            b.putString("lp_taxi_upto6_scpassengers_upto1000",String.valueOf(Integer.parseInt(lp_taxi_upto6_scpassengers_upto1000.getText().toString()) * 1110));
 
             //Toast.makeText(lp_taxi_upto6_upto1000.this,String.valueOf(Integer.parseInt(lp_taxi_upto6_scpassengers_upto1000.getText().toString()) * 1035), Toast.LENGTH_SHORT).show();
             int id1 = lp_taxi_upto6_upto1000_lpgkit.getCheckedRadioButtonId();

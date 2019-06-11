@@ -515,7 +515,7 @@ public class pp_taxi_upto6_upto1000 extends AppCompatActivity implements Adapter
             b.putString("pp_taxi_upto6_upto1000_ndd_value", pp_taxi_upto6_upto1000_ndd_value.getText().toString());
             b.putString("pp_taxi_upto6_upto1000_uwd_value", pp_taxi_upto6_upto1000_uwd_value.getText().toString());
             b.putString("pp_taxi_upto6_upto1000_paod_value",pp_taxi_upto6_upto1000_paod_value.getText().toString());
-            b.putString("pp_taxi_upto6_scpassengers_upto1000", String.valueOf(Integer.valueOf(pp_taxi_upto6_scpassengers_upto1000.getText().toString()) * 1046));
+            b.putString("pp_taxi_upto6_scpassengers_upto1000", String.valueOf(Integer.valueOf(pp_taxi_upto6_scpassengers_upto1000.getText().toString()) * 1110));
             b.putString("pp_taxi_upto6_upto1000_od_value", String.valueOf(cost_total));
             b.putString("pp_taxi_upto6_upto1000_ncb_value", String.valueOf(ncb[pos]));
             b.putString("pp_taxi_upto6_upto1000_lpgkit_value", String.valueOf(lpg_kit));

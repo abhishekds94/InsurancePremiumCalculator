@@ -277,7 +277,7 @@ public class ppdisplay_com_goods_public_7500 extends AppCompatActivity implement
         ppdisplay_com_goods_public_7500_od_value.setText(String.valueOf((int) this.rounded_ncb_value));
         Toast.makeText(getApplicationContext(), " Spin value :  " + rounded_ncb_value,  Toast.LENGTH_SHORT).show();
 
-        double total_b = (double) ((((Integer.valueOf("14390").intValue() + Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_paod_value").toString()).intValue()) + Integer.valueOf("50").intValue()) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_coolie").toString()).intValue() * 50)) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_nfpp").toString()).intValue() * 75));
+        double total_b = (double) ((((Integer.valueOf("15746").intValue() + Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_paod_value").toString()).intValue()) + Integer.valueOf("50").intValue()) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_coolie").toString()).intValue() * 50)) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_nfpp").toString()).intValue() * 75));
         ppdisplay_com_goods_public_7500_b_value.setText(String.valueOf((int) total_b));
         double round_value = total_b + ((double) this.rounded_ncb_value);
         int rounded_total_premium_ab_int = (int) new Float((float) Math.round(round_value + ((((double) Integer.valueOf("18").intValue()) * round_value) / 100.0d))).floatValue();
@@ -573,7 +573,7 @@ public class ppdisplay_com_goods_public_7500 extends AppCompatActivity implement
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. 14390"));
+            p.add(new Chunk("Rs. 15746"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

@@ -454,7 +454,7 @@ public class ppdisplay_car_upto1000 extends AppCompatActivity implements Connect
             pp_lgkit_assumevalue=0;
         }
         ppdisplay_car_upto1000_lpgkit_value.setText(String.valueOf(pp_lgkit_assumevalue));
-        double total=1850.00+Double.valueOf(pp_car_upto1000_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
+        double total=2120.00+Double.valueOf(pp_car_upto1000_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
 
         pp_total_premium = total;
 
@@ -815,7 +815,7 @@ public class ppdisplay_car_upto1000 extends AppCompatActivity implements Connect
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"1850"));
+            p.add(new Chunk("Rs. "+"2120"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

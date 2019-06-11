@@ -111,7 +111,7 @@ public class lpdisplay_taxi_upto6_upto1500 extends AppCompatActivity implements 
         }else{
             y=0;
         }
-        int x=7147+Integer.valueOf(lp_taxi_upto6_upto1500_paod.getText().toString())+50
+        int x=7584+Integer.valueOf(lp_taxi_upto6_upto1500_paod.getText().toString())+50
                 +y
                 +Integer.parseInt(String.valueOf(b.getCharSequence("lp_taxi_upto6_scpassengers_upto1500")));
 

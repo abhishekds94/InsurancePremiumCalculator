@@ -219,7 +219,7 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
         int ba;
         if(is_cng==1) ba=60;
         else ba=0;
-        int b_total = 4544 + Integer.parseInt(pp_goodsauto_public_paod_value.getText().toString()) + 50 +ba +nfpp + coolie ;
+        int b_total = 4092 + Integer.parseInt(pp_goodsauto_public_paod_value.getText().toString()) + 50 +ba +nfpp + coolie ;
         pp_goodsauto_public_b_value.setText(String.valueOf(b_total));
 
         //display A+B
@@ -663,7 +663,7 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"4544"));
+            p.add(new Chunk("Rs. "+"4092"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

@@ -208,7 +208,7 @@ public class ppdisplay_goodsauto_private extends AppCompatActivity implements Co
         int ba;
         if(is_cng==1) ba=60;
         else ba=0;
-        int b_total = 3150 + Integer.parseInt(pp_goodsauto_private_paod_value.getText().toString()) + 50 +ba +nfpp + coolie ;
+        int b_total = 3914 + Integer.parseInt(pp_goodsauto_private_paod_value.getText().toString()) + 50 +ba +nfpp + coolie ;
         pp_goodsauto_private_b_value.setText(String.valueOf(b_total));
 
         //display A+B
@@ -652,7 +652,7 @@ public class ppdisplay_goodsauto_private extends AppCompatActivity implements Co
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"3150"));
+            p.add(new Chunk("Rs. "+"3914"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

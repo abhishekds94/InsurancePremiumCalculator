@@ -122,13 +122,13 @@ public class lp_bus_upto18 extends AppCompatActivity implements View.OnClickList
 
     //calculation
     public int value(){
-        double Totalcost=13176;
+        double Totalcost=13874;
         if(!lp_bus_scpassengers_upto18.getText().toString().trim().isEmpty()){
             if(!lp_bus_driver_upto18.getText().toString().trim().isEmpty()){
                 if(!lp_bus_conductor_upto18.getText().toString().trim().isEmpty()){
-                    Totalcost=13176+(Integer.parseInt(lp_bus_upto18_paod.getText().toString()))+
+                    Totalcost=13874+(Integer.parseInt(lp_bus_upto18_paod.getText().toString()))+
                             (Integer.parseInt(lp_bus_conductor_upto18.getText().toString())*50)
-                            +(Integer.parseInt(lp_bus_scpassengers_upto18.getText().toString())*805)
+                            +(Integer.parseInt(lp_bus_scpassengers_upto18.getText().toString())*897)
                             +(Integer.parseInt(lp_bus_driver_upto18.getText().toString())*50);
                     Totalcost=Totalcost*(1.18);
                     return  (int)Math.ceil(Totalcost);

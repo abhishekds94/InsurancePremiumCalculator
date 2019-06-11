@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:focusable="false"
             android:inputType="numberDecimal"
-            android:text="21318"
+            android:text="24825"
             android:textAlignment="center"
             android:textColor="#000" />
 
