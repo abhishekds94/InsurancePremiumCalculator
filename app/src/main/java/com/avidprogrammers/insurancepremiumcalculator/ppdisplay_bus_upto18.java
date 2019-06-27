@@ -147,7 +147,7 @@ public class ppdisplay_bus_upto18 extends AppCompatActivity implements Connectiv
         int z=x+Integer.parseInt(ppdisplay_bus_upto18_paod_value.getText().toString())
                 +Integer.parseInt(pp_bus_driver_upto18.getText().toString())
                 +Integer.parseInt(pp_bus_conductor_upto18.getText().toString())
-                +13874;
+                +14494;
         ppdisplay_bus_upto18_b_value.setText(String.valueOf(z));
         double final_value=z+total;
         ppdisplay_bus_upto18_ab_value.setText(String.valueOf((int)final_value));
@@ -526,7 +526,7 @@ public class ppdisplay_bus_upto18 extends AppCompatActivity implements Connectiv
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"13874"));
+            p.add(new Chunk("Rs. "+"14494"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
