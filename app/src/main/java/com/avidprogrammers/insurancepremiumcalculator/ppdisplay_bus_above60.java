@@ -137,7 +137,7 @@ public class ppdisplay_bus_above60 extends AppCompatActivity implements Connecti
 
         pp_bus_ncb_value.setText(b.getCharSequence("pp_bus_ncb_value"));
         //value B
-        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_above60")))*897;
+        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_above60")))*886;
         pp_bus_passrisk.setText(String.valueOf(x));
         int z=x+Integer.parseInt(ppdisplay_bus_above60_paod_value.getText().toString())
                 +Integer.parseInt(pp_bus_driver_above60.getText().toString())

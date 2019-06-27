@@ -139,7 +139,7 @@ public class ppdisplay_bus_upto36 extends AppCompatActivity implements Connectiv
 
         pp_bus_ncb_value.setText(b.getCharSequence("pp_bus_ncb_value"));
         //value B
-        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_upto36")))*897;
+        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_upto36")))*886;
         pp_bus_passrisk.setText(String.valueOf(x));
         int z=x+Integer.parseInt(ppdisplay_bus_upto36_paod_value.getText().toString())
                 +Integer.parseInt(pp_bus_driver_upto36.getText().toString())

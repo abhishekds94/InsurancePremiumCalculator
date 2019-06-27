@@ -104,7 +104,7 @@ public class lpdisplay_bus_above60 extends AppCompatActivity implements Connecti
         lp_bus_above60_paod.setText(b.getCharSequence("lp_bus_above60_paod"));
         lp_bus_above60_tax.setText(b.getCharSequence("lp_bus_above60_tax"));
         //
-        lp_bus_scpassengers_above60.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_scpassengers_above60")))*897));
+        lp_bus_scpassengers_above60.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_scpassengers_above60")))*886));
         lp_bus_driver_above60.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_driver_above60"))) * 50));
         lp_bus_conductor_above60.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_conductor_above60"))) * 50));
 
