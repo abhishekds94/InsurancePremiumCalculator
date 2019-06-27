@@ -8,8 +8,8 @@ android {
         applicationId "com.avidprogrammers.insurancepremiumcalculator"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 12
-        versionName "1.52"
+        versionCode 13
+        versionName "1.53"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

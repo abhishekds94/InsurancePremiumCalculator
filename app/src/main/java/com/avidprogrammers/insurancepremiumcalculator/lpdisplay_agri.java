@@ -315,7 +315,7 @@ public class lpdisplay_agri extends AppCompatActivity implements ConnectivityRec
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. 6115"));
+            p.add(new Chunk("Rs. 6847"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

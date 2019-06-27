@@ -343,7 +343,7 @@ public class ppdisplay_agri extends AppCompatActivity implements ConnectivityRec
 
 
         //Calculation of B
-        int pp_agri_tp_basic_tractor=6115;
+        int pp_agri_tp_basic_tractor=6847;
         String no="No";
         int pp_agri_tp_basic_trailer;
         if(b.getString("pp_agri_trailer").equals(no)) {
@@ -641,7 +641,7 @@ public class ppdisplay_agri extends AppCompatActivity implements ConnectivityRec
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"6115"));
+            p.add(new Chunk("Rs. "+"6847"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
