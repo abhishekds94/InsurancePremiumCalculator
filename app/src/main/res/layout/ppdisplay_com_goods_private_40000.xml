@@ -763,12 +763,12 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/ppdisplay_com_goods_private_40000_tax"
+                        android:id="@+id/ppdisplay_com_goods_private_40000_tax18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:text="@string/service_tax"
+                        android:text="@string/service_tax18"
                         android:textStyle="bold"
                         android:textSize="18dp"
                         android:textColor="@android:color/black"/>
@@ -783,11 +783,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/ppdisplay_com_goods_private_40000_tax_value"
+                        android:id="@+id/ppdisplay_com_goods_private_40000_tax18_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/tax_val"
                         android:textAlignment="center"
                         android:textSize="18dp" />
 
@@ -795,7 +794,48 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/per_symbol"
+                        android:text="@string/rupee_symbol"
+                        android:textAlignment="center"
+                        android:textSize="18dp" />
+                </TableRow>
+
+
+                <TableRow
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/ppdisplay_com_goods_private_40000_tax12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="@string/service_tax12"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/colon_symb"
+                        android:textAlignment="textStart"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ppdisplay_com_goods_private_40000_tax12_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/rupee_symbol"
                         android:textAlignment="center"
                         android:textSize="18dp" />
                 </TableRow>
