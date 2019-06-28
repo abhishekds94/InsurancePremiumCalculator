@@ -54,6 +54,8 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
     private AdView mAdView;
 
     public double  total_premium;
+    private double  tax_18;
+    private double  tax_12;
     public double  imt23;
     double rounded_imt23_value;
 
@@ -73,6 +75,8 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
     TextView pp_goodsauto_public_od_value;
     TextView pp_goodsauto_public_b_value;
     TextView pp_goodsauto_public_ab_value;
+    TextView pp_goodsauto_public_tax18_value;
+    TextView pp_goodsauto_public_tax12_value;
     TextView pp_goodsauto_public_paod_value;
     TextView pp_goodsauto_public_total_value;
 
@@ -119,6 +123,8 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
          pp_goodsauto_public_od_value = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_od_value);
          pp_goodsauto_public_b_value = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_b_value);
          pp_goodsauto_public_ab_value = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_ab_value);
+         pp_goodsauto_public_tax18_value = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_tax18_value);
+         pp_goodsauto_public_tax12_value = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_tax12_value);
          pp_goodsauto_public_paod_value = findViewById(R.id.ppdisplay_goodsauto_public_pa_value);
          pp_goodsauto_public_total_value = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_total_value);
          goodsauto_public_imt23 = (TextView) findViewById(R.id.ppdisplay_goodsauto_public_imt23_value);
@@ -228,7 +234,19 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
         pp_goodsauto_public_ab_value.setText(String.valueOf(final_premium));
 
         total_premium = ab;
-        total_premium +=total_premium*0.18;
+
+        //To calculate 18% tax
+        tax_18 = (total_premium-4092)*0.18;
+        int tax_18_final = (int)Math.round(tax_18);
+        pp_goodsauto_public_tax18_value.setText(String.valueOf(tax_18_final));
+
+        //To calculate 12% tax
+        tax_12 = 4092*0.12;
+        int tax_12_final = (int)Math.round(tax_12);
+        pp_goodsauto_public_tax12_value.setText(String.valueOf(tax_12_final));
+
+        //Total
+        total_premium = total_premium+tax_18_final+tax_12_final;
 
 
         //Display final total premium

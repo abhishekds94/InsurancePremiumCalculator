@@ -24,12 +24,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,40 +49,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ppdisplay_goodsauto_private.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ppdisplay_goodsauto_private.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="227" column="43" lean-forward="true" selection-start-line="227" selection-start-column="43" selection-end-line="227" selection-end-column="43" />
+            <state relative-caret-position="354">
+              <caret line="73" selection-start-line="73" selection-end-line="74" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <file leaf-file-name="ppdisplay_goodsauto_public.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
+            <state relative-caret-position="494">
+              <caret line="123" column="97" selection-start-line="123" selection-start-column="97" selection-end-line="123" selection-end-column="97" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ppdisplay_goodsauto_private.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml">
+      <file leaf-file-name="ppdisplay_goodsauto_public.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="945" column="20" selection-start-line="945" selection-start-column="20" selection-end-line="945" selection-end-column="20" />
-              <folding>
-                <element signature="e#37497#37519#0" expanded="true" />
-                <element signature="e#38094#38117#0" expanded="true" />
-                <element signature="e#39331#39353#0" expanded="true" />
-                <element signature="e#39927#39950#0" expanded="true" />
-                <element signature="e#40350#40370#0" expanded="true" />
-                <element signature="e#41164#41186#0" expanded="true" />
-              </folding>
+              <caret line="892" column="36" selection-start-line="892" selection-start-column="36" selection-end-line="892" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -2479,8 +2468,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto18.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_above60.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_7500.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_12000.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_20000.xml" />
@@ -2530,6 +2517,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java" />
       </list>
     </option>
   </component>
@@ -2580,6 +2569,12 @@
               <item name="AbhishekSheshagiri-mipc-6b0944349b1d" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="AbhishekSheshagiri-mipc-6b0944349b1d" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="AbhishekSheshagiri-mipc-6b0944349b1d" type="1abcf292:AndroidViewProjectNode" />
@@ -2782,13 +2777,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_12000.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="563" column="38" selection-start-line="563" selection-start-column="38" selection-end-line="563" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_20000.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -3148,13 +3136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2567">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -3176,24 +3157,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="945" column="20" selection-start-line="945" selection-start-column="20" selection-end-line="945" selection-end-column="20" />
-          <folding>
-            <element signature="e#37497#37519#0" expanded="true" />
-            <element signature="e#38094#38117#0" expanded="true" />
-            <element signature="e#39331#39353#0" expanded="true" />
-            <element signature="e#39927#39950#0" expanded="true" />
-            <element signature="e#40350#40370#0" expanded="true" />
-            <element signature="e#41164#41186#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -3211,10 +3174,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="961" lean-forward="true" selection-start-line="881" selection-end-line="961" />
+          <folding>
+            <element signature="e#37497#37519#0" expanded="true" />
+            <element signature="e#38094#38117#0" expanded="true" />
+            <element signature="e#39331#39353#0" expanded="true" />
+            <element signature="e#39927#39950#0" expanded="true" />
+            <element signature="e#40350#40370#0" expanded="true" />
+            <element signature="e#41164#41186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="892" column="36" selection-start-line="892" selection-start-column="36" selection-end-line="892" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="227" column="43" lean-forward="true" selection-start-line="227" selection-start-column="43" selection-end-line="227" selection-end-column="43" />
+        <state relative-caret-position="354">
+          <caret line="73" selection-start-line="73" selection-end-line="74" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="123" column="97" selection-start-line="123" selection-start-column="97" selection-end-line="123" selection-end-column="97" />
         </state>
       </provider>
     </entry>
