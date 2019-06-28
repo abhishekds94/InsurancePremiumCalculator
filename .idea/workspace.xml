@@ -24,8 +24,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,44 +50,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="lpdisplay_goodsauto_private.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_private.xml">
+      <file leaf-file-name="ppdisplay_com_goods_private_12000.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="388" selection-start-line="308" selection-end-line="388" />
+            <state relative-caret-position="187">
+              <caret line="773" column="26" selection-start-line="773" selection-start-column="26" selection-end-line="773" selection-end-column="26" />
+              <folding>
+                <element signature="e#32894#32917#0" expanded="true" />
+                <element signature="e#33321#33341#0" expanded="true" />
+                <element signature="e#34134#34156#0" expanded="true" />
+                <element signature="e#34737#34760#0" expanded="true" />
+                <element signature="e#35164#35184#0" expanded="true" />
+                <element signature="e#35977#35999#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lpdisplay_goodsauto_public.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="ppdisplay_com_goods_private_12000.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lpdisplay_goodsauto_private.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_private.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="100" selection-start-line="100" selection-end-line="101" selection-end-column="109" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lpdisplay_goodsauto_public.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="219" column="25" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="25" />
+            <state relative-caret-position="344">
+              <caret line="277" column="34" selection-start-line="277" selection-start-column="34" selection-end-line="277" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -2503,11 +2492,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_20000.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000above.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_20000.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000above.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_20000.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_40000.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_40000above.java" />
@@ -2524,12 +2511,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_private.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_private.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_private.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" />
       </list>
     </option>
   </component>
@@ -2759,7 +2748,7 @@
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.3295302" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32884097" />
@@ -2767,7 +2756,7 @@
       <window_info id="Captures" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20134228" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20134228" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32884097" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Gradle" order="6" />
@@ -2832,16 +2821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="476" column="43" selection-start-line="476" selection-start-column="43" selection-end-line="476" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_20000.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2890,13 +2869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="570" column="50" lean-forward="true" selection-start-line="570" selection-start-column="50" selection-end-line="570" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="556" column="38" selection-start-line="556" selection-start-column="38" selection-end-line="556" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -3128,88 +3100,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="840" selection-start-line="760" selection-end-line="840" />
-          <folding>
-            <element signature="e#1095#1152#0" expanded="true" />
-            <element signature="e#2052#2065#0" expanded="true" />
-            <element signature="e#2519#2539#0" expanded="true" />
-            <element signature="e#3312#3334#0" expanded="true" />
-            <element signature="e#3916#3929#0" expanded="true" />
-            <element signature="e#4392#4412#0" expanded="true" />
-            <element signature="e#5185#5198#0" expanded="true" />
-            <element signature="e#5781#5795#0" expanded="true" />
-            <element signature="e#6258#6278#0" expanded="true" />
-            <element signature="e#7595#7609#0" expanded="true" />
-            <element signature="e#8071#8091#0" expanded="true" />
-            <element signature="e#9458#9474#0" expanded="true" />
-            <element signature="e#9878#9898#0" expanded="true" />
-            <element signature="e#10731#10751#0" expanded="true" />
-            <element signature="e#11331#11344#0" expanded="true" />
-            <element signature="e#11748#11768#0" expanded="true" />
-            <element signature="e#12598#12618#0" expanded="true" />
-            <element signature="e#13198#13220#0" expanded="true" />
-            <element signature="e#13624#13644#0" expanded="true" />
-            <element signature="e#14475#14495#0" expanded="true" />
-            <element signature="e#15076#15091#0" expanded="true" />
-            <element signature="e#15495#15515#0" expanded="true" />
-            <element signature="e#16346#16366#0" expanded="true" />
-            <element signature="e#16945#16965#0" expanded="true" />
-            <element signature="e#17357#17377#0" expanded="true" />
-            <element signature="e#18310#18332#0" expanded="true" />
-            <element signature="e#19239#19257#0" expanded="true" />
-            <element signature="e#19661#19681#0" expanded="true" />
-            <element signature="e#20515#20537#0" expanded="true" />
-            <element signature="e#21117#21145#0" expanded="true" />
-            <element signature="e#21549#21569#0" expanded="true" />
-            <element signature="e#22051#22071#0" expanded="true" />
-            <element signature="e#22417#22439#0" expanded="true" />
-            <element signature="e#23018#23041#0" expanded="true" />
-            <element signature="e#23445#23465#0" expanded="true" />
-            <element signature="e#23947#23976#0" expanded="true" />
-            <element signature="e#24322#24344#0" expanded="true" />
-            <element signature="e#24927#24943#0" expanded="true" />
-            <element signature="e#25347#25367#0" expanded="true" />
-            <element signature="e#26201#26223#0" expanded="true" />
-            <element signature="e#26805#26819#0" expanded="true" />
-            <element signature="e#27223#27243#0" expanded="true" />
-            <element signature="e#28075#28097#0" expanded="true" />
-            <element signature="e#28676#28693#0" expanded="true" />
-            <element signature="e#29085#29105#0" expanded="true" />
-            <element signature="e#30036#30058#0" expanded="true" />
-            <element signature="e#30965#30983#0" expanded="true" />
-            <element signature="e#31387#31407#0" expanded="true" />
-            <element signature="e#32237#32259#0" expanded="true" />
-            <element signature="e#32841#32864#0" expanded="true" />
-            <element signature="e#33268#33288#0" expanded="true" />
-            <element signature="e#34081#34103#0" expanded="true" />
-            <element signature="e#34684#34707#0" expanded="true" />
-            <element signature="e#35111#35131#0" expanded="true" />
-            <element signature="e#35924#35946#0" expanded="true" />
-            <element signature="e#36757#36780#0" expanded="true" />
-            <element signature="e#37172#37192#0" expanded="true" />
-            <element signature="e#38076#38098#0" expanded="true" />
-            <element signature="e#40362#40389#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_goodsauto_private.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1305">
           <caret line="36" column="37" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="270" selection-start-line="270" selection-end-line="274" />
         </state>
       </provider>
     </entry>
@@ -3227,20 +3121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="235" selection-start-line="230" selection-end-line="235" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_private.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="100" selection-start-line="100" selection-end-line="101" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="219" column="25" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -3269,6 +3149,94 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="312" column="67" selection-start-line="312" selection-start-column="67" selection-end-line="312" selection-end-column="67" />
+          <folding>
+            <element signature="e#987#1032#0" expanded="true" />
+            <element signature="e#2029#2057#0" expanded="true" />
+            <element signature="e#2461#2481#0" expanded="true" />
+            <element signature="e#3310#3332#0" expanded="true" />
+            <element signature="e#3905#3938#0" expanded="true" />
+            <element signature="e#4342#4362#0" expanded="true" />
+            <element signature="e#4840#4860#0" expanded="true" />
+            <element signature="e#5207#5229#0" expanded="true" />
+            <element signature="e#5802#5825#0" expanded="true" />
+            <element signature="e#6229#6249#0" expanded="true" />
+            <element signature="e#6725#6743#0" expanded="true" />
+            <element signature="e#7090#7112#0" expanded="true" />
+            <element signature="e#7687#7701#0" expanded="true" />
+            <element signature="e#8105#8125#0" expanded="true" />
+            <element signature="e#8952#8974#0" expanded="true" />
+            <element signature="e#9552#9568#0" expanded="true" />
+            <element signature="e#9972#9992#0" expanded="true" />
+            <element signature="e#10821#10843#0" expanded="true" />
+            <element signature="e#11420#11444#0" expanded="true" />
+            <element signature="e#11848#11868#0" expanded="true" />
+            <element signature="e#13235#13258#0" expanded="true" />
+            <element signature="e#13662#13682#0" expanded="true" />
+            <element signature="e#14469#14491#0" expanded="true" />
+            <element signature="e#15066#15089#0" expanded="true" />
+            <element signature="e#15493#15513#0" expanded="true" />
+            <element signature="e#16300#16322#0" expanded="true" />
+            <element signature="e#17126#17149#0" expanded="true" />
+            <element signature="e#17541#17561#0" expanded="true" />
+            <element signature="e#18440#18462#0" expanded="true" />
+            <element signature="e#20785#20812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_private.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="100" selection-start-line="100" selection-end-line="101" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="219" column="25" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="840" selection-start-line="760" selection-end-line="840" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="87" selection-start-line="87" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="773" column="26" selection-start-line="773" selection-start-column="26" selection-end-line="773" selection-end-column="26" />
+          <folding>
+            <element signature="e#32894#32917#0" expanded="true" />
+            <element signature="e#33321#33341#0" expanded="true" />
+            <element signature="e#34134#34156#0" expanded="true" />
+            <element signature="e#34737#34760#0" expanded="true" />
+            <element signature="e#35164#35184#0" expanded="true" />
+            <element signature="e#35977#35999#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="277" column="34" selection-start-line="277" selection-start-column="34" selection-end-line="277" selection-end-column="34" />
         </state>
       </provider>
     </entry>

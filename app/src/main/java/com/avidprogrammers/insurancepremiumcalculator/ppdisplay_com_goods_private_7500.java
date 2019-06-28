@@ -54,8 +54,8 @@ public class ppdisplay_com_goods_private_7500 extends AppCompatActivity implemen
 
     private AdView mAdView;
 
-    private double  tax_18;
-    private double  tax_12;
+    private double tax_18;
+    private double tax_12;
     long diffInDays;
     double dop_value;
     float rounded_dop_value;
