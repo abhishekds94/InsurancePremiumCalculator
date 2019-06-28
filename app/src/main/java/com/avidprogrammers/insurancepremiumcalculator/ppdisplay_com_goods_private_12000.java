@@ -282,7 +282,6 @@ public class ppdisplay_com_goods_private_12000 extends AppCompatActivity impleme
         ppdisplay_com_goods_private_12000_ab_value.setText(String.valueOf((int) round_value));
         ppdisplay_com_goods_private_12000_total_value.setText(String.valueOf(rounded_total_premium_ab_int));
 
-
     }
 
     View.OnClickListener listener_ppdisplay_com_goods_private_12000_home = new View.OnClickListener() {
