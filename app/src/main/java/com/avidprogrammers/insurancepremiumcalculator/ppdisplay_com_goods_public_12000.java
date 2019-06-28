@@ -53,7 +53,8 @@ public class ppdisplay_com_goods_public_12000 extends AppCompatActivity implemen
     CheckingStatus checkingStatus;
 
     private AdView mAdView;
-
+    private double tax_18;
+    private double tax_12;
     long diffInDays;
     double dop_value;
     float rounded_dop_value;
@@ -81,6 +82,8 @@ public class ppdisplay_com_goods_public_12000 extends AppCompatActivity implemen
     TextView ppdisplay_com_goods_public_12000_od_value;
     TextView ppdisplay_com_goods_public_12000_b_value;
     TextView ppdisplay_com_goods_public_12000_ab_value;
+    TextView ppdisplay_com_goods_public_12000_tax18_value;
+    TextView ppdisplay_com_goods_public_12000_tax12_value;
     TextView ppdisplay_com_goods_public_12000_total_value;
 
     @Override
@@ -120,7 +123,9 @@ public class ppdisplay_com_goods_public_12000 extends AppCompatActivity implemen
          ppdisplay_com_goods_public_12000_od_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_od_value);
          ppdisplay_com_goods_public_12000_b_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_b_value);
          ppdisplay_com_goods_public_12000_ab_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_ab_value);
-         pp_com_goods_public_12000_paod_value = findViewById(R.id.ppdisplay_com_goods_public_12000_pa_value);
+         ppdisplay_com_goods_public_12000_tax18_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_tax18_value);
+         ppdisplay_com_goods_public_12000_tax12_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_tax12_value);
+        pp_com_goods_public_12000_paod_value = findViewById(R.id.ppdisplay_com_goods_public_12000_pa_value);
          ppdisplay_com_goods_public_12000_total_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_total_value);
         ppdisplay_com_goods_public_12000_total_idv = ((TextView) findViewById(R.id.ppdisplay_com_goods_public_12000_IDV_value));
         ppdisplay_com_goods_public_12000_total_idv.setText(b.getCharSequence("pp_com_goods_public_12000_idv_value"));
@@ -268,10 +273,21 @@ public class ppdisplay_com_goods_public_12000 extends AppCompatActivity implemen
         double total_b = (double) ((((Integer.valueOf("26935").intValue() + Integer.valueOf(b.getCharSequence("pp_com_goods_public_12000_paod_value").toString()).intValue()) + Integer.valueOf("50").intValue()) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_12000_coolie").toString()).intValue() * 50)) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_12000_nfpp").toString()).intValue() * 75));
         ppdisplay_com_goods_public_12000_b_value.setText(String.valueOf((int) total_b));
         double round_value = total_b + ((double) this.rounded_ncb_value);
-        int rounded_total_premium_ab_int = (int) new Float((float) Math.round(round_value + ((((double) Integer.valueOf("18").intValue()) * round_value) / 100.0d))).floatValue();
+
+        //To calculate 18% tax
+        tax_18 = ((((round_value - 26935) * (double) Integer.valueOf("18").intValue())) / 100.0d);
+        int tax_18_final = (int)Math.round(tax_18);
+        ppdisplay_com_goods_public_12000_tax18_value.setText(String.valueOf(tax_18_final));
+
+        //To calculate 12% tax
+        tax_12 = 26935*0.12;
+        int tax_12_final = (int)Math.round(tax_12);
+        ppdisplay_com_goods_public_12000_tax12_value.setText(String.valueOf(tax_12_final));
+
+        //int rounded_total_premium_ab_int = (int) new Float((float) Math.round(round_value + ((((double) Integer.valueOf("18").intValue()) * round_value) / 100.0d))).floatValue();
+        int rounded_total_premium_ab_int = (int) new Float((float) Math.round(round_value + tax_18_final + tax_12_final)).floatValue();
         ppdisplay_com_goods_public_12000_ab_value.setText(String.valueOf((int) round_value));
         ppdisplay_com_goods_public_12000_total_value.setText(String.valueOf(rounded_total_premium_ab_int));
-
     }
 
     View.OnClickListener listener_ppdisplay_com_goods_public_12000_home = new View.OnClickListener() {
