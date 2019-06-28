@@ -57,13 +57,17 @@ public class lpdisplay_com_goods_public_12000 extends AppCompatActivity implemen
     double total_premium;
     CircleButton share_btn;
     File file;
+    private double tax_18;
+    private double tax_12;
     TextView lp_com_goods_public_12000_act;
     TextView lp_com_goods_public_12000_paod;
     TextView lp_com_goods_public_12000_ll;
-    TextView lp_com_goods_public_12000_tax;
+    //TextView lp_com_goods_public_12000_tax;
     TextView lp_com_goods_public_12000_coolie;
     TextView lp_com_goods_public_12000_nfpp;
     TextView lp_com_goods_public_12000_total;
+    TextView lp_com_goods_public_12000_tax_12;
+    TextView lp_com_goods_public_12000_tax_18;
 
     @Override
     protected void onDestroy() {
@@ -91,15 +95,17 @@ public class lpdisplay_com_goods_public_12000 extends AppCompatActivity implemen
         Bundle b = getIntent().getExtras();
          lp_com_goods_public_12000_paod = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_paod_value);
          lp_com_goods_public_12000_ll = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_ll_value);
-         lp_com_goods_public_12000_tax = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_tax_value);
+         //lp_com_goods_public_12000_tax = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_tax_value);
          lp_com_goods_public_12000_coolie = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_coolie_value);
          lp_com_goods_public_12000_nfpp = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_nfpp_value);
+        lp_com_goods_public_12000_tax_12 = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_tax12_value);
+        lp_com_goods_public_12000_tax_18 = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_tax18_value);
          lp_com_goods_public_12000_total = (TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_total_value);
         lp_com_goods_public_12000_act = ((TextView) findViewById(R.id.lpdisplay_com_goods_public_12000_act_value));
         lp_com_goods_public_12000_act.setText(b.getCharSequence("lp_com_goods_public_12000_act"));
         lp_com_goods_public_12000_paod.setText(b.getCharSequence("lp_com_goods_public_12000_paod"));
         lp_com_goods_public_12000_ll.setText(b.getCharSequence("lp_com_goods_public_12000_ll"));
-        lp_com_goods_public_12000_tax.setText(b.getCharSequence("lp_com_goods_public_12000_tax"));
+        //lp_com_goods_public_12000_tax.setText(b.getCharSequence("lp_com_goods_public_12000_tax"));
         lp_com_goods_public_12000_coolie.setText(b.getCharSequence("lp_com_goods_public_12000_coolie"));
         lp_com_goods_public_12000_nfpp.setText(b.getCharSequence("lp_com_goods_public_12000_nfpp"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -161,15 +167,27 @@ public class lpdisplay_com_goods_public_12000 extends AppCompatActivity implemen
         String lld_value = b.getCharSequence("lp_com_goods_public_12000_ll").toString();
         String coolie_value = b.getCharSequence("lp_com_goods_public_12000_coolie").toString();
         String nfpp_value = b.getCharSequence("lp_com_goods_public_12000_nfpp").toString();
-        String tax_value = b.getCharSequence("lp_com_goods_public_12000_tax").toString();
+        //String tax_value = b.getCharSequence("lp_com_goods_public_12000_tax").toString();
         this.lp_com_goods_public_12000_value = Integer.valueOf(act_val).intValue();
         this.lp_com_goods_public_12000_paod_value = Integer.valueOf(paod_value).intValue();
         this.lp_com_goods_public_12000_lld_value = Integer.valueOf(lld_value).intValue();
         this.lp_com_goods_public_12000_coolie_value = Integer.valueOf(coolie_value).intValue();
         this.lp_com_goods_public_12000_nfpp_value = Integer.valueOf(nfpp_value).intValue();
-        this.lp_com_goods_public_12000_tax_value = Integer.valueOf(tax_value).intValue();
+        //this.lp_com_goods_public_12000_tax_value = Integer.valueOf(tax_value).intValue();
         double total = (double) ((((this.lp_com_goods_public_12000_value + this.lp_com_goods_public_12000_paod_value) + this.lp_com_goods_public_12000_lld_value) + (this.lp_com_goods_public_12000_coolie_value * 50)) + (this.lp_com_goods_public_12000_nfpp_value * 75));
-        this.total_premium = ((((double) this.lp_com_goods_public_12000_tax_value) * total) / 100.0d) + total;
+
+
+        //To calculate 18% tax
+        tax_18 = (total-26935)*0.18;
+        int tax_18_final = (int)Math.round(tax_18);
+        lp_com_goods_public_12000_tax_18.setText(String.valueOf(tax_18_final));
+
+        //To calculate 12% tax
+        tax_12 = 26935*0.12;
+        int tax_12_final = (int)Math.round(tax_12);
+        lp_com_goods_public_12000_tax_12.setText(String.valueOf(tax_12_final));
+
+        this.total_premium = tax_18_final + tax_12_final + total;
         lp_com_goods_public_12000_total.setText(String.valueOf((int) new Float((float) Math.round(this.total_premium)).floatValue()));
 
     }
