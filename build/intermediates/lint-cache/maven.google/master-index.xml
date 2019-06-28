@@ -127,4 +127,5 @@
   <androidx.benchmark/>
   <androidx.security/>
   <com.google.android.datatransport/>
+  <zipflinger/>
 </metadata>
