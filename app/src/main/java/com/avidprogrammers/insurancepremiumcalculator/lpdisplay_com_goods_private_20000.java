@@ -61,7 +61,7 @@ public class lpdisplay_com_goods_private_20000 extends AppCompatActivity impleme
     TextView lp_com_goods_private_20000_act;
     TextView lp_com_goods_private_20000_paod;
     TextView lp_com_goods_private_20000_ll;
-    TextView lp_com_goods_private_20000_tax;
+    //TextView lp_com_goods_private_20000_tax;
     TextView lp_com_goods_private_20000_coolie;
     TextView lp_com_goods_private_20000_nfpp;
     TextView lp_com_goods_private_20000_total;
