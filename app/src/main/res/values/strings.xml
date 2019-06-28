@@ -99,7 +99,9 @@
     <string name="ll_val_7500_private">50</string>
     <string name="b_total"><![CDATA[(B) -> Total]]></string>
     <string name="a_plus_b">(A) + (B)</string>
-    <string name="service_tax">Service Tax</string>
+    <string name="service_tax">G S T</string>
+    <string name="service_tax18">Tax 18%</string>
+    <string name="service_tax12">Tax 12%</string>
     <string name="tax_val">18</string>
     <string name="total_premium">Total Premium</string>
     <string name="commercial_goods_vehicle_private_package_policy">Commercial Goods Vehicle Private - Package Policy</string>
