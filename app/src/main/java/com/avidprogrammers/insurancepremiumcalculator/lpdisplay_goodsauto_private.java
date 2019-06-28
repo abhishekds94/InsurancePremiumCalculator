@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -58,8 +59,11 @@ public class lpdisplay_goodsauto_private extends AppCompatActivity implements Co
     TextView lp_goodsauto_private_ll;
     TextView lp_goodsauto_private_tax;
     TextView lp_goodsauto_private_coolie;
+    TextView lp_goodsauto_private_tax_12;
+    TextView lp_goodsauto_private_tax_18;
     TextView lp_goodsauto_private_nfpp,total_premium;
-
+    private double tax_18;
+    private double tax_12;
 
     TextView lp_goodsauto_private_lpgkit;
 
@@ -91,11 +95,11 @@ public class lpdisplay_goodsauto_private extends AppCompatActivity implements Co
          lp_goodsauto_private_act = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_act_value);
          lp_goodsauto_private_paod = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_paod_value);
          lp_goodsauto_private_ll = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_ll_value);
-         lp_goodsauto_private_tax = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax_value);
+         //lp_goodsauto_private_tax = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax_value);
          lp_goodsauto_private_coolie = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_coolie_value);
          lp_goodsauto_private_nfpp = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_nfpp_value);
-
-
+         lp_goodsauto_private_tax_12 = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax12_value);
+         lp_goodsauto_private_tax_18 = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax18_value);
          lp_goodsauto_private_lpgkit = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_lpgkit_value);
 
 
@@ -103,7 +107,7 @@ public class lpdisplay_goodsauto_private extends AppCompatActivity implements Co
         lp_goodsauto_private_act.setText(b.getCharSequence("lp_goodsauto_private_act"));
         lp_goodsauto_private_paod.setText(b.getCharSequence("lp_goodsauto_private_paod"));
         lp_goodsauto_private_ll.setText(b.getCharSequence("lp_goodsauto_private_ll"));
-        lp_goodsauto_private_tax.setText(b.getCharSequence("lp_goodsauto_private_tax"));
+//        lp_goodsauto_private_tax.setText(b.getCharSequence("lp_goodsauto_private_tax"));
         lp_goodsauto_private_coolie.setText(b.getCharSequence("lp_goodsauto_private_coolie"));
         lp_goodsauto_private_nfpp.setText(b.getCharSequence("lp_goodsauto_private_nfpp"));
 
@@ -114,7 +118,7 @@ public class lpdisplay_goodsauto_private extends AppCompatActivity implements Co
         int act = Integer.parseInt(b.getString("lp_goodsauto_private_act"));
         int paod = Integer.parseInt(b.getString("lp_goodsauto_private_paod"));
         int ll = Integer.parseInt(b.getString("lp_goodsauto_private_ll"));
-        int tax = Integer.parseInt(b.getString("lp_goodsauto_private_tax"));
+        //int tax = Integer.parseInt(b.getString("lp_goodsauto_private_tax"));
         String cngkit = b.getString("lp_goodsauto_private_lpgkit");
         //int nfpp = Integer.parseInt(b.getString("lp_goodsauto_private_nfpp"));
         //int coolie = Integer.parseInt(b.getString("lp_goodsauto_private_coolie"));
@@ -128,7 +132,7 @@ public class lpdisplay_goodsauto_private extends AppCompatActivity implements Co
         lp_goodsauto_private_nfpp.setText(String.valueOf(nfpp));
 
         //calculate the total premium for liability policy
-        double tot_premium = calculate(act,paod,ll,tax,cngkit,nfpp,coolie);
+        double tot_premium = calculate(act,paod,ll,cngkit,nfpp,coolie);
 
         //print total premium
          total_premium = (TextView)findViewById(R.id.lpdisplay_goodsauto_private_total_value);
@@ -187,15 +191,39 @@ public class lpdisplay_goodsauto_private extends AppCompatActivity implements Co
     }
 
     //Function to calculate
-    double calculate(int act,int paod,int ll,int tax,String cng,int nfpp,int coolie){
+    double calculate(int act,int paod,int ll,String cng,int nfpp,int coolie){
         double total=0;
         if(cng.equals("Yes")){
             total+=act + paod + ll + nfpp+ coolie + 60;
-            total = (total + (tax*total*0.01));
+
+            //To calculate 18% tax
+            tax_18 = (total-3914)*0.18;
+            int tax_18_final = (int)Math.round(tax_18);
+            lp_goodsauto_private_tax_18.setText(String.valueOf(tax_18_final));
+
+            //To calculate 12% tax
+            tax_12 = 3914*0.12;
+            int tax_12_final = (int)Math.round(tax_12);
+            lp_goodsauto_private_tax_12.setText(String.valueOf(tax_12_final));
+
+            total = (total + tax_18_final + tax_12_final);
+            //total = (total + (tax*total*0.01));
         }
         else {
             total+=act + paod + ll + nfpp+ coolie ;
-            total = (total + (tax*total*0.01));
+
+            //To calculate 18% tax
+            tax_18 = (total-3914)*0.18;
+            int tax_18_final = (int)Math.round(tax_18);
+            lp_goodsauto_private_tax_18.setText(String.valueOf(tax_18_final));
+
+            //To calculate 12% tax
+            tax_12 = 3914*0.12;
+            int tax_12_final = (int)Math.round(tax_12);
+            lp_goodsauto_private_tax_12.setText(String.valueOf(tax_12_final));
+
+            total = (total + tax_18_final + tax_12_final);
+            //total = (total + (tax*total*0.01));
         }
         return total;
     }
