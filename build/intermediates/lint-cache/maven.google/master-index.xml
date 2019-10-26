@@ -128,4 +128,12 @@
   <androidx.security/>
   <com.google.android.datatransport/>
   <zipflinger/>
+  <androidx.autofill/>
+  <androidx.ads/>
+  <com.android/>
+  <com.google.ads.interactivemedia.v3/>
+  <androidx.ui/>
+  <androidx.compose/>
+  <com.google.androidbrowserhelper/>
+  <org.jetbrains.kotlin/>
 </metadata>
