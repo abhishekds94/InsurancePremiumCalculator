@@ -13,3 +13,22 @@ Clone this repository using,
 ```
 git clone https://github.com/Abhishekds94/InsurancePremiumCalculator.git
 ```
+
+## Features
+
+1. Motor Insurance Premium Calculator is an one-stop application to calculate all the motor vehicle premium.
+The type of vehicles that are available for calculation now are as below,
+	i. Motorcycle
+	ii. Private Car
+	iii. Taxi
+	iv. Passenger Vehicles
+	v. Passenger Auto
+	vi. Public Carrier Goods Auto
+	vii. Private Carrier Goods Auto
+	viii. Goods Vehicle - Public
+	ix. Goods Vehicle - Private
+	x. Tractors & Trailers
+
+## Building
+
+You can build the app with Android Studio or with `./gradlew assembleDebug` command.
