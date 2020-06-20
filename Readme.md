@@ -27,7 +27,9 @@ The type of vehicles that are available for calculation now are as below,
 	7. Private Carrier Goods Auto
 	8. Goods Vehicle - Public
 	9. Goods Vehicle - Private
-	10. Tractors & Trailers
+	10. Tractors & Trailers	
+2. Users can get to know Package policy and also the Liability policy rates for all the above vehicle types.
+3. This app can also be used by Insurance agents of all the Insurance companies across India to get to know the policy rates for their customers within few minutes along with the NCB and ND discounts
 
 ## Building
 
