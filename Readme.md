@@ -34,3 +34,9 @@ The type of vehicles that are available for calculation now are as below,
 ## Building
 
 You can build the app with Android Studio or with `./gradlew assembleDebug` command.
+
+<a href="https://play.google.com/store/apps/details?id=com.avidprogrammers.insurancepremiumcalculator">
+    <img alt="Get it on Google Play"
+        height="80"
+        src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
+</a>  
