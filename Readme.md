@@ -18,16 +18,16 @@ git clone https://github.com/Abhishekds94/InsurancePremiumCalculator.git
 
 1. Motor Insurance Premium Calculator is an one-stop application to calculate all the motor vehicle premium.
 The type of vehicles that are available for calculation now are as below,
-	i. Motorcycle
-	ii. Private Car
-	iii. Taxi
-	iv. Passenger Vehicles
-	v. Passenger Auto
-	vi. Public Carrier Goods Auto
-	vii. Private Carrier Goods Auto
-	viii. Goods Vehicle - Public
-	ix. Goods Vehicle - Private
-	x. Tractors & Trailers
+	1. Motorcycle
+	2. Private Car
+	3. Taxi
+	4. Passenger Vehicles
+	5. Passenger Auto
+	6. Public Carrier Goods Auto
+	7. Private Carrier Goods Auto
+	8. Goods Vehicle - Public
+	9. Goods Vehicle - Private
+	10. Tractors & Trailers
 
 ## Building
 
