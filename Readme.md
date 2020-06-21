@@ -40,3 +40,6 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
         height="80"
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
 </a>  
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
