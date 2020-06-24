@@ -43,5 +43,7 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 
 ## Screenshots
 
+## App Working Video
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
