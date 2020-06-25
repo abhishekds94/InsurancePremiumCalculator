@@ -45,5 +45,11 @@ You can build the app with Android Studio or with `./gradlew assembleDebug` comm
 
 ## App Working Video
 
+<a href="https://abhishekds.site/androidProjects/mipc/video.jpg">
+    <img alt="MIPC Working Video"
+        height="80"
+        src="https://youtu.be/DKGeOHW02gs" />
+</a> 
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
