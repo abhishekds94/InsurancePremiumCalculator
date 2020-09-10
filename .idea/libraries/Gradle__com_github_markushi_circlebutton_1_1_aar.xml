@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.markushi:circlebutton:1.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/4c4154028d616b4ceb907975791ff1d9/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/4c4154028d616b4ceb907975791ff1d9/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/4c4154028d616b4ceb907975791ff1d9/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/7fb4c4941f4d6abd3529debe9016c446/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/7fb4c4941f4d6abd3529debe9016c446/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/7fb4c4941f4d6abd3529debe9016c446/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

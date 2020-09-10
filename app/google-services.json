@@ -1,39 +1,45 @@
 {
   "project_info": {
-    "project_number": "642322497692",
-    "firebase_url": "https://motor-insurance-calculat-eb04c.firebaseio.com",
-    "project_id": "motor-insurance-calculat-eb04c",
-    "storage_bucket": "motor-insurance-calculat-eb04c.appspot.com"
+    "project_number": "349248033089",
+    "firebase_url": "https://mipc-404b8.firebaseio.com",
+    "project_id": "mipc-404b8",
+    "storage_bucket": "mipc-404b8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:642322497692:android:6b061db02ea1ab49",
+        "mobilesdk_app_id": "1:349248033089:android:30ba63344261cfff7c91c0",
         "android_client_info": {
           "package_name": "com.avidprogrammers.insurancepremiumcalculator"
         }
       },
       "oauth_client": [
         {
-          "client_id": "642322497692-inf3or5nksur96ia87b5bkgmudrghbsu.apps.googleusercontent.com",
+          "client_id": "349248033089-vj4430equuavs87vpijsjgaqtsk8mr62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.avidprogrammers.insurancepremiumcalculator",
+            "certificate_hash": "a70dc6944368d13a64ad77fe9c5d6c2deaa558c4"
+          }
+        },
+        {
+          "client_id": "349248033089-ppahtuvhrp9jodocvrgga0slo4ge3h5a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAHSChPqYVJ7JoONni0nfsPWDTVFvun80Y"
+          "current_key": "AIzaSyA2CVL21eWrfDH84AEJPIbQvlUm4DHfGhQ"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349248033089-ppahtuvhrp9jodocvrgga0slo4ge3h5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

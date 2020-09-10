@@ -24,6 +24,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -68,6 +69,12 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
             LayerDrawable icon = (LayerDrawable) itemCart.getIcon();
             setBadgeCount(this, icon, ""+count);
             Log.e(TAG, "onCreateOptionsMenu: Setting Count" );
+
+            // Obtain the FirebaseAnalytics instance.
+            FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+            Bundle bundle = new Bundle();
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "mipc_open");
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         }
         return true;

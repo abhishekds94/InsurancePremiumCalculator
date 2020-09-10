@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-database:19.4.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-19.4.0.aar/6e06c411a0c0e6e6946015045a9d21fe/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-19.4.0.aar/6e06c411a0c0e6e6946015045a9d21fe/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-19.4.0.aar/6e06c411a0c0e6e6946015045a9d21fe/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-19.4.0.aar/54b5aedfe0d2c8a7bc389000d2b0c44f/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-19.4.0.aar/54b5aedfe0d2c8a7bc389000d2b0c44f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-19.4.0.aar/54b5aedfe0d2c8a7bc389000d2b0c44f/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
