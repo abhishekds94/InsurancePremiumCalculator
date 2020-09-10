@@ -7,15 +7,15 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avidprogrammers.utils.PermissionsActivity;
 import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -108,9 +108,9 @@ public class ppdisplay_car_upto1000 extends AppCompatActivity implements Connect
 
         setContentView(R.layout.ppdisplay_car_upto1000);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         Bundle b = getIntent().getExtras();

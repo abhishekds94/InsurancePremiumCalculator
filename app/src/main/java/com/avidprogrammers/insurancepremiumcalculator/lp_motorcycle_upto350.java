@@ -7,16 +7,13 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.avidprogrammers.utils.PermissionsActivity;
 import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -79,9 +76,9 @@ public class lp_motorcycle_upto350 extends AppCompatActivity implements Connecti
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Motorcycle Liability Policy");
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         lppaupto350_paod_value =  findViewById(R.id.lppaupto350);
 

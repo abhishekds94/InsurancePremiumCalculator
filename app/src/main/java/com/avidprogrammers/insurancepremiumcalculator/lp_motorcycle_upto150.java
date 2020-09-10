@@ -7,11 +7,9 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.avidprogrammers.utils.PermissionsActivity;
@@ -81,7 +79,7 @@ public class lp_motorcycle_upto150 extends AppCompatActivity implements Connecti
 
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        /*mAdView.loadAd(adRequest);*/
 
         lppaupto150_paod_value =  findViewById(R.id.lppaupto150);
 

@@ -13,17 +13,13 @@ import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
 import com.avidprogrammers.app.Config;
 import com.avidprogrammers.database.DatabaseHelper;
-import com.avidprogrammers.insurancepremiumcalculator.MainActivity;
 import com.avidprogrammers.insurancepremiumcalculator.NotificationActivity;
 import com.avidprogrammers.insurancepremiumcalculator.R;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import java.util.Map;
@@ -35,7 +31,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private DatabaseHelper databaseHelper;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -52,7 +47,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void sendNotification(RemoteMessage remoteMessage) {
         Map<String , String> data = remoteMessage.getData();
         String channelId = data.get("channelId");

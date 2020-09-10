@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
@@ -45,9 +46,9 @@ public class pt_motorcycle_upto150 extends AppCompatActivity implements Connecti
         getSupportActionBar().setTitle("Motorcycle Policy Type");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         findViewById(R.id.motorcycle_upto150_pp).setOnClickListener(listener_motorcycle_upto150_pp);
         findViewById(R.id.motorcycle_upto150_lp).setOnClickListener(listener_motorcycle_upto150_lp);

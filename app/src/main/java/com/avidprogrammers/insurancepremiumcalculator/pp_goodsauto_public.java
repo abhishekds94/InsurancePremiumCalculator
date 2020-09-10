@@ -9,8 +9,9 @@ import android.icu.util.Calendar;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -76,7 +77,6 @@ public class pp_goodsauto_public extends AppCompatActivity implements AdapterVie
 
 
     static final int DATE_DIALOG_ID = 0;
-    @RequiresApi(api = Build.VERSION_CODES.N)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +93,9 @@ public class pp_goodsauto_public extends AppCompatActivity implements AdapterVie
         getSupportActionBar().setTitle("Public Goods Auto Package Policy");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         RadioButton pa_no =  findViewById(R.id.pp_goodsauto_public_paod_value_no);
         pa_no.setOnClickListener(new View.OnClickListener() {
@@ -413,7 +413,6 @@ public class pp_goodsauto_public extends AppCompatActivity implements AdapterVie
         return 1;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(getApplicationContext(), ppdisplay_goodsauto_public.class);

@@ -8,8 +8,8 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -101,9 +101,9 @@ public class pp_car_upto1500 extends AppCompatActivity implements AdapterView.On
         getSupportActionBar().setTitle("Car Package Policy");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         RadioButton pa_no =  findViewById(R.id.pp_car_upto1500_paod_value_no);
         pa_no.setOnClickListener(new View.OnClickListener() {
@@ -426,7 +426,7 @@ public class pp_car_upto1500 extends AppCompatActivity implements AdapterView.On
         if(idv_value.equals("")|| uwd_value.equals("")||scpass_value.equals("")||ndd_value.equals("")){
 
             Snackbar bar = Snackbar.make(v, "Please enter all fields to Calculate!", Snackbar.LENGTH_LONG);
-            TextView mainTextView = (TextView) (bar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+            TextView mainTextView = (TextView) (bar.getView()).findViewById(R.id.snackbar_text);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
                 mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             else
@@ -440,7 +440,7 @@ public class pp_car_upto1500 extends AppCompatActivity implements AdapterView.On
                         }
                     });*/
             bar.setActionTextColor(getResources().getColor(R.color.colorSnackBarDismiss));
-            TextView tv = (TextView) bar.getView().findViewById(android.support.design.R.id.snackbar_text);
+            TextView tv = (TextView) bar.getView().findViewById(R.id.snackbar_text);
             tv.setTextColor(getResources().getColor(R.color.colorSnackBar));
             View view = bar.getView();
             view.setBackgroundColor(getResources().getColor(R.color.colorSnackBarBg));
@@ -451,7 +451,7 @@ public class pp_car_upto1500 extends AppCompatActivity implements AdapterView.On
             if (pp_car_upto1500_lpgtype_value.getVisibility() == View.VISIBLE && pp_lpgtype_value.equals("")) {
 
                 Snackbar bar = Snackbar.make(v, "Please enter all fields to Calculate!", Snackbar.LENGTH_LONG);
-                TextView mainTextView = (TextView) (bar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                TextView mainTextView = (TextView) (bar.getView()).findViewById(R.id.snackbar_text);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
                     mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 else
@@ -465,7 +465,7 @@ public class pp_car_upto1500 extends AppCompatActivity implements AdapterView.On
                         }
                     });*/
                 bar.setActionTextColor(getResources().getColor(R.color.colorSnackBarDismiss));
-                TextView tv = (TextView) bar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                TextView tv = (TextView) bar.getView().findViewById(R.id.snackbar_text);
                 tv.setTextColor(getResources().getColor(R.color.colorSnackBar));
                 View view = bar.getView();
                 view.setBackgroundColor(getResources().getColor(R.color.colorSnackBarBg));

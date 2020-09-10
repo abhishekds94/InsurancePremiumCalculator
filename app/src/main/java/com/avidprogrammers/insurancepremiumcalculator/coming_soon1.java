@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.android.gms.ads.AdListener;
@@ -52,7 +52,7 @@ public class coming_soon1 extends AppCompatActivity implements ConnectivityRecei
         getSupportActionBar().setTitle("pt_goodsauto_public");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -61,7 +61,7 @@ public class coming_soon1 extends AppCompatActivity implements ConnectivityRecei
         interstitialAd.setAdUnitId(AD_UNIT_ID);
         AdRequest aDRequest = new AdRequest.Builder().build();
 
-        interstitialAd.loadAd(aDRequest);
+        interstitialAd.loadAd(aDRequest);*/
 
         interstitialAd.setAdListener(new AdListener() {
             @Override

@@ -9,8 +9,8 @@ import android.icu.util.Calendar;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -97,9 +97,9 @@ public class pp_passauto_upto6 extends AppCompatActivity implements AdapterView.
         getSupportActionBar().setTitle("Passenger Auto Package Policy");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         RadioButton pa_no =  findViewById(R.id.pp_passauto_upto6_paod_value_no);
         pa_no.setOnClickListener(new View.OnClickListener() {

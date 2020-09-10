@@ -9,8 +9,7 @@ import android.icu.util.Calendar;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -83,7 +82,7 @@ public class pp_bus_above60 extends AppCompatActivity implements AdapterView.OnI
 
     EditText ndd;
     int num1;
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,9 +98,9 @@ public class pp_bus_above60 extends AppCompatActivity implements AdapterView.OnI
         getSupportActionBar().setTitle("Passenger Vehicle Package Policy");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         RadioButton pa_no =  findViewById(R.id.pp_bus_above60_paod_value_no);
         pa_no.setOnClickListener(new View.OnClickListener() {
@@ -327,6 +326,7 @@ public class pp_bus_above60 extends AppCompatActivity implements AdapterView.OnI
     }
     //stop-passthevalues
 
+
     public void nd(){
         long x=score_time_update(mDay, mMonth + 1, mYear);
         if(pp_bus_above60_nd_value_yes.isChecked()){
@@ -341,6 +341,7 @@ public class pp_bus_above60 extends AppCompatActivity implements AdapterView.OnI
             pp_bus_above60_nd_value.setText("0", TextView.BufferType.EDITABLE);
         }
     }
+
     public double zone_checking(){
         long l=score_time_update(mDay,mMonth+1,mYear);
         String x = null;
@@ -379,6 +380,7 @@ public class pp_bus_above60 extends AppCompatActivity implements AdapterView.OnI
         }
         return 0;
     }
+    @androidx.annotation.RequiresApi(api = Build.VERSION_CODES.N)
     public long score_time_update(int x, int y, int z){
         //Toast.makeText(pp_bus_upto1000.this, ""+String.valueOf(z)+"-"+String.valueOf(x)+"-"+String.valueOf(y), Toast.LENGTH_SHORT).show();
         Calendar date1 = Calendar.getInstance();

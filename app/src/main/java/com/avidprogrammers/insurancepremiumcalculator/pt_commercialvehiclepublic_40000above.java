@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
@@ -45,9 +46,9 @@ public class pt_commercialvehiclepublic_40000above extends AppCompatActivity imp
         getSupportActionBar().setTitle("Public Commercial Vehicle Policy Type");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         findViewById(R.id.pp_commercialvehiclepublic_40000above).setOnClickListener(listener_pp_commercialvehiclepublic_upto40000above);

@@ -6,8 +6,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,9 +60,9 @@ public class lp_goodsauto_public extends AppCompatActivity implements View.OnCli
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Goods Auto Public Liability Policy");
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         findViewById(R.id.lp_goodsauto_publicbtn).setOnClickListener(listener_lp_goodsauto_publicbtn);
 
@@ -123,7 +122,7 @@ public class lp_goodsauto_public extends AppCompatActivity implements View.OnCli
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
+
     int validation(){
         if(lp_goodsauto_public_nfpp.getText().toString().isEmpty() || lp_goodsauto_public_coolie.getText().toString().isEmpty() )
         {

@@ -9,9 +9,8 @@ import android.icu.util.Calendar;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -77,7 +76,6 @@ public class pp_com_goods_public_40000above extends AppCompatActivity implements
     }
 
     static final int DATE_DIALOG_ID = 0;
-    @RequiresApi(api = Build.VERSION_CODES.N)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,9 +92,9 @@ public class pp_com_goods_public_40000above extends AppCompatActivity implements
         getSupportActionBar().setTitle("Public Commercial Vehicle - Package Policy");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         //Date-start
@@ -202,7 +200,6 @@ public class pp_com_goods_public_40000above extends AppCompatActivity implements
             }
         });
     };
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public long  CalculateDifferenceInDays(){
 
         int mYear_now,mMonth_now,mDay_now;
@@ -245,7 +242,6 @@ public class pp_com_goods_public_40000above extends AppCompatActivity implements
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     void display_nd(){
         EditText ed1=(EditText)findViewById(R.id.pp_com_goods_public_40000above_nd_value);
         long diffInDays=CalculateDifferenceInDays();
@@ -362,7 +358,7 @@ public class pp_com_goods_public_40000above extends AppCompatActivity implements
         if(idv_value.equals("")||gvw_value_val.equals("")|| date_value.equals("")||uwd_value.equals("")||coolie_value.equals("")||nfpp_value.equals("")){
 
             Snackbar bar = Snackbar.make(v, "Please enter all fields to Calculate!", Snackbar.LENGTH_LONG);
-            TextView mainTextView = (TextView) (bar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+            TextView mainTextView = (TextView) (bar.getView()).findViewById(R.id.snackbar_text);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
                 mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             else
@@ -376,7 +372,7 @@ public class pp_com_goods_public_40000above extends AppCompatActivity implements
                         }
                     });*/
             bar.setActionTextColor(getResources().getColor(R.color.colorSnackBarDismiss));
-            TextView tv = (TextView) bar.getView().findViewById(android.support.design.R.id.snackbar_text);
+            TextView tv = (TextView) bar.getView().findViewById(R.id.snackbar_text);
             tv.setTextColor(getResources().getColor(R.color.colorSnackBar));
             View view = bar.getView();
             view.setBackgroundColor(getResources().getColor(R.color.colorSnackBarBg));

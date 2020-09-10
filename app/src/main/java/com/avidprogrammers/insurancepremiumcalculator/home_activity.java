@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.ConnectivityManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -243,9 +243,9 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
             }
         });
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
     }
 
@@ -253,11 +253,11 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
         interstitialAd = new InterstitialAd(this);
         interstitialAd.setAdUnitId("ca-app-pub-4189677300594650/4868306893");
         Toast.makeText(this, "iad1"+interstitialAd, Toast.LENGTH_SHORT).show();
-        loadInterstitial();
+//        loadInterstitial();
 
     }
 
-    public void loadInterstitial() {
+/*    public void loadInterstitial() {
         AdRequest interstitialRequest = new AdRequest.Builder().build();
         interstitialAd.loadAd(interstitialRequest);
         Log.e("AdRequest","AdRequest"+interstitialAd);
@@ -265,7 +265,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
         Log.e("interstitialRequest","interstitialRequest"+interstitialRequest);
         //Toast.makeText(this, "iar"+interstitialRequest, Toast.LENGTH_SHORT).show();
 
-    }
+    }*/
 
     public void showInterstitial_btn_longterm() {
         if (interstitialAd.isLoaded()) {
@@ -281,7 +281,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, longterm_vehicle.class);
@@ -298,7 +298,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
             });
 
         } else {
-            loadInterstitial();
+//            loadInterstitial();
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, longterm_vehicle.class);
             startActivity(inte);
@@ -320,7 +320,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_motorcycle.class);
@@ -337,7 +337,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
             });
 
         } else {
-            loadInterstitial();
+//            loadInterstitial();
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_motorcycle.class);
             startActivity(inte);
@@ -357,7 +357,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_car.class);
@@ -373,7 +373,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_car.class);
@@ -393,7 +393,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_taxi_upto6.class);
@@ -402,7 +402,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_taxi_upto6.class);
@@ -422,7 +422,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_bus.class);
@@ -431,7 +431,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_bus.class);
@@ -451,7 +451,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_passauto.class);
@@ -460,7 +460,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_passauto.class);
@@ -480,7 +480,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, pt_goodsauto_public.class);
@@ -489,7 +489,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, pt_goodsauto_public.class);
@@ -509,7 +509,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, pt_goodsauto_private.class);
@@ -518,7 +518,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, pt_goodsauto_private.class);
@@ -538,7 +538,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_commercialvehiclepublic.class);
@@ -547,7 +547,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_commercialvehiclepublic.class);
@@ -568,7 +568,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, CC_commercialvehicleprivate.class);
@@ -577,7 +577,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, CC_commercialvehicleprivate.class);
@@ -598,7 +598,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, pt_agri.class);
@@ -607,7 +607,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, pt_agri.class);
@@ -628,7 +628,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, terms.class);
@@ -638,7 +638,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, terms.class);
@@ -660,7 +660,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
                 @Override
                 public void onAdClosed() {
-                    loadInterstitial();
+//                    loadInterstitial();
 
                     ////////////////////////////////
                     Intent inte = new Intent(home_activity.this, privacy.class);
@@ -670,7 +670,7 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
                 }
             });
         } else {
-            loadInterstitial();
+//            loadInterstitial();
 
             ////////////////////////////////
             Intent inte = new Intent(home_activity.this, privacy.class);

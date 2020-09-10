@@ -7,15 +7,15 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avidprogrammers.utils.PermissionsActivity;
 import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -95,9 +95,9 @@ public class ppdisplay_taxi_upto6_upto1500 extends AppCompatActivity implements 
 
         setContentView(R.layout.ppdisplay_taxi_upto6_upto1500);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         Bundle b = getIntent().getExtras();
@@ -135,14 +135,14 @@ public class ppdisplay_taxi_upto6_upto1500 extends AppCompatActivity implements 
         pp_taxi_upto6_upto1500_antitheft.setText(b.getCharSequence("pp_taxi_upto6_upto1500_antitheft"));
         pp_taxi_upto6_upto1500_paod_value.setText(b.getCharSequence("pp_taxi_upto6_upto1500_paod_value"));
 
-        Toast.makeText(getApplicationContext(), " U/W value :  " + pp_taxi_upto6_upto1500_uwd_value,  Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), " U/W value :  " + pp_taxi_upto6_upto1500_ncb_value,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " U/W value :  " + pp_taxi_upto6_upto1500_uwd_value,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " U/W value :  " + pp_taxi_upto6_upto1500_ncb_value,  Toast.LENGTH_SHORT).show();
 
         //od value of A
         double od_value=Double.parseDouble(String.valueOf(b.getCharSequence("pp_taxi_upto6_upto1500_od_value")));
         od_value=(double)Math.round(od_value*100.0)/100;
         od_value=Math.ceil(od_value);
-        Toast.makeText(getApplicationContext(), " OD value :  " + od_value,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " OD value :  " + od_value,  Toast.LENGTH_SHORT).show();
         Double d=new Double(od_value);
         int x= d.intValue();
         pp_taxi_upto6_upto1500_od_value.setText(String.valueOf(x));

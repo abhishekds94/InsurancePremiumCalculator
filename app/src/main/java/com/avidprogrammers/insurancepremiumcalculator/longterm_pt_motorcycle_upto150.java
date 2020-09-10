@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
@@ -45,9 +45,9 @@ public class longterm_pt_motorcycle_upto150 extends AppCompatActivity implements
         getSupportActionBar().setTitle("Motorcycle Policy Type");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         findViewById(R.id.lt_motorcycle_upto150_bp).setOnClickListener(listener_lt_motorcycle_upto150_bp);

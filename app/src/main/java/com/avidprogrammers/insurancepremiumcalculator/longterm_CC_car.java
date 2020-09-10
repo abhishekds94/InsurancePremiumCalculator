@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,13 +43,13 @@ public class longterm_CC_car extends AppCompatActivity implements ConnectivityRe
         checkfunction(longterm_CC_car.this);
 
         setContentView(R.layout.longterm_cc_car);
-        Toast.makeText(this, "longterm_cc_motorcycle", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "longterm_cc_motorcycle", Toast.LENGTH_SHORT).show();
         getSupportActionBar().setTitle("Motorcycle");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         findViewById(R.id.lt_car_upto1000).setOnClickListener(listener_upto1000);

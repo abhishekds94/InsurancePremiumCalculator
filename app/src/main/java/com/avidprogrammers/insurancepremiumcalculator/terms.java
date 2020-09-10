@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -61,7 +62,7 @@ public class terms extends AppCompatActivity implements ConnectivityReceiver.Con
         myWebView.loadUrl(url);
 
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -92,7 +93,7 @@ public class terms extends AppCompatActivity implements ConnectivityReceiver.Con
             public void onAdFailedToLoad(int errorCode) {
 
             }
-        });
+        });*/
 
     };
 

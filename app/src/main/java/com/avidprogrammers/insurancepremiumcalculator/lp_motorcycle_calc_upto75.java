@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,9 +55,9 @@ public class lp_motorcycle_calc_upto75 extends AppCompatActivity implements View
         getSupportActionBar().setTitle("Motorcycle Upto 75CC Liability Policy");
 
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         findViewById(R.id.lp_motocyc_calc_upto75_btn).setOnClickListener(listener_lp_motocyc_calc_upto75_btn);
 

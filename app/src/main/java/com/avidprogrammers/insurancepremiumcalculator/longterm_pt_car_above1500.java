@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,13 +43,13 @@ public class longterm_pt_car_above1500 extends AppCompatActivity implements Conn
         checkfunction(longterm_pt_car_above1500.this);
 
         setContentView(R.layout.longterm_pt_car_above1500);
-        Toast.makeText(this, "longterm_pt_car_abpve1000", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "longterm_pt_car_abpve1000", Toast.LENGTH_SHORT).show();
         getSupportActionBar().setTitle("Car Policy Type");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         findViewById(R.id.lt_car_above1500_bp).setOnClickListener(listener_lt_car_above1500_bp);

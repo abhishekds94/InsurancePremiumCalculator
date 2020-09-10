@@ -7,8 +7,9 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 
 import com.avidprogrammers.utils.PermissionsActivity;
 import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -106,9 +106,9 @@ public class ppdisplay_com_goods_public_7500 extends AppCompatActivity implement
 
         setContentView(R.layout.ppdisplay_com_goods_public_7500);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+/*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
         Bundle b = getIntent().getExtras();
          pp_com_goods_public_7500_gvw_value = (TextView) findViewById(R.id.ppdisplay_com_goods_public_7500_gvw_value);
@@ -266,21 +266,21 @@ public class ppdisplay_com_goods_public_7500 extends AppCompatActivity implement
         double imt23_total_value =  ((((double) imt23_value) * rounded_dop_value) / 100.0d);
         this.rounded_value_nd = new Float((float) Math.round(imt23_total_value ));
         int rounded_value_nd_int = (int) this.rounded_value_nd;
-        Toast.makeText(getApplicationContext(), " DOP value :  " + rounded_dop_value,  Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), " IMT23 value :  " + rounded_value_nd,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " DOP value :  " + rounded_dop_value,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " IMT23 value :  " + rounded_value_nd,  Toast.LENGTH_SHORT).show();
 
         this.value_uw1 = (rounded_value_nd + rounded_dop_value) * (((double) Integer.valueOf(b.getString("pp_com_goods_public_7500_uwd_value")).intValue()) / 100.0d);
         this.rounded_uw_value = new Float((float) Math.round(this.value_uw1)).floatValue();
-        Toast.makeText(getApplicationContext(), " UW value :  " + rounded_uw_value,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " UW value :  " + rounded_uw_value,  Toast.LENGTH_SHORT).show();
 
         double ncb =  (rounded_dop_value + rounded_value_nd - rounded_uw_value);
         this.value_spin1 = new Float((float) Math.round(ncb));
-        Toast.makeText(getApplicationContext(), " Spin value :  " + value_spin1,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " Spin value :  " + value_spin1,  Toast.LENGTH_SHORT).show();
 
         this.value_spin1 = ((double) this.value_spin1) - ((((double) this.value_spin1) * ((double) Integer.valueOf(b.getString("pp_com_goods_public_7500_ncb_value")).intValue())) / 100.0d);
         this.rounded_ncb_value = new Float((float) Math.round(this.value_spin1)).floatValue();
         ppdisplay_com_goods_public_7500_od_value.setText(String.valueOf((int) this.rounded_ncb_value));
-        Toast.makeText(getApplicationContext(), " Spin value :  " + rounded_ncb_value,  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), " Spin value :  " + rounded_ncb_value,  Toast.LENGTH_SHORT).show();
 
         double total_b = (double) ((((Integer.valueOf("15746").intValue() + Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_paod_value").toString()).intValue()) + Integer.valueOf("50").intValue()) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_coolie").toString()).intValue() * 50)) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_7500_nfpp").toString()).intValue() * 75));
         ppdisplay_com_goods_public_7500_b_value.setText(String.valueOf((int) total_b));
