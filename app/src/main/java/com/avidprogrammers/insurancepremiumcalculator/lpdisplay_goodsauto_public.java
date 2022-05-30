@@ -195,12 +195,12 @@ public class lpdisplay_goodsauto_public extends AppCompatActivity implements Con
             total+=act + paod + ll + nfpp+ coolie + 60;
 
             //To calculate 18% tax
-            tax_18 = (total-4092)*0.18;
+            tax_18 = (total-4492)*0.18;
             int tax_18_final = (int)Math.round(tax_18);
             lp_goodsauto_public_tax_18.setText(String.valueOf(tax_18_final));
 
             //To calculate 12% tax
-            tax_12 = 4092*0.12;
+            tax_12 = 4492*0.12;
             int tax_12_final = (int)Math.round(tax_12);
             lp_goodsauto_public_tax_12.setText(String.valueOf(tax_12_final));
 
@@ -211,12 +211,12 @@ public class lpdisplay_goodsauto_public extends AppCompatActivity implements Con
             total+=act + paod + ll + nfpp+ coolie ;
 
             //To calculate 18% tax
-            tax_18 = (total-4092)*0.18;
+            tax_18 = (total-4492)*0.18;
             int tax_18_final = (int)Math.round(tax_18);
             lp_goodsauto_public_tax_18.setText(String.valueOf(tax_18_final));
 
             //To calculate 12% tax
-            tax_12 = 4092*0.12;
+            tax_12 = 4492*0.12;
             int tax_12_final = (int)Math.round(tax_12);
             lp_goodsauto_public_tax_12.setText(String.valueOf(tax_12_final));
 

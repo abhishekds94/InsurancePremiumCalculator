@@ -224,7 +224,7 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
         int ba;
         if(is_cng==1) ba=60;
         else ba=0;
-        int b_total = 4092 + Integer.parseInt(pp_goodsauto_public_paod_value.getText().toString()) + 50 +ba +nfpp + coolie ;
+        int b_total = 4492 + Integer.parseInt(pp_goodsauto_public_paod_value.getText().toString()) + 50 +ba +nfpp + coolie ;
         pp_goodsauto_public_b_value.setText(String.valueOf(b_total));
 
         //display A+B
@@ -235,12 +235,12 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
         total_premium = ab;
 
         //To calculate 18% tax
-        tax_18 = (total_premium-4092)*0.18;
+        tax_18 = (total_premium-4492)*0.18;
         int tax_18_final = (int)Math.round(tax_18);
         pp_goodsauto_public_tax18_value.setText(String.valueOf(tax_18_final));
 
         //To calculate 12% tax
-        tax_12 = 4092*0.12;
+        tax_12 = 4492*0.12;
         int tax_12_final = (int)Math.round(tax_12);
         pp_goodsauto_public_tax12_value.setText(String.valueOf(tax_12_final));
 
@@ -680,7 +680,7 @@ public class ppdisplay_goodsauto_public extends AppCompatActivity implements Con
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"4092"));
+            p.add(new Chunk("Rs. "+"4492"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
