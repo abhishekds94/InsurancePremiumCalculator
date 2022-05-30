@@ -356,10 +356,10 @@ public class ppdisplay_motorcycle_350above extends AppCompatActivity implements 
 
 
         //Calculation of B part
-        pp_total_premium = 2323 + Integer.valueOf(ppdisplay_motorcycle_350above_paod_value.getText().toString());
+        pp_total_premium = 2805 + Integer.valueOf(ppdisplay_motorcycle_350above_paod_value.getText().toString());
 
 
-        double total=2323+ Integer.valueOf(ppdisplay_motorcycle_350above_paod_value.getText().toString());
+        double total=2805+ Integer.valueOf(ppdisplay_motorcycle_350above_paod_value.getText().toString());
 
         pp_total_premium = total;
 
@@ -668,7 +668,7 @@ public class ppdisplay_motorcycle_350above extends AppCompatActivity implements 
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"2323"));
+            p.add(new Chunk("Rs. "+"2805"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

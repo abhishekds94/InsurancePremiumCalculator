@@ -338,10 +338,10 @@ public class ppdisplay_motorcycle_upto75 extends AppCompatActivity implements Co
         pp_motorcycle_upto75_od_value.setText(String.valueOf(rounded_ncb_value_int));
 
         //Calculation of B part
-        pp_total_premium = 482 + Integer.valueOf(ppdisplay_motorcycle_upto75_paod_value.getText().toString());
+        pp_total_premium = 538 + Integer.valueOf(ppdisplay_motorcycle_upto75_paod_value.getText().toString());
 
 
-        double total=482+ Integer.valueOf(ppdisplay_motorcycle_upto75_paod_value.getText().toString());
+        double total=538+ Integer.valueOf(ppdisplay_motorcycle_upto75_paod_value.getText().toString());
 
         pp_total_premium = total;
 
@@ -649,7 +649,7 @@ public class ppdisplay_motorcycle_upto75 extends AppCompatActivity implements Co
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"482"));
+            p.add(new Chunk("Rs. "+"538"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
