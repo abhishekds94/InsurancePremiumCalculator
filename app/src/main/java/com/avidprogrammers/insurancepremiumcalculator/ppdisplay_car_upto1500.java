@@ -459,7 +459,7 @@ public class ppdisplay_car_upto1500 extends AppCompatActivity implements Connect
             pp_lgkit_assumevalue=0;
         }
         ppdisplay_car_upto1500_lpgkit_value.setText(String.valueOf(pp_lgkit_assumevalue));
-        double total=3221.00+Double.valueOf(pp_car_upto1500_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
+        double total=3416.00+Double.valueOf(pp_car_upto1500_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
         //Toast.makeText(getApplicationContext(), "pp_lgkit_assumevalue ->" + pp_lgkit_assumevalue,  Toast.LENGTH_SHORT).show();
 
         pp_total_premium = total;

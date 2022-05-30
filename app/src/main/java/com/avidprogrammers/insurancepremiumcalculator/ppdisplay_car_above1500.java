@@ -452,7 +452,7 @@ public class ppdisplay_car_above1500 extends AppCompatActivity implements Connec
             pp_lgkit_assumevalue=0;
         }
         ppdisplay_car_above1500_lpgkit_value.setText(String.valueOf(pp_lgkit_assumevalue));
-        double total=7890.00+Double.valueOf(pp_car_above1500_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
+        double total=7897.00+Double.valueOf(pp_car_above1500_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
 
         pp_total_premium = total;
 
@@ -813,7 +813,7 @@ public class ppdisplay_car_above1500 extends AppCompatActivity implements Connec
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"7890"));
+            p.add(new Chunk("Rs. "+"7897"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

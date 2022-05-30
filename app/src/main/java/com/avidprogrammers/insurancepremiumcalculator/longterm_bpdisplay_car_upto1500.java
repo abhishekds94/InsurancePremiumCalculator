@@ -812,7 +812,7 @@ public class longterm_bpdisplay_car_upto1500 extends AppCompatActivity implement
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"7890"));
+            p.add(new Chunk("Rs. "+"7897"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

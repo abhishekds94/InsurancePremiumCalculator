@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/lp_car_above1500.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/lp_car_upto1000.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/lp_car_upto1500.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/ppdisplay_car_above1500.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/ppdisplay_car_upto1000.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/ppdisplay_car_upto1500.xml" value="0.35208333333333336" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
