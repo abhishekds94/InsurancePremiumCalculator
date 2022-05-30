@@ -160,7 +160,7 @@ public class lpdisplay_agri extends AppCompatActivity implements ConnectivityRec
 
         //Setting LPGkit values for radiobutton selected
         if(radio_button_value.equals(yes)){
-            lp_agri_trailer_assumevalue=2341;
+            lp_agri_trailer_assumevalue=2485;
 
 
         }

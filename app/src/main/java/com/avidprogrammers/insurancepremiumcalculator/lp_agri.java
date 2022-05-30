@@ -110,7 +110,7 @@ public class lp_agri extends AppCompatActivity implements View.OnClickListener, 
             public void onClick(View v) {
                 EditText ed1 = (EditText) findViewById(R.id.lp_agri_trailer_value);
                 ed1.setEnabled(false);
-                ed1.setText("2341");
+                ed1.setText("2485");
             }
         });
     }
@@ -131,7 +131,7 @@ public class lp_agri extends AppCompatActivity implements View.OnClickListener, 
         lp_agribtn = (Button) findViewById(R.id.lp_agribtn);
         lp_agri_trailer = (EditText) findViewById(R.id.lp_agri_trailer_value);
         lp_agri_trailer.setEnabled(false);
-        lp_agri_trailer.setText("2341");
+        lp_agri_trailer.setText("2485");
         lp_agri_act = (EditText) findViewById(R.id.lp_agri_act);
         lp_agri_paod = (EditText) findViewById(R.id.lp_agri_paod);
         lp_agri_ll = (EditText) findViewById(R.id.lp_agri_ll);
