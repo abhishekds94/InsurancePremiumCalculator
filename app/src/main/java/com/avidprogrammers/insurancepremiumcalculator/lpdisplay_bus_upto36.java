@@ -101,7 +101,7 @@ public class lpdisplay_bus_upto36 extends AppCompatActivity implements Connectiv
         lp_bus_upto36_paod.setText(b.getCharSequence("lp_bus_upto36_paod"));
         lp_bus_upto36_tax.setText(b.getCharSequence("lp_bus_upto36_tax"));
         //
-        lp_bus_scpassengers_upto36.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_scpassengers_upto36")))*886));
+        lp_bus_scpassengers_upto36.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_scpassengers_upto36")))*877));
         lp_bus_driver_upto36.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_driver_upto36"))) * 50));
         lp_bus_conductor_upto36.setText(String.valueOf(Integer.parseInt(String.valueOf(b.getCharSequence("lp_bus_conductor_upto36"))) * 50));
 

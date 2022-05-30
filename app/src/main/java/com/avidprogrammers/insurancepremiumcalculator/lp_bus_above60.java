@@ -122,13 +122,13 @@ public class lp_bus_above60 extends AppCompatActivity implements View.OnClickLis
 
     //calculation
     public int value(){
-        double Totalcost=14494;
+        double Totalcost=14343;
         if(!lp_bus_scpassengers_above60.getText().toString().trim().isEmpty()){
             if(!lp_bus_driver_above60.getText().toString().trim().isEmpty()){
                 if(!lp_bus_conductor_above60.getText().toString().trim().isEmpty()){
-                    Totalcost=14494+(Integer.parseInt(lp_bus_above60_paod.getText().toString()))+
+                    Totalcost=14343+(Integer.parseInt(lp_bus_above60_paod.getText().toString()))+
                             (Integer.parseInt(lp_bus_conductor_above60.getText().toString())*50)
-                            +(Integer.parseInt(lp_bus_scpassengers_above60.getText().toString())*886)
+                            +(Integer.parseInt(lp_bus_scpassengers_above60.getText().toString())*877)
                             +(Integer.parseInt(lp_bus_driver_above60.getText().toString())*50);
                     Totalcost=Totalcost*(1.18);
                     return  (int)Math.ceil(Totalcost);

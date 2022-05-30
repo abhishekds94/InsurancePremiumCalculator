@@ -138,12 +138,12 @@ public class ppdisplay_bus_upto60 extends AppCompatActivity implements Connectiv
 
         pp_bus_ncb_value.setText(b.getCharSequence("pp_bus_ncb_value"));
         //value B
-        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_upto60")))*886;
+        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_upto60")))*877;
         pp_bus_passrisk.setText(String.valueOf(x));
         int z=x+Integer.parseInt(ppdisplay_bus_upto60_paod_value.getText().toString())
                 +Integer.parseInt(pp_bus_driver_upto60.getText().toString())
                 +Integer.parseInt(pp_bus_conductor_upto60.getText().toString())
-                +14494;
+                +14343;
         ppdisplay_bus_upto60_b_value.setText(String.valueOf(z));
         double final_value=z+total;
         ppdisplay_bus_upto60_ab_value.setText(String.valueOf((int)final_value));
@@ -522,7 +522,7 @@ public class ppdisplay_bus_upto60 extends AppCompatActivity implements Connectiv
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"14494"));
+            p.add(new Chunk("Rs. "+"14343"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
