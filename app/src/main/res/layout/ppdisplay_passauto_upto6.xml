@@ -552,7 +552,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="2595"
+                        android:text="2539"
                         android:textAlignment="center"
                         android:textSize="18dp" />
 
@@ -682,7 +682,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="3723"
+                        android:text="3642"
                         android:textAlignment="center"
                         android:textSize="18dp" />
 

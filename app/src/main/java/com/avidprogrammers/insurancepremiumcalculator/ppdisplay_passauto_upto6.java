@@ -185,7 +185,7 @@ public class ppdisplay_passauto_upto6 extends AppCompatActivity implements Conne
         int ba;
         if(is_cng==1) ba=60;
         else ba=0;
-        int b_total = 2595 + Integer.parseInt(pp_passauto_upto6_paod_value.getText().toString()) + 50 +3723 +ba;
+        int b_total = 2539 + Integer.parseInt(pp_passauto_upto6_paod_value.getText().toString()) + 50 +3642 +ba;
         pp_passauto_upto6_b_value.setText(String.valueOf(b_total));
 
         //display A+B
@@ -642,7 +642,7 @@ public class ppdisplay_passauto_upto6 extends AppCompatActivity implements Conne
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"2595"));
+            p.add(new Chunk("Rs. "+"2539"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
@@ -698,7 +698,7 @@ public class ppdisplay_passauto_upto6 extends AppCompatActivity implements Conne
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. 3723"));
+            p.add(new Chunk("Rs. 3642"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

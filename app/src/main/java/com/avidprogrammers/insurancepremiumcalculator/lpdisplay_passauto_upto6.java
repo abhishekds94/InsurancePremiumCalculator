@@ -179,11 +179,11 @@ public class lpdisplay_passauto_upto6 extends AppCompatActivity implements Conne
     double calculate(int act,int paod,int ll,int tax,String cng){
         double total=0;
         if(cng.equals("Yes")){
-            total+=act + paod + ll + 3723 + 60;
+            total+=act + paod + ll + 3642 + 60;
             total = (total + (tax*total*0.01));
         }
         else {
-            total+=act + paod + ll + 3723;
+            total+=act + paod + ll + 3642;
             total = (total + (tax*total*0.01));
         }
         return total;
@@ -301,7 +301,7 @@ public class lpdisplay_passauto_upto6 extends AppCompatActivity implements Conne
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. 2595"));
+            p.add(new Chunk("Rs. 2539"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
@@ -337,7 +337,7 @@ public class lpdisplay_passauto_upto6 extends AppCompatActivity implements Conne
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. 3723"));
+            p.add(new Chunk("Rs. 3642"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
