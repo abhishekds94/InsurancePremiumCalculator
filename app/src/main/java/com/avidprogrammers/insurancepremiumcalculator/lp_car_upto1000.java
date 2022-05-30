@@ -5,18 +5,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by Abhishek on 26-Mar-17.
@@ -28,8 +23,6 @@ public class lp_car_upto1000 extends AppCompatActivity implements View.OnClickLi
 
     CheckingStatus checkingStatus;
 
-    private AdView mAdView;
-    private InterstitialAd interstitial;
     Button lp_car_upto1000btn;
 
     EditText lp_car_upto1000_act;

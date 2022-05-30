@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.ConnectivityManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,22 +16,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.avidprogrammers.app.Config;
 import com.avidprogrammers.database.DatabaseHelper;
 import com.avidprogrammers.utils.BadgeDrawable;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class home_activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
 
 
     //Create New Variable of type InterstitialAd
-    private InterstitialAd interstitialAd;
     private Button btn_longterm;
     private Button btn_motorcycle;
     private Button btn_privatecar;
@@ -137,15 +134,12 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
         if(pref.getString("regID","NA").equals("NA"));
         {
             SharedPreferences.Editor editor = pref.edit();
-            String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+            Task<String> refreshedToken = FirebaseMessaging.getInstance().getToken();
             FirebaseMessaging.getInstance().subscribeToTopic("all");
-            editor.putString("regId", refreshedToken);
+            editor.putString("regId", String.valueOf(refreshedToken));
             editor.commit();
         }
 
-
-
-        createInterstitial();
         btn_longterm = (Button) findViewById(R.id.longterm);
         btn_longterm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,442 +243,78 @@ public class home_activity extends AppCompatActivity implements ConnectivityRece
 
             }
         });
-
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
     }
-
-    public void createInterstitial() {
-        interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-4189677300594650/4868306893");
-        Toast.makeText(this, "iad1"+interstitialAd, Toast.LENGTH_SHORT).show();
-//        loadInterstitial();
-
-    }
-
-/*    public void loadInterstitial() {
-        AdRequest interstitialRequest = new AdRequest.Builder().build();
-        interstitialAd.loadAd(interstitialRequest);
-        Log.e("AdRequest","AdRequest"+interstitialAd);
-        //Toast.makeText(this, "iad2"+interstitialAd, Toast.LENGTH_SHORT).show();
-        Log.e("interstitialRequest","interstitialRequest"+interstitialRequest);
-        //Toast.makeText(this, "iar"+interstitialRequest, Toast.LENGTH_SHORT).show();
-
-    }*/
 
     public void showInterstitial_btn_longterm() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            Log.e("interstitialAd","interstitialAd"+interstitialAd);
-            Toast.makeText(this, "iad3"+interstitialAd, Toast.LENGTH_SHORT).show();
-            interstitialAd.setAdListener(new AdListener() {
 
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, longterm_vehicle.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-
-                @Override
-                public void onAdFailedToLoad(int errorCode) {
-                    super.onAdFailedToLoad(errorCode);
-                    //Log.e("errorCode","errorCode"+errorCode);
-                    //Toast.makeText(home_activity.this, "Ad not loaded", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        } else {
-//            loadInterstitial();
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, longterm_vehicle.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, longterm_vehicle.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_motorcycle() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            Log.e("interstitialAd","interstitialAd"+interstitialAd);
-            Toast.makeText(this, "iad3"+interstitialAd, Toast.LENGTH_SHORT).show();
-            interstitialAd.setAdListener(new AdListener() {
-
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_motorcycle.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-
-                @Override
-                public void onAdFailedToLoad(int errorCode) {
-                    super.onAdFailedToLoad(errorCode);
-                    //Log.e("errorCode","errorCode"+errorCode);
-                    //Toast.makeText(home_activity.this, "Ad not loaded", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        } else {
-//            loadInterstitial();
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_motorcycle.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_motorcycle.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_privatecar() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            Log.e("interstitialAd","interstitialAd"+interstitialAd);
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_car.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-
-                @Override
-                public void onAdFailedToLoad(int errorCode) {
-                    super.onAdFailedToLoad(errorCode);
-                    Log.e("errorCode","errorCode"+errorCode);
-                    Toast.makeText(home_activity.this, "Ad not loaded", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_car.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_car.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_taxi_upto6() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_taxi_upto6.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_taxi_upto6.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_taxi_upto6.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_bus() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_bus.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_bus.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_bus.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_passauto() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_passauto.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_passauto.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_passauto.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_goodsauto_public() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, pt_goodsauto_public.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, pt_goodsauto_public.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, pt_goodsauto_public.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_goodsauto_private() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, pt_goodsauto_private.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, pt_goodsauto_private.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, pt_goodsauto_private.class);
+        startActivity(inte);
     }
 
     public void showInterstitial_btn_commercialvehiclepublic() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_commercialvehiclepublic.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_commercialvehiclepublic.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_commercialvehiclepublic.class);
+        startActivity(inte);
     }
 
 
     public void showInterstitial_btn_commercialvehicleprivate() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, CC_commercialvehicleprivate.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, CC_commercialvehicleprivate.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, CC_commercialvehicleprivate.class);
+        startActivity(inte);
     }
 
 
     public void showInterstitial_btn_agri() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, pt_agri.class);
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, pt_agri.class);
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, pt_agri.class);
+        startActivity(inte);
     }
 
 
     public void showInterstitial_btn_terms() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, terms.class);
-                    inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/terms.html");
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, terms.class);
-            inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/terms.html");
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, terms.class);
+        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/terms.html");
+        startActivity(inte);
     }
 
 
     public void showInterstitial_btn_privacy() {
-        if (interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            interstitialAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // not call show interstitial ad from here
-                }
-
-                @Override
-                public void onAdClosed() {
-//                    loadInterstitial();
-
-                    ////////////////////////////////
-                    Intent inte = new Intent(home_activity.this, privacy.class);
-                    inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/privacy.html");
-                    startActivity(inte);
-                    ////////////////////////////////
-                }
-            });
-        } else {
-//            loadInterstitial();
-
-            ////////////////////////////////
-            Intent inte = new Intent(home_activity.this, privacy.class);
-            inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/privacy.html");
-            startActivity(inte);
-            ////////////////////////////////
-        }
+        Intent inte = new Intent(home_activity.this, privacy.class);
+        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/privacy.html");
+        startActivity(inte);
     }
 
 

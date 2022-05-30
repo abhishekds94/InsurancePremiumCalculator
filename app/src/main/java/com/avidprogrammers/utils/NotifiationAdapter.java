@@ -1,5 +1,6 @@
 package com.avidprogrammers.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +15,14 @@ import android.widget.Toast;
 import com.avidprogrammers.database.DatabaseHelper;
 import com.avidprogrammers.database.NotificationBean;
 import com.avidprogrammers.insurancepremiumcalculator.CC_motorcycle;
+import com.avidprogrammers.insurancepremiumcalculator.MainActivity;
+import com.avidprogrammers.insurancepremiumcalculator.NotificationActivity;
 import com.avidprogrammers.insurancepremiumcalculator.R;
 import com.avidprogrammers.insurancepremiumcalculator.WebViewActivity;
 import com.avidprogrammers.insurancepremiumcalculator.home_activity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -45,7 +48,6 @@ public class NotifiationAdapter extends RecyclerView.Adapter<NotifiationAdapter.
         }
         else
         arrayList = (ArrayList<NotificationBean>) databaseHelper.getAllNotifications();
-        createInterstitial();
     }
 
     @Override
@@ -56,7 +58,7 @@ public class NotifiationAdapter extends RecyclerView.Adapter<NotifiationAdapter.
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.title.setText(arrayList.get(position).getTitle());
         holder.content.setText(arrayList.get(position).getUrl());
 
@@ -71,31 +73,9 @@ public class NotifiationAdapter extends RecyclerView.Adapter<NotifiationAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
-                if (interstitialAd.isLoaded()) {
-                    interstitialAd.show();
-                    interstitialAd.setAdListener(new AdListener() {
-                        @Override
-                        public void onAdLoaded() {
-                            // not call show interstitial ad from here
-                        }
-
-                        @Override
-                        public void onAdClosed() {
-                            loadInterstitial();
-
-                            Intent intent = new Intent(context,WebViewActivity.class);
-                            intent.putExtra("url",arrayList.get(position).getUrl());
-                            context.startActivity(intent);
-                        }
-                    });
-                } else {
-                    Intent intent = new Intent(context,WebViewActivity.class);
-                    intent.putExtra("url",arrayList.get(position).getUrl());
-                    context.startActivity(intent);
-                }
-
-
+                Intent intent = new Intent(context,WebViewActivity.class);
+                intent.putExtra("url",arrayList.get(position).getUrl());
+                context.startActivity(intent);
             }
         });
 
@@ -117,18 +97,5 @@ public class NotifiationAdapter extends RecyclerView.Adapter<NotifiationAdapter.
             content = itemView.findViewById(R.id.notification_url);
             time = itemView.findViewById(R.id.notification_time);
         }
-    }
-
-    public void createInterstitial() {
-        interstitialAd = new InterstitialAd(context);
-        interstitialAd.setAdUnitId("ca-app-pub-4189677300594650/4868306893");
-        loadInterstitial();
-
-    }
-
-    public void loadInterstitial() {
-        AdRequest interstitialRequest = new AdRequest.Builder().build();
-        interstitialAd.loadAd(interstitialRequest);
-
     }
 }

@@ -28,14 +28,16 @@
 
         <receiver
             android:name=".ConnectivityReceiver"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
         <!-- Firebase Notifications -->
-        <service android:name="com.avidprogrammers.service.MyFirebaseMessagingService">
+        <service android:name="com.avidprogrammers.service.MyFirebaseMessagingService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -43,7 +45,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:excludeFromRecents="true" >
+            android:excludeFromRecents="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

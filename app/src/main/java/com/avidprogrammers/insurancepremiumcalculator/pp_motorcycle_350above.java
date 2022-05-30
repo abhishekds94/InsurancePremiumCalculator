@@ -232,7 +232,7 @@ public class pp_motorcycle_350above extends AppCompatActivity implements Adapter
         if (idv_value.equals("") || uwd_value.equals("") || ndd_value.equals("")) {
 
             Snackbar bar = Snackbar.make(v, "Please enter all fields to Calculate!", Snackbar.LENGTH_LONG);
-            TextView mainTextView = (TextView) (bar.getView()).findViewById(R.id.snackbar_text);
+            TextView mainTextView = (TextView) (bar.getView()).findViewById(com.google.android.material.R.id.snackbar_text);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
                 mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             else
@@ -246,7 +246,7 @@ public class pp_motorcycle_350above extends AppCompatActivity implements Adapter
                         }
                     });*/
             bar.setActionTextColor(getResources().getColor(R.color.colorSnackBarDismiss));
-            TextView tv = (TextView) bar.getView().findViewById(R.id.snackbar_text);
+            TextView tv = (TextView) bar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
             tv.setTextColor(getResources().getColor(R.color.colorSnackBar));
             View view = bar.getView();
             view.setBackgroundColor(getResources().getColor(R.color.colorSnackBarBg));

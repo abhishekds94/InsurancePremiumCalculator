@@ -1,5 +1,6 @@
 package com.avidprogrammers.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -103,6 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    @SuppressLint("Range")
     public List<NotificationBean> getAllNotifications() {
         List<NotificationBean> notifications = new ArrayList<>();
 

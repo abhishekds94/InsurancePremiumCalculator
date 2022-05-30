@@ -4,16 +4,13 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 
 /**
  * Created by Abhishek on 04-Jan-18.
@@ -28,10 +25,6 @@ public class terms extends AppCompatActivity implements ConnectivityReceiver.Con
     private static final String TAG = "pt_agri";
     private AdView mAdView;
 
-    InterstitialAd interstitial;
-
-    private static final String AD_UNIT_ID = "ca-app-pub-4189677300594650/4868306893";
-    private InterstitialAd interstitialAd;
 
     @Override
     protected void onDestroy() {
