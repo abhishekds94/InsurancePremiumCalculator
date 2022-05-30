@@ -18,7 +18,202 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="update public goods vehicle rates" />
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="update agri rates">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_bus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_bus.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_car.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_car.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehicleprivate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehicleprivate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehiclepublic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehiclepublic.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_motorcycle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_motorcycle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_passauto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_passauto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_taxi_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_taxi_upto6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_car.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_car.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_motorcycle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_motorcycle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_above350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_above350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_vehicle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_vehicle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_agri.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_above60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto36.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_public.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_passauto_upto6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_agri.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_above60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto36.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_passauto_upto6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_agri.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_above60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto36.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_public.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_passauto_upto6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_agri.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_above60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto36.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_passauto_upto6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/privacy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/privacy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_agri.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_above60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto36.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_40000above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_above40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_above40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto12000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto20000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto40000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto7500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_public.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_350above.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto150.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto350.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto75.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_above1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1000.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1500.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/terms.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/terms.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -288,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653950363389</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update agri rates">
+      <created>1653950541325</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1653950541325</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -313,6 +515,7 @@
     <MESSAGE value="update public goods auto rates" />
     <MESSAGE value="update private goods auto rates" />
     <MESSAGE value="update public goods vehicle rates" />
-    <option name="LAST_COMMIT_MESSAGE" value="update public goods vehicle rates" />
+    <MESSAGE value="update agri rates" />
+    <option name="LAST_COMMIT_MESSAGE" value="update agri rates" />
   </component>
 </project>
