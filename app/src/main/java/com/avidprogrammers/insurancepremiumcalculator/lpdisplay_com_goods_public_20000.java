@@ -177,12 +177,12 @@ public class lpdisplay_com_goods_public_20000 extends AppCompatActivity implemen
         double total = (double) ((((this.lp_com_goods_public_20000_value + this.lp_com_goods_public_20000_paod_value) + this.lp_com_goods_public_20000_lld_value) + (this.lp_com_goods_public_20000_coolie_value * 50)) + (this.lp_com_goods_public_20000_nfpp_value * 75));
 
         //To calculate 18% tax
-        tax_18 = (total-33418)*0.18;
+        tax_18 = (total-35313)*0.18;
         int tax_18_final = (int)Math.round(tax_18);
         lp_com_goods_public_20000_tax_18.setText(String.valueOf(tax_18_final));
 
         //To calculate 12% tax
-        tax_12 = 33418*0.12;
+        tax_12 = 35313*0.12;
         int tax_12_final = (int)Math.round(tax_12);
         lp_com_goods_public_20000_tax_12.setText(String.valueOf(tax_12_final));
 

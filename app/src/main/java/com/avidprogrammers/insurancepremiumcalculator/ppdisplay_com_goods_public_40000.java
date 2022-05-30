@@ -270,17 +270,17 @@ public class ppdisplay_com_goods_public_40000 extends AppCompatActivity implemen
         this.value_spin1 = ((double) this.rounded_uw_value) - ((((double) this.rounded_uw_value) * ((double) Integer.valueOf(b.getString("pp_com_goods_public_40000_ncb_value")).intValue())) / 100.0d);
         this.rounded_ncb_value = new Float((float) Math.round(this.value_spin1)).floatValue();
         ppdisplay_com_goods_public_40000_od_value.setText(String.valueOf((int) this.rounded_ncb_value));
-        double total_b = (double) ((((Integer.valueOf("43037").intValue() + Integer.valueOf(b.getCharSequence("pp_com_goods_public_40000_paod_value").toString()).intValue()) + Integer.valueOf("50").intValue()) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_40000_coolie").toString()).intValue() * 50)) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_40000_nfpp").toString()).intValue() * 75));
+        double total_b = (double) ((((Integer.valueOf("43950").intValue() + Integer.valueOf(b.getCharSequence("pp_com_goods_public_40000_paod_value").toString()).intValue()) + Integer.valueOf("50").intValue()) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_40000_coolie").toString()).intValue() * 50)) + (Integer.valueOf(b.getCharSequence("pp_com_goods_public_40000_nfpp").toString()).intValue() * 75));
         ppdisplay_com_goods_public_40000_b_value.setText(String.valueOf((int) total_b));
         double round_value = total_b + ((double) this.rounded_ncb_value);
 
         //To calculate 18% tax
-        tax_18 = ((((round_value - 43037) * (double) Integer.valueOf("18").intValue())) / 100.0d);
+        tax_18 = ((((round_value - 43950) * (double) Integer.valueOf("18").intValue())) / 100.0d);
         int tax_18_final = (int)Math.round(tax_18);
         ppdisplay_com_goods_public_40000_tax18_value.setText(String.valueOf(tax_18_final));
 
         //To calculate 12% tax
-        tax_12 = 43037*0.12;
+        tax_12 = 43950*0.12;
         int tax_12_final = (int)Math.round(tax_12);
         ppdisplay_com_goods_public_40000_tax12_value.setText(String.valueOf(tax_12_final));
 
@@ -578,7 +578,7 @@ public class ppdisplay_com_goods_public_40000 extends AppCompatActivity implemen
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. 43037"));
+            p.add(new Chunk("Rs. 43950"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);

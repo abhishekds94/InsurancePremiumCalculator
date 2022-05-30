@@ -177,12 +177,12 @@ public class lpdisplay_com_goods_public_12000 extends AppCompatActivity implemen
 
 
         //To calculate 18% tax
-        tax_18 = (total-26935)*0.18;
+        tax_18 = (total-27186)*0.18;
         int tax_18_final = (int)Math.round(tax_18);
         lp_com_goods_public_12000_tax_18.setText(String.valueOf(tax_18_final));
 
         //To calculate 12% tax
-        tax_12 = 26935*0.12;
+        tax_12 = 27186*0.12;
         int tax_12_final = (int)Math.round(tax_12);
         lp_com_goods_public_12000_tax_12.setText(String.valueOf(tax_12_final));
 
