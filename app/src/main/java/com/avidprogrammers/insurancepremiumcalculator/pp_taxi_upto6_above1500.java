@@ -522,7 +522,7 @@ public class pp_taxi_upto6_above1500 extends AppCompatActivity implements Adapte
             b.putString("pp_taxi_upto6_above1500_nd_value", pp_taxi_upto6_above1500_nd_value.getText().toString());
             b.putString("pp_taxi_upto6_above1500_ndd_value", pp_taxi_upto6_above1500_ndd_value.getText().toString());
             b.putString("pp_taxi_upto6_above1500_uwd_value", pp_taxi_upto6_above1500_uwd_value.getText().toString());
-            b.putString("pp_taxi_upto6_scpassengers_above1500", String.valueOf(Integer.valueOf(pp_taxi_upto6_scpassengers_above1500.getText().toString()) * 1067));
+            b.putString("pp_taxi_upto6_scpassengers_above1500", String.valueOf(Integer.valueOf(pp_taxi_upto6_scpassengers_above1500.getText().toString()) * 1117));
             b.putString("pp_taxi_upto6_above1500_od_value", String.valueOf(cost_total));
             b.putString("pp_taxi_upto6_above1500_paod_value", pp_taxi_upto6_above1500_paod_value.getText().toString());
             b.putString("pp_taxi_upto6_above1500_ncb_value", String.valueOf(ncb[pos]));

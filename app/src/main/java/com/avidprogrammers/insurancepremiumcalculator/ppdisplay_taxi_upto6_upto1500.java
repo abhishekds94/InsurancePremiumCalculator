@@ -547,7 +547,7 @@ public class ppdisplay_taxi_upto6_upto1500 extends AppCompatActivity implements 
             table.addCell(pdfPCell);
 
             p = new Paragraph();
-            p.add(new Chunk("Rs. "+"7584"));
+            p.add(new Chunk("Rs. "+"7940"));
             pdfPCell = new PdfPCell();
             pdfPCell.setBorderColor(BaseColor.WHITE);
             pdfPCell.addElement(p);
