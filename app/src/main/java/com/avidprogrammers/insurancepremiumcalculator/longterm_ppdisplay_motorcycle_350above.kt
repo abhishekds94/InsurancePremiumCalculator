@@ -377,10 +377,10 @@ class longterm_ppdisplay_motorcycle_350above : AppCompatActivity(), Connectivity
 
 
         //Calculation of B part
-        pp_total_premium = (13034 + Integer.valueOf(
+        pp_total_premium = (15117 + Integer.valueOf(
             lt_ppdisplay_motorcycle_350above_paod_value!!.text.toString()
         )).toDouble()
-        val total = (13034 + Integer.valueOf(
+        val total = (15117 + Integer.valueOf(
             lt_ppdisplay_motorcycle_350above_paod_value!!.text.toString()
         )).toDouble()
         pp_total_premium = total
@@ -649,7 +649,7 @@ class longterm_ppdisplay_motorcycle_350above : AppCompatActivity(), Connectivity
             pdfPCell.borderColor = BaseColor.WHITE
             table.addCell(pdfPCell)
             p = Paragraph()
-            p.add(Chunk("Rs. " + "3285"))
+            p.add(Chunk("Rs. " + "15117"))
             pdfPCell = PdfPCell()
             pdfPCell.borderColor = BaseColor.WHITE
             pdfPCell.addElement(p)

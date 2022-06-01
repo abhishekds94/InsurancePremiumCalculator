@@ -325,7 +325,7 @@ class longterm_bpdisplay_motorcycle_350above : AppCompatActivity(), Connectivity
             val value_nd2 = rounded_uw_value + value_nd1
             nild_value = Math.round(value_nd1).toDouble()
             rounded_value_nd = Math.round(value_nd2).toFloat()
-            Toast.makeText(applicationContext, " $rounded_value_nd", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, " $rounded_value_nd", Toast.LENGTH_SHORT).show()
         }
         val rounded_value_nd_int = rounded_value_nd.toInt()
         if (nd_value1 == 0.0) {
@@ -370,10 +370,10 @@ class longterm_bpdisplay_motorcycle_350above : AppCompatActivity(), Connectivity
 
 
         //Calculation of B part
-        pp_total_premium = (13034 + Integer.valueOf(
+        pp_total_premium = (15117 + Integer.valueOf(
             lt_bpdisplay_motorcycle_350above_paod_value!!.getText().toString()
         )).toDouble()
-        val total = (13034 + Integer.valueOf(
+        val total = (15117 + Integer.valueOf(
             lt_bpdisplay_motorcycle_350above_paod_value!!.getText().toString()
         )).toDouble()
         pp_total_premium = total
@@ -642,7 +642,7 @@ class longterm_bpdisplay_motorcycle_350above : AppCompatActivity(), Connectivity
             pdfPCell.borderColor = BaseColor.WHITE
             table.addCell(pdfPCell)
             p = Paragraph()
-            p.add(Chunk("Rs. " + "3285"))
+            p.add(Chunk("Rs. " + "15117"))
             pdfPCell = PdfPCell()
             pdfPCell.borderColor = BaseColor.WHITE
             pdfPCell.addElement(p)

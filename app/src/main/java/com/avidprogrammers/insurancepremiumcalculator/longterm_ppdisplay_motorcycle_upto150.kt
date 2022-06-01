@@ -86,7 +86,7 @@ class longterm_ppdisplay_motorcycle_upto150 : AppCompatActivity(), ConnectivityR
         registerReceiver(conn, intentFilter)
         checkfunction(this@longterm_ppdisplay_motorcycle_upto150)
         setContentView(R.layout.longterm_ppdisplay_motorcycle_upto150)
-        Toast.makeText(this, "123456", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "123456", Toast.LENGTH_SHORT).show()
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -376,10 +376,10 @@ class longterm_ppdisplay_motorcycle_upto150 : AppCompatActivity(), ConnectivityR
 
 
         //Calculation of B part
-        pp_total_premium = (3285 + Integer.valueOf(
+        pp_total_premium = (3851 + Integer.valueOf(
             lt_ppdisplay_motorcycle_upto150_paod_value!!.text.toString()
         )).toDouble()
-        val total = (3285 + Integer.valueOf(
+        val total = (3851 + Integer.valueOf(
             lt_ppdisplay_motorcycle_upto150_paod_value!!.text.toString()
         )).toDouble()
         pp_total_premium = total
@@ -648,7 +648,7 @@ class longterm_ppdisplay_motorcycle_upto150 : AppCompatActivity(), ConnectivityR
             pdfPCell.borderColor = BaseColor.WHITE
             table.addCell(pdfPCell)
             p = Paragraph()
-            p.add(Chunk("Rs. " + "3285"))
+            p.add(Chunk("Rs. " + "3851"))
             pdfPCell = PdfPCell()
             pdfPCell.borderColor = BaseColor.WHITE
             pdfPCell.addElement(p)

@@ -459,7 +459,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="1045"
+                        android:text="2901"
                         android:textAlignment="center"
                         android:textSize="18dp" />
 
