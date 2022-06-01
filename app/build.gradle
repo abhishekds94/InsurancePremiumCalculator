@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def apikeyPropertiesFile = rootProject.file("local.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdk 32
     defaultConfig {
@@ -13,6 +17,11 @@ android {
         versionName "2.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
+
+        buildConfigField("String", "ADMOB_APPOPEN", apikeyProperties['ADMOB_APPOPEN'])
+        buildConfigField("String", "ADMOB_INTERSTITIAL", apikeyProperties['ADMOB_INTERSTITIAL'])
+        buildConfigField("String", "ADMOB_NATIVE", apikeyProperties['ADMOB_NATIVE'])
+
     }
     buildTypes {
         release {

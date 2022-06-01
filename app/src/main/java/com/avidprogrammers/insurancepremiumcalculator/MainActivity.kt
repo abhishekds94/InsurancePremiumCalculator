@@ -10,6 +10,7 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
+import com.avidprogrammers.ads.AppOpenManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 
 
@@ -19,6 +20,8 @@ import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.Conne
 class MainActivity : Activity(), ConnectivityReceiverListener {
     var conn: ConnectivityReceiver? = null
     var checkingStatus: CheckingStatus? = null
+    var appOpenManager: AppOpenManager? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (intent.getBooleanExtra("EXIT", false)) {
@@ -36,6 +39,9 @@ class MainActivity : Activity(), ConnectivityReceiverListener {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         setContentView(R.layout.activity_main)
+
+        appOpenManager = AppOpenManager(applicationContext as MyApplication)
+
         splash()
     }
 
@@ -56,6 +62,7 @@ class MainActivity : Activity(), ConnectivityReceiverListener {
                 val i = Intent(this@MainActivity, home_activity::class.java)
                 startActivity(i)
                 finish()
+                appOpenManager!!.showAdIfAvailable()
             } else {
                 Toast.makeText(this@MainActivity, "Check Internet Connection !", Toast.LENGTH_SHORT)
                     .show()
