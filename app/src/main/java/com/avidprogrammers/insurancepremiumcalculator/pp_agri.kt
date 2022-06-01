@@ -1,461 +1,359 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.icu.util.Calendar;
-import android.net.ConnectivityManager;
-import android.os.Build;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import android.app.Dialog
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.icu.util.Calendar
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class pp_agri extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener,ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private static final String TAG = "pp_agri";
-    private AdView mAdView;
-
-    private TextView mDateDisplay;
-    private Button mPickDate;
-    private int mYear;
-    private int mMonth;
-    private int mDay;
-    long diffInDays;
-
-    Button pp_agri_btn;
-
-    EditText pp_agri_idv_tractor_value;
-    EditText pp_agri_idv_trailer_value;
-    EditText pp_agri_date_value;
-    EditText pp_agri_cc_value;
-    EditText pp_agri_nd_value;
-    EditText pp_agri_uwd_value;
-    EditText pp_agri_nfpp;
-    EditText pp_agri_coolie;
-    EditText pp_agri_gvw_value;
-    EditText pp_agri_paod_value;
-
-    RadioGroup pp_agri_zone;
-    RadioGroup pp_agri_nd;
-    RadioGroup pp_agri_trailer;
-
-
-    String selected;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class pp_agri : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.OnClickListener,
+    ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    private var mDateDisplay: TextView? = null
+    private var mPickDate: Button? = null
+    private var mYear = 0
+    private var mMonth = 0
+    private var mDay = 0
+    var diffInDays: Long = 0
+    var pp_agri_btn: Button? = null
+    var pp_agri_idv_tractor_value: EditText? = null
+    var pp_agri_idv_trailer_value: EditText? = null
+    var pp_agri_date_value: EditText? = null
+    var pp_agri_cc_value: EditText? = null
+    var pp_agri_nd_value: EditText? = null
+    var pp_agri_uwd_value: EditText? = null
+    var pp_agri_nfpp: EditText? = null
+    var pp_agri_coolie: EditText? = null
+    var pp_agri_gvw_value: EditText? = null
+    var pp_agri_paod_value: EditText? = null
+    var pp_agri_zone: RadioGroup? = null
+    var pp_agri_nd: RadioGroup? = null
+    var pp_agri_trailer: RadioGroup? = null
+    var selected: String? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    static final int DATE_DIALOG_ID = 0;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(pp_agri.this);
-
-        setContentView(R.layout.pp_agri);
-        getSupportActionBar().setTitle("Tractors & Trailers Package Policy");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@pp_agri)
+        setContentView(R.layout.pp_agri)
+        getSupportActionBar()!!.setTitle("Tractors & Trailers Package Policy")
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
-
-        RadioButton pa_no =  findViewById(R.id.pp_agri_paod_value_no);
-        pa_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pp_agri_paod_value.setText("0");
-                pp_agri_paod_value.setEnabled(false);
-            }
-        });
-        RadioButton pa_yes = findViewById(R.id.pp_agri_paod_value_yes);
-        pa_yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pp_agri_paod_value.setText("320");
-                pp_agri_paod_value.setEnabled(true);
-            }
-        });
-
-        RadioButton trailer_no = (RadioButton) findViewById(R.id.pp_agri_trailer_no);
-        trailer_no.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-
-                EditText ed1=(EditText)findViewById(R.id.pp_agri_trailer_value_act);
-                ed1.setEnabled(false);
-                ed1.setText("0");
-            }
-        });
-
-        RadioButton trailer_yes = (RadioButton) findViewById(R.id.pp_agri_trailer_yes);
-        trailer_yes.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-
-                EditText ed1=(EditText)findViewById(R.id.pp_agri_trailer_value_act);
-                ed1.setEnabled(true);
-                ed1.setText("");
-                ed1.setVisibility(View.VISIBLE);
-                TextView tv=(TextView) findViewById(R.id.rupee);
-                tv.setVisibility(View.VISIBLE);
-
-
-
-            }
-        });
-
-        RadioButton nd_no = (RadioButton) findViewById(R.id.pp_agri_nd_value_no);
-        nd_no.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-
-                EditText ed1=(EditText)findViewById(R.id.pp_agri_nd_value);
-                ed1.setEnabled(false);
-                ed1.setText("0");
-
-            }
-        });
-        RadioButton nd_yes = (RadioButton) findViewById(R.id.pp_agri_nd_value_yes);
-        nd_yes.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                EditText ed1=(EditText)findViewById(R.id.pp_agri_nd_value);
-                long diffInDays=CalculateDifferenceInDays();
-                double nd_value1=0.00;
-                if (diffInDays < 365) {
-                    nd_value1=15;
-                }else if (diffInDays >= 365 ) {
-                    if(diffInDays < 1825){
-                        nd_value1 = 25;
-                    }
-                    else if (diffInDays >= 1825 ){
-                        nd_value1 = 0;
-                    }
+        val pa_no: RadioButton = findViewById<RadioButton>(R.id.pp_agri_paod_value_no)
+        pa_no.setOnClickListener {
+            pp_agri_paod_value!!.setText("0")
+            pp_agri_paod_value!!.isEnabled = false
+        }
+        val pa_yes: RadioButton = findViewById<RadioButton>(R.id.pp_agri_paod_value_yes)
+        pa_yes.setOnClickListener {
+            pp_agri_paod_value!!.setText("320")
+            pp_agri_paod_value!!.isEnabled = true
+        }
+        val trailer_no = findViewById<View>(R.id.pp_agri_trailer_no) as RadioButton
+        trailer_no.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.pp_agri_trailer_value_act) as EditText
+            ed1.isEnabled = false
+            ed1.setText("0")
+        }
+        val trailer_yes = findViewById<View>(R.id.pp_agri_trailer_yes) as RadioButton
+        trailer_yes.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.pp_agri_trailer_value_act) as EditText
+            ed1.isEnabled = true
+            ed1.setText("")
+            ed1.visibility = View.VISIBLE
+            val tv = findViewById<View>(R.id.rupee) as TextView
+            tv.visibility = View.VISIBLE
+        }
+        val nd_no = findViewById<View>(R.id.pp_agri_nd_value_no) as RadioButton
+        nd_no.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.pp_agri_nd_value) as EditText
+            ed1.isEnabled = false
+            ed1.setText("0")
+        }
+        val nd_yes = findViewById<View>(R.id.pp_agri_nd_value_yes) as RadioButton
+        nd_yes.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.pp_agri_nd_value) as EditText
+            val diffInDays = CalculateDifferenceInDays()
+            var nd_value1 = 0.00
+            if (diffInDays < 365) {
+                nd_value1 = 15.0
+            } else if (diffInDays >= 365) {
+                if (diffInDays < 1825) {
+                    nd_value1 = 25.0
+                } else if (diffInDays >= 1825) {
+                    nd_value1 = 0.0
                 }
-                int  nd_value1_int =(int) nd_value1;
-                ed1.setText(String.valueOf(nd_value1_int));
-                ed1.setEnabled(false);
-                ed1.setVisibility(View.VISIBLE);
-                TextView tv=(TextView) findViewById(R.id.percen);
-                tv.setVisibility(View.VISIBLE);
-                display_nd();
-
             }
-        });
+            val nd_value1_int = nd_value1.toInt()
+            ed1.setText(nd_value1_int.toString())
+            ed1.isEnabled = false
+            ed1.visibility = View.VISIBLE
+            val tv = findViewById<View>(R.id.percen) as TextView
+            tv.visibility = View.VISIBLE
+            display_nd()
+        }
 
 
         //Date-start
-        mDateDisplay = (TextView) findViewById(R.id.pp_agri_date_value);
-        mPickDate = (Button) findViewById(R.id.pp_agri_date_btn);
-
-
-        mPickDate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showDialog(DATE_DIALOG_ID);
-            }
-        });
-
-
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        mDateDisplay = findViewById<View>(R.id.pp_agri_date_value) as TextView?
+        mPickDate = findViewById<View>(R.id.pp_agri_date_btn) as Button?
+        mPickDate!!.setOnClickListener { showDialog(pp_agri.Companion.DATE_DIALOG_ID) }
+        val c = Calendar.getInstance()
+        mYear = c[Calendar.YEAR]
+        mMonth = c[Calendar.MONTH]
+        mDay = c[Calendar.DAY_OF_MONTH]
 
 
         //Date-end
 
 
         //spinner-start
-        Spinner spin = (Spinner) findViewById(R.id.pp_agri_ncb_value);
-        spin.setOnItemSelectedListener(this);
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ncb);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(aa);
+        val spin = findViewById<View>(R.id.pp_agri_ncb_value) as Spinner
+        spin.onItemSelectedListener = this
+        val aa: ArrayAdapter<String> =
+            ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ncb)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spin.adapter = aa
         //spinner-end
-
-
-        findViewById(R.id.pp_agri_btn).setOnClickListener(listener_pp_agri_btn);
+        findViewById<View>(R.id.pp_agri_btn).setOnClickListener(listener_pp_agri_btn)
 
 
         //start-passthevalues
         //Get the ids of view objects
-        findAllViewsId();
-        updateDisplay();
-
-        pp_agri_btn.setOnClickListener(this);
+        findAllViewsId()
+        updateDisplay()
+        pp_agri_btn!!.setOnClickListener(this)
         //stop-passthevalues
-    };
+    }
 
+    var listener_pp_agri_btn = View.OnClickListener {
+        val intent = Intent(this@pp_agri, ppdisplay_agri::class.java)
+        startActivity(intent)
+    }
 
-    View.OnClickListener listener_pp_agri_btn = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(pp_agri.this, ppdisplay_agri.class);
-            startActivity(intent);
-        }
-    };
-
-
-
-    public long  CalculateDifferenceInDays(){
-
-        int mYear_now,mMonth_now,mDay_now;
+    fun CalculateDifferenceInDays(): Long {
+        val mYear_now: Int
+        val mMonth_now: Int
+        val mDay_now: Int
         // Create Calendar instance
-        Calendar calendar1 = Calendar.getInstance();
-        Calendar calendar2 = Calendar.getInstance();
-        mYear_now = calendar1.get(Calendar.YEAR);
-        mMonth_now = calendar1.get(Calendar.MONTH);
-        mDay_now = calendar1.get(Calendar.DAY_OF_MONTH);
+        val calendar1 = Calendar.getInstance()
+        val calendar2 = Calendar.getInstance()
+        mYear_now = calendar1[Calendar.YEAR]
+        mMonth_now = calendar1[Calendar.MONTH]
+        mDay_now = calendar1[Calendar.DAY_OF_MONTH]
 
         // Set the values for the calendar fields YEAR, MONTH, and DAY_OF_MONTH.
-        calendar2.set(mYear, mMonth, mDay);
-        calendar1.set(mYear_now, mMonth_now, mDay_now);
+        calendar2[mYear, mMonth] = mDay
+        calendar1[mYear_now, mMonth_now] = mDay_now
 
-            /*
+        /*
             * Use getTimeInMillis() method to get the Calendar's time value in
             * milliseconds. This method returns the current time as UTC
             * milliseconds from the epoch
             */
-        long miliSecondForDate1 = calendar1.getTimeInMillis();
-        long miliSecondForDate2 = calendar2.getTimeInMillis();
+        val miliSecondForDate1 = calendar1.timeInMillis
+        val miliSecondForDate2 = calendar2.timeInMillis
 
         // Calculate the difference in millisecond between two dates
-        long diffInMilis = miliSecondForDate1 - miliSecondForDate2;
+        val diffInMilis = miliSecondForDate1 - miliSecondForDate2
 
-             /*
+        /*
               * Now we have difference between two date in form of millsecond we can
               * easily convert it Minute / Hour / Days by dividing the difference
               * with appropriate value. 1 Second : 1000 milisecond 1 Hour : 60 * 1000
               * millisecond 1 Day : 24 * 60 * 1000 milisecond
               */
-
-        long diffInSecond = diffInMilis / 1000;
-        long diffInMinute = diffInMilis / (60 * 1000);
-        long diffInHour = diffInMilis / (60 * 60 * 1000);
-        diffInDays = diffInMilis / ( 24 * 60 * 60 * 1000);
-
-        return diffInDays;
-
-
+        val diffInSecond = diffInMilis / 1000
+        val diffInMinute = diffInMilis / (60 * 1000)
+        val diffInHour = diffInMilis / (60 * 60 * 1000)
+        diffInDays = diffInMilis / (24 * 60 * 60 * 1000)
+        return diffInDays
     }
 
     //start-passthevalues
-    private void findAllViewsId() {
-        pp_agri_btn = (Button) findViewById(R.id.pp_agri_btn);
-
-        pp_agri_idv_tractor_value = (EditText) findViewById(R.id.pp_agri_tractor_act);
-        pp_agri_idv_trailer_value = (EditText) findViewById(R.id.pp_agri_trailer_value_act);
-        pp_agri_date_value = (EditText) findViewById(R.id.pp_agri_date_value);
-        pp_agri_nd_value = (EditText) findViewById(R.id.pp_agri_nd_value);
-        pp_agri_uwd_value = (EditText) findViewById(R.id.pp_agri_uwd_value);
-        pp_agri_coolie = (EditText) findViewById(R.id.pp_agri_coolie);
-        pp_agri_paod_value = findViewById(R.id.pp_agri_paod);
-
-        final ScrollView scrollview = ((ScrollView) findViewById(R.id.pp_agri_sv));
-        pp_agri_coolie.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
-                if(action == EditorInfo.IME_ACTION_DONE)
-                    scrollview.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollview.scrollTo(0, scrollview.getBottom());
-                            pp_agri_btn.requestFocus();
-                        }
-                    });
-                return false;
+    private fun findAllViewsId() {
+        pp_agri_btn = findViewById<View>(R.id.pp_agri_btn) as Button?
+        pp_agri_idv_tractor_value = findViewById<View>(R.id.pp_agri_tractor_act) as EditText?
+        pp_agri_idv_trailer_value = findViewById<View>(R.id.pp_agri_trailer_value_act) as EditText?
+        pp_agri_date_value = findViewById<View>(R.id.pp_agri_date_value) as EditText?
+        pp_agri_nd_value = findViewById<View>(R.id.pp_agri_nd_value) as EditText?
+        pp_agri_uwd_value = findViewById<View>(R.id.pp_agri_uwd_value) as EditText?
+        pp_agri_coolie = findViewById<View>(R.id.pp_agri_coolie) as EditText?
+        pp_agri_paod_value = findViewById<EditText>(R.id.pp_agri_paod)
+        val scrollview = findViewById<View>(R.id.pp_agri_sv) as ScrollView
+        pp_agri_coolie!!.setOnEditorActionListener { textView, action, keyEvent ->
+            if (action == EditorInfo.IME_ACTION_DONE) scrollview.post {
+                scrollview.scrollTo(0, scrollview.bottom)
+                pp_agri_btn!!.requestFocus()
             }
-        });
-
-        pp_agri_zone = (RadioGroup) findViewById(R.id.pp_agri_zone);
-        pp_agri_trailer = (RadioGroup) findViewById(R.id.pp_agri_trailer);
-        pp_agri_nd=(RadioGroup) findViewById(R.id.pp_agri_nd);
-
+            false
+        }
+        pp_agri_zone = findViewById<View>(R.id.pp_agri_zone) as RadioGroup?
+        pp_agri_trailer = findViewById<View>(R.id.pp_agri_trailer) as RadioGroup?
+        pp_agri_nd = findViewById<View>(R.id.pp_agri_nd) as RadioGroup?
     }
 
-
-    @Override
-    public void onClick(View v) {
-        String idv_value = pp_agri_idv_tractor_value.getText().toString();
-        String idv_trailer_value = pp_agri_idv_trailer_value.getText().toString();
-        String nd_value = pp_agri_nd_value.getText().toString();
-        String uwd_value =pp_agri_uwd_value.getText().toString();
-        String coolie_value =pp_agri_coolie.getText().toString();
-
-        RadioButton rb2 = (RadioButton) findViewById(R.id.pp_agri_trailer_yes);
-        RadioButton rb1 = (RadioButton) findViewById(R.id.pp_agri_trailer_no);
-        if(idv_value.equals("")|| uwd_value.equals("")||coolie_value.equals("")){
-            Toast.makeText(getApplicationContext(),"Please enter all fields",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            if (pp_agri_idv_tractor_value.getVisibility() == View.VISIBLE && idv_trailer_value.equals("")) {
-                Toast.makeText(getApplicationContext(),"Please enter all fields",Toast.LENGTH_SHORT).show();
+    override fun onClick(v: View) {
+        val idv_value = pp_agri_idv_tractor_value!!.text.toString()
+        val idv_trailer_value = pp_agri_idv_trailer_value!!.text.toString()
+        val nd_value = pp_agri_nd_value!!.text.toString()
+        val uwd_value = pp_agri_uwd_value!!.text.toString()
+        val coolie_value = pp_agri_coolie!!.text.toString()
+        val rb2 = findViewById<View>(R.id.pp_agri_trailer_yes) as RadioButton
+        val rb1 = findViewById<View>(R.id.pp_agri_trailer_no) as RadioButton
+        if (idv_value == "" || uwd_value == "" || coolie_value == "") {
+            Toast.makeText(getApplicationContext(), "Please enter all fields", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            if (pp_agri_idv_tractor_value!!.visibility == View.VISIBLE && idv_trailer_value == "") {
+                Toast.makeText(
+                    getApplicationContext(),
+                    "Please enter all fields",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
-                Intent intent = new Intent(getApplicationContext(), ppdisplay_agri.class);
+                val intent = Intent(getApplicationContext(), ppdisplay_agri::class.java)
                 //Create a bundle object
-                Bundle b = new Bundle();
+                val b = Bundle()
 
                 //Inserts a String value into the mapping of this Bundle
-                b.putString("pp_agri_idv_tractor_value", pp_agri_idv_tractor_value.getText().toString());
-                b.putString("pp_agri_trailer_value", pp_agri_idv_trailer_value.getText().toString());
-                b.putString("pp_agri_date_value", pp_agri_date_value.getText().toString());
-                b.putString("pp_agri_nd_value", pp_agri_nd_value.getText().toString());
-                b.putString("pp_agri_uwd_value", pp_agri_uwd_value.getText().toString());
-                b.putString("pp_agri_paod_value", pp_agri_paod_value.getText().toString());
-                b.putString("pp_agri_coolie", pp_agri_coolie.getText().toString());
-
-                b.putString("pp_agri_spinner_value", selected);
-
-                int id1 = pp_agri_zone.getCheckedRadioButtonId();
-                RadioButton radioButton1 = (RadioButton) findViewById(id1);
-                b.putString("pp_agri_zone", radioButton1.getText().toString());
-
-                int id2 = pp_agri_trailer.getCheckedRadioButtonId();
-                RadioButton radioButton2 = (RadioButton) findViewById(id2);
-                b.putString("pp_agri_trailer", radioButton2.getText().toString());
-                int id3 = pp_agri_nd.getCheckedRadioButtonId();
-
-                b.putInt("year", mYear);
-                b.putInt("month", mMonth);
-                b.putInt("day", mDay);
+                b.putString(
+                    "pp_agri_idv_tractor_value",
+                    pp_agri_idv_tractor_value!!.text.toString()
+                )
+                b.putString("pp_agri_trailer_value", pp_agri_idv_trailer_value!!.text.toString())
+                b.putString("pp_agri_date_value", pp_agri_date_value!!.text.toString())
+                b.putString("pp_agri_nd_value", pp_agri_nd_value!!.text.toString())
+                b.putString("pp_agri_uwd_value", pp_agri_uwd_value!!.text.toString())
+                b.putString("pp_agri_paod_value", pp_agri_paod_value!!.text.toString())
+                b.putString("pp_agri_coolie", pp_agri_coolie!!.text.toString())
+                b.putString("pp_agri_spinner_value", selected)
+                val id1 = pp_agri_zone!!.checkedRadioButtonId
+                val radioButton1 = findViewById<View>(id1) as RadioButton
+                b.putString("pp_agri_zone", radioButton1.text.toString())
+                val id2 = pp_agri_trailer!!.checkedRadioButtonId
+                val radioButton2 = findViewById<View>(id2) as RadioButton
+                b.putString("pp_agri_trailer", radioButton2.text.toString())
+                val id3 = pp_agri_nd!!.checkedRadioButtonId
+                b.putInt("year", mYear)
+                b.putInt("month", mMonth)
+                b.putInt("day", mDay)
                 //Add the bundle to the intent.
-                intent.putExtras(b);
+                intent.putExtras(b)
 
                 //start the DisplayActivity
-                startActivity(intent);
+                startActivity(intent)
             }
         }
     }
+
     //stop-passthevalues
-
-
-    void display_nd(){
-        EditText ed1=(EditText)findViewById(R.id.pp_agri_nd_value);
-        long diffInDays=CalculateDifferenceInDays();
-        double nd_value1=0.00;
+    fun display_nd() {
+        val ed1 = findViewById<View>(R.id.pp_agri_nd_value) as EditText
+        val diffInDays = CalculateDifferenceInDays()
+        var nd_value1 = 0.00
         if (diffInDays < 365) {
-            nd_value1=15;
-        }else if (diffInDays >= 365 ) {
-            if(diffInDays < 1825){
-                nd_value1 = 25;
-            }
-            else if (diffInDays >= 1825 ){
-                nd_value1 = 0;
+            nd_value1 = 15.0
+        } else if (diffInDays >= 365) {
+            if (diffInDays < 1825) {
+                nd_value1 = 25.0
+            } else if (diffInDays >= 1825) {
+                nd_value1 = 0.0
             }
         }
-        int  nd_value1_int =(int) nd_value1;
-        ed1.setText(String.valueOf(nd_value1_int));
-        ed1.setEnabled(false);
+        val nd_value1_int = nd_value1.toInt()
+        ed1.setText(nd_value1_int.toString())
+        ed1.isEnabled = false
     }
+
     //Date-start
-    private void updateDisplay() {
-        mDateDisplay.setText(
-                new StringBuilder()
-                        // Month is 0 based so add 1
-                        .append(mDay).append("-")
-                        .append(mMonth + 1).append("-")
-                        .append(mYear).append(" "));
-
-
+    private fun updateDisplay() {
+        mDateDisplay!!.text = StringBuilder() // Month is 0 based so add 1
+            .append(mDay).append("-")
+            .append(mMonth + 1).append("-")
+            .append(mYear).append(" ")
     }
-    private DatePickerDialog.OnDateSetListener mDateSetListener =
-            new DatePickerDialog.OnDateSetListener() {
 
-                public void onDateSet(DatePicker view, int year,
-                                      int monthOfYear, int dayOfMonth) {
-                    mYear = year;
-                    mMonth = monthOfYear;
-                    mDay = dayOfMonth;
-                    updateDisplay();
-                }
-            };
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_DIALOG_ID:
-                return new DatePickerDialog(this,
-                        mDateSetListener,
-                        mYear, mMonth, mDay);
+    private val mDateSetListener = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        mYear = year
+        mMonth = monthOfYear
+        mDay = dayOfMonth
+        updateDisplay()
+    }
+
+    protected override fun onCreateDialog(id: Int): Dialog {
+        when (id) {
+            pp_agri.Companion.DATE_DIALOG_ID -> return DatePickerDialog(
+                this,
+                mDateSetListener,
+                mYear, mMonth, mDay
+            )
         }
-        return null;
+        return null!!
     }
+
     //Date-end
-
-
     //BackButton in title bar
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
-
-
-
 
     //Spinner
-    String[] ncb={"0","20","25","35","45","50"};
+    var ncb = arrayOf("0", "20", "25", "35", "45", "50")
 
     //Performing action onItemSelected and onNothing selected
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View arg1, int position,long id) {
-        Toast.makeText(getApplicationContext(), ncb[position], Toast.LENGTH_LONG);
-        selected=parent.getItemAtPosition(position).toString();
+    override fun onItemSelected(parent: AdapterView<*>, arg1: View, position: Int, id: Long) {
+        Toast.makeText(getApplicationContext(), ncb[position], Toast.LENGTH_LONG)
+        selected = parent.getItemAtPosition(position).toString()
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
+    override fun onNothingSelected(arg0: AdapterView<*>?) {
 // TODO Auto-generated method stub
-
     }
 
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkingStatus.notification(isConnected,this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkingStatus!!.notification(isConnected, this)
     }
 
+    companion object {
+        private const val TAG = "pp_agri"
+        const val DATE_DIALOG_ID = 0
+    }
 }

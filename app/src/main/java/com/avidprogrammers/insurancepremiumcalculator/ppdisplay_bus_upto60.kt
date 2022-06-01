@@ -1,704 +1,594 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import androidx.core.content.FileProvider;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
-
-import com.avidprogrammers.utils.PermissionsActivity;
-import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdView;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.TabSettings;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.LineSeparator;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import at.markushi.ui.CircleButton;
-
-import static com.avidprogrammers.utils.PermissionsActivity.PERMISSION_REQUEST_CODE;
-import static com.avidprogrammers.utils.PermissionsChecker.REQUIRED_PERMISSION;
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.os.Environment
+import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import at.markushi.ui.CircleButton
+import com.avidprogrammers.insurancepremiumcalculator.*
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.avidprogrammers.utils.PermissionsActivity
+import com.avidprogrammers.utils.PermissionsChecker
+import com.google.android.gms.ads.AdView
+import com.itextpdf.text.*
+import com.itextpdf.text.pdf.PdfPCell
+import com.itextpdf.text.pdf.PdfPTable
+import com.itextpdf.text.pdf.PdfWriter
+import com.itextpdf.text.pdf.draw.LineSeparator
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
+class ppdisplay_bus_upto60 : AppCompatActivity(), ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var share_btn: CircleButton? = null
+    var file: File? = null
+    var pp_bus_upto60_IDV_value: TextView? = null
+    var pp_bus_upto60_date_value: TextView? = null
+    var pp_bus_upto60_zone: TextView? = null
+    var pp_bus_upto60_cc_value: TextView? = null
+    var pp_bus_upto60_nd_value: TextView? = null
 
-public class ppdisplay_bus_upto60 extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private AdView mAdView;
-
-    CircleButton share_btn;
-    File file;
-    TextView pp_bus_upto60_IDV_value;
-    TextView pp_bus_upto60_date_value;
-    TextView pp_bus_upto60_zone;
-    TextView pp_bus_upto60_cc_value;
-    TextView pp_bus_upto60_nd_value;
     //TextView pp_bus_upto60_ndd_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_ndd_value);
-    TextView pp_bus_upto60_uwd_value;
-    TextView pp_bus_driver_upto60;
-    TextView pp_bus_conductor_upto60;
-
-
-    TextView pp_bus_upto60_imt_value;
-    TextView ppdisplay_bus_upto60_od_value;
-    TextView pp_bus_ncb_value;
-    TextView pp_bus_passrisk;
-    TextView ppdisplay_bus_upto60_b_value;
-    TextView ppdisplay_bus_upto60_ab_value;
-    TextView ppdisplay_bus_upto60_paod_value;
-    TextView ppdisplay_bus_upto60_total_value, pp_bus_upto60_ndd_value;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+    var pp_bus_upto60_uwd_value: TextView? = null
+    var pp_bus_driver_upto60: TextView? = null
+    var pp_bus_conductor_upto60: TextView? = null
+    var pp_bus_upto60_imt_value: TextView? = null
+    var ppdisplay_bus_upto60_od_value: TextView? = null
+    var pp_bus_ncb_value: TextView? = null
+    var pp_bus_passrisk: TextView? = null
+    var ppdisplay_bus_upto60_b_value: TextView? = null
+    var ppdisplay_bus_upto60_ab_value: TextView? = null
+    var ppdisplay_bus_upto60_paod_value: TextView? = null
+    var ppdisplay_bus_upto60_total_value: TextView? = null
+    var pp_bus_upto60_ndd_value: TextView? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(ppdisplay_bus_upto60.this);
-
-        setContentView(R.layout.ppdisplay_bus_upto60);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@ppdisplay_bus_upto60)
+        setContentView(R.layout.ppdisplay_bus_upto60)
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
-
-
-        Bundle b = getIntent().getExtras();
-         pp_bus_upto60_IDV_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_IDV_value);
-         pp_bus_upto60_date_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_date_value);
-         pp_bus_upto60_zone = (TextView) findViewById(R.id.ppdisplay_bus_upto60_zone_value);
-         pp_bus_upto60_cc_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_cc_value);
-         pp_bus_upto60_nd_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_nd_value);
-         pp_bus_upto60_ndd_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_ndd_value);
-         pp_bus_upto60_uwd_value = (TextView) findViewById(R.id.ppdisplay_bus_upto60_uwd_value);
-         pp_bus_driver_upto60 = (TextView) findViewById(R.id.ppdisplay_bus_upto60_lldriver_value);
-         pp_bus_conductor_upto60 = (TextView) findViewById(R.id.ppdisplay_bus_upto60_llconductor_value);
-
-
-         pp_bus_upto60_imt_value=(TextView)findViewById(R.id.ppdisplay_bus_upto60_imt23_value);
-         ppdisplay_bus_upto60_od_value=(TextView)findViewById(R.id.ppdisplay_bus_upto60_od_value);
-         pp_bus_ncb_value=(TextView)findViewById(R.id.ppdisplay_bus_upto60_ncb_value);
-         pp_bus_passrisk=(TextView)findViewById(R.id.ppdisplay_bus_upto60_passrisk_value);
-         ppdisplay_bus_upto60_b_value=(TextView)findViewById(R.id.ppdisplay_bus_upto60_b_value);
-         ppdisplay_bus_upto60_ab_value=(TextView)findViewById(R.id.ppdisplay_bus_upto60_ab_value);
-        ppdisplay_bus_upto60_paod_value = findViewById(R.id.ppdisplay_bus_upto60_pa_value);
-         ppdisplay_bus_upto60_total_value=(TextView)findViewById(R.id.ppdisplay_bus_upto60_total_value);
+        val b: Bundle = getIntent().getExtras()!!
+        pp_bus_upto60_IDV_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_IDV_value) as TextView?
+        pp_bus_upto60_date_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_date_value) as TextView?
+        pp_bus_upto60_zone = findViewById<View>(R.id.ppdisplay_bus_upto60_zone_value) as TextView?
+        pp_bus_upto60_cc_value = findViewById<View>(R.id.ppdisplay_bus_upto60_cc_value) as TextView?
+        pp_bus_upto60_nd_value = findViewById<View>(R.id.ppdisplay_bus_upto60_nd_value) as TextView?
+        pp_bus_upto60_ndd_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_ndd_value) as TextView?
+        pp_bus_upto60_uwd_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_uwd_value) as TextView?
+        pp_bus_driver_upto60 =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_lldriver_value) as TextView?
+        pp_bus_conductor_upto60 =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_llconductor_value) as TextView?
+        pp_bus_upto60_imt_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_imt23_value) as TextView?
+        ppdisplay_bus_upto60_od_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_od_value) as TextView?
+        pp_bus_ncb_value = findViewById<View>(R.id.ppdisplay_bus_upto60_ncb_value) as TextView?
+        pp_bus_passrisk = findViewById<View>(R.id.ppdisplay_bus_upto60_passrisk_value) as TextView?
+        ppdisplay_bus_upto60_b_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_b_value) as TextView?
+        ppdisplay_bus_upto60_ab_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_ab_value) as TextView?
+        ppdisplay_bus_upto60_paod_value = findViewById<TextView>(R.id.ppdisplay_bus_upto60_pa_value)
+        ppdisplay_bus_upto60_total_value =
+            findViewById<View>(R.id.ppdisplay_bus_upto60_total_value) as TextView?
         //for b
-        pp_bus_upto60_IDV_value.setText(b.getCharSequence("pp_bus_upto60_idv_value"));
-        pp_bus_upto60_date_value.setText(b.getCharSequence("pp_bus_upto60_date_value"));
-        pp_bus_upto60_zone.setText(b.getCharSequence("pp_bus_upto60_zone"));
-        pp_bus_upto60_cc_value.setText(b.getCharSequence("pp_bus_upto60_cc_value"));
-        pp_bus_upto60_nd_value.setText(b.getCharSequence("pp_bus_upto60_nd_value"));
-        pp_bus_upto60_ndd_value.setText(b.getCharSequence("pp_bus_upto60_ndd_value"));
-        pp_bus_upto60_uwd_value.setText(b.getCharSequence("pp_bus_upto60_uwd_value"));
-        pp_bus_driver_upto60.setText(b.getCharSequence("pp_bus_driver_upto60"));
-        ppdisplay_bus_upto60_paod_value.setText(b.getCharSequence("pp_bus_upto60_paod_value"));
-        pp_bus_conductor_upto60.setText(b.getCharSequence("pp_bus_conductor_upto60"));
+        pp_bus_upto60_IDV_value!!.text = b.getCharSequence("pp_bus_upto60_idv_value")
+        pp_bus_upto60_date_value!!.text = b.getCharSequence("pp_bus_upto60_date_value")
+        pp_bus_upto60_zone!!.text = b.getCharSequence("pp_bus_upto60_zone")
+        pp_bus_upto60_cc_value!!.text = b.getCharSequence("pp_bus_upto60_cc_value")
+        pp_bus_upto60_nd_value!!.text = b.getCharSequence("pp_bus_upto60_nd_value")
+        pp_bus_upto60_ndd_value!!.text = b.getCharSequence("pp_bus_upto60_ndd_value")
+        pp_bus_upto60_uwd_value!!.text = b.getCharSequence("pp_bus_upto60_uwd_value")
+        pp_bus_driver_upto60!!.text = b.getCharSequence("pp_bus_driver_upto60")
+        ppdisplay_bus_upto60_paod_value!!.text = b.getCharSequence("pp_bus_upto60_paod_value")
+        pp_bus_conductor_upto60!!.text = b.getCharSequence("pp_bus_conductor_upto60")
 
         //values assign
-        pp_bus_upto60_imt_value.setText(b.getCharSequence("pp_bus_imt_value"));
+        pp_bus_upto60_imt_value!!.text = b.getCharSequence("pp_bus_imt_value")
         // value A
-        double total=Double.parseDouble(String.valueOf(b.getCharSequence("pp_bus_total_value")));
-        ppdisplay_bus_upto60_od_value.setText(String.valueOf((int)total));
-
-        pp_bus_ncb_value.setText(b.getCharSequence("pp_bus_ncb_value"));
+        val total = b.getCharSequence("pp_bus_total_value").toString().toDouble()
+        ppdisplay_bus_upto60_od_value!!.text = total.toInt().toString()
+        pp_bus_ncb_value!!.text = b.getCharSequence("pp_bus_ncb_value")
         //value B
-        int x=Integer.parseInt(String.valueOf(b.getCharSequence("pp_bus_scpassengers_upto60")))*877;
-        pp_bus_passrisk.setText(String.valueOf(x));
-        int z=x+Integer.parseInt(ppdisplay_bus_upto60_paod_value.getText().toString())
-                +Integer.parseInt(pp_bus_driver_upto60.getText().toString())
-                +Integer.parseInt(pp_bus_conductor_upto60.getText().toString())
-                +14343;
-        ppdisplay_bus_upto60_b_value.setText(String.valueOf(z));
-        double final_value=z+total;
-        ppdisplay_bus_upto60_ab_value.setText(String.valueOf((int)final_value));
-        ppdisplay_bus_upto60_total_value.setText(String.valueOf((int)Math.ceil(final_value*(1.18))));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Passenger Vehicle Package Policy");
-
-        findViewById(R.id.ppdisplay_bus_upto60_home).setOnClickListener(listener_ppdisplay_bus_upto60_home);
-
-        share_btn = (CircleButton) findViewById(R.id.ppdisplay_bus_upto60_share);
-        share_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PermissionsChecker checker = new PermissionsChecker(ppdisplay_bus_upto60.this);
-                if (checker.lacksPermissions(REQUIRED_PERMISSION)) {
-
-                    PermissionsActivity.startActivityForResult(ppdisplay_bus_upto60.this, PERMISSION_REQUEST_CODE, REQUIRED_PERMISSION);
-
-                } else {
-
-                    Date date = new Date();
-                    SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyyHHmmss");
-                    String filename = "InsurancePremium" + dateformat.format(date) + ".pdf";
-
-                    File direct = new File(Environment.getExternalStorageDirectory() + "/InsurancePremiumCalculator");
-
-                    if (!direct.exists()) {
-                        File myDirectory = new File("/sdcard/InsurancePremiumCalculator/");
-                        myDirectory.mkdirs();
-                        myDirectory.setReadable(true);
-                        myDirectory.setWritable(true);
-                        myDirectory.setExecutable(true);
-                    }
-
-                    file = new File(new File("/sdcard/InsurancePremiumCalculator/"), filename);
-                    if (file.exists()) {
-                        file.delete();
-                    }
-                    Document document = new Document(PageSize.A4, 30, 30, 30, 30);
-                    try {
-                        PdfWriter.getInstance(document, new FileOutputStream(file));
-                        document.open();
-                        settingUpPDF(document);
-                        document.close();
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        val x = b.getCharSequence("pp_bus_scpassengers_upto60").toString().toInt() * 877
+        pp_bus_passrisk!!.text = x.toString()
+        val z = x + ppdisplay_bus_upto60_paod_value!!.text.toString()
+            .toInt() + pp_bus_driver_upto60!!.text.toString()
+            .toInt() + pp_bus_conductor_upto60!!.text.toString().toInt() + 14343
+        ppdisplay_bus_upto60_b_value!!.text = z.toString()
+        val final_value = z + total
+        ppdisplay_bus_upto60_ab_value!!.text = final_value.toInt().toString()
+        ppdisplay_bus_upto60_total_value!!.text = Math.ceil(final_value * 1.18).toInt().toString()
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()!!.setTitle("Passenger Vehicle Package Policy")
+        findViewById<View>(R.id.ppdisplay_bus_upto60_home).setOnClickListener(
+            listener_ppdisplay_bus_upto60_home
+        )
+        share_btn = findViewById<View>(R.id.ppdisplay_bus_upto60_share) as CircleButton?
+        share_btn!!.setOnClickListener {
+            val checker = PermissionsChecker(this@ppdisplay_bus_upto60)
+            if (checker.lacksPermissions(*PermissionsChecker.REQUIRED_PERMISSION)) {
+                PermissionsActivity.startActivityForResult(
+                    this@ppdisplay_bus_upto60,
+                    PermissionsActivity.PERMISSION_REQUEST_CODE,
+                    *PermissionsChecker.REQUIRED_PERMISSION
+                )
+            } else {
+                val date = Date()
+                val dateformat = SimpleDateFormat("ddMMyyHHmmss")
+                val filename = "InsurancePremium" + dateformat.format(date) + ".pdf"
+                val direct = File(
+                    Environment.getExternalStorageDirectory()
+                        .toString() + "/InsurancePremiumCalculator"
+                )
+                if (!direct.exists()) {
+                    val myDirectory = File("/sdcard/InsurancePremiumCalculator/")
+                    myDirectory.mkdirs()
+                    myDirectory.setReadable(true)
+                    myDirectory.setWritable(true)
+                    myDirectory.setExecutable(true)
+                }
+                file = File(File("/sdcard/InsurancePremiumCalculator/"), filename)
+                if (file!!.exists()) {
+                    file!!.delete()
+                }
+                val document = Document(PageSize.A4, 30F, 30F, 30F, 30F)
+                try {
+                    PdfWriter.getInstance(document, FileOutputStream(file))
+                    document.open()
+                    settingUpPDF(document)
+                    document.close()
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
-        });
-    }
-
-    View.OnClickListener listener_ppdisplay_bus_upto60_home = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(ppdisplay_bus_upto60.this, home_activity.class);
-            startActivity(intent);
         }
-    };
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
     }
 
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    var listener_ppdisplay_bus_upto60_home = View.OnClickListener {
+        val intent = Intent(this@ppdisplay_bus_upto60, home_activity::class.java)
+        startActivity(intent)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(ppdisplay_bus_upto60.this);
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    private void settingUpPDF(Document document)
-    {
-        LineSeparator lineSeparator = new LineSeparator();
-        lineSeparator.setLineColor(BaseColor.BLACK);
-        Font white = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.WHITE);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
+    }
 
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this@ppdisplay_bus_upto60)
+    }
+
+    private fun settingUpPDF(document: Document) {
+        val lineSeparator = LineSeparator()
+        lineSeparator.lineColor = BaseColor.BLACK
+        val white: Font = Font(Font.FontFamily.HELVETICA, 14F, Font.BOLD, BaseColor.WHITE)
         try {
-            Chunk mChunk = new Chunk("PREMIUM COMPUTATION SHEET");
-            Paragraph mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            Paragraph p;
-            p = new Paragraph();
-            p.add(new Chunk("Vehicle type"));
-            p.setTabSettings(new TabSettings(56f));
-            p.add(Chunk.TABBING);
-            p.add(new Chunk(": PASSENGER VEHICLE"));
-
-            PdfPTable table = new PdfPTable(2);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-            PdfPCell pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Policy Type"));
-            p.setTabSettings(new TabSettings(56f));
-            p.add(Chunk.TABBING);
-            p.add(new Chunk(": PACKAGE POLICY"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-
-            mChunk = new Chunk("SCHEDULE OF PREMIUM");
-            mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            table = new PdfPTable(3);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-
-            p = new Paragraph();
-            p.add(new Chunk("COVER DESCRIPTION"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("PREMIUM"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-
-            table = new PdfPTable(3);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-
-            p = new Paragraph();
-            p.add(new Chunk("O D Basic"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. 550"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("IDV"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_bus_upto60_IDV_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("DATE"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_upto60_date_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("ZONE"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_upto60_zone.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("TYPE"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Upto 60 Passengers"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("IMT23"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_upto60_imt_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("N / D"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_upto60_nd_value.getText().toString()+"%"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("N / D DISCOUNT"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_upto60_ndd_value.getText().toString()+"%"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("U/W DISCOUNT"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_upto60_uwd_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("N C B"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_bus_ncb_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("(A) -> OD TOTAL",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_bus_upto60_od_value.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("TP BASIC"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+"14343"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Passengers Risk"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_bus_passrisk.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("P A to Owner - Driver"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_bus_upto60_paod_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("L L to Driver"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_bus_driver_upto60.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("L L to Conductor"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_bus_conductor_upto60.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("(B) -> TOTAL",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_bus_upto60_b_value.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("(A) + (B)"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_bus_upto60_ab_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Service Tax"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("18%"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Total Premium",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_bus_upto60_total_value.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-            mChunk = new Chunk("Shared from Motor Insurance Premium Calculator App");
-            mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            Uri uri = FileProvider.getUriForFile(ppdisplay_bus_upto60.this, BuildConfig.APPLICATION_ID + ".provider",file);
-            Intent share = new Intent();
-            share.setAction(Intent.ACTION_SEND);
-            share.setType("application/pdf");
-            share.putExtra(Intent.EXTRA_STREAM, uri);
-
-            startActivity(Intent.createChooser(share,"Share Using"));
-
-
-        } catch (DocumentException e) {
-            e.printStackTrace();
+            var mChunk = Chunk("PREMIUM COMPUTATION SHEET")
+            var mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            var p: Paragraph
+            p = Paragraph()
+            p.add(Chunk("Vehicle type"))
+            p.tabSettings = TabSettings(56f)
+            p.add(Chunk.TABBING)
+            p.add(Chunk(": PASSENGER VEHICLE"))
+            var table = PdfPTable(2)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            var pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Policy Type"))
+            p.tabSettings = TabSettings(56f)
+            p.add(Chunk.TABBING)
+            p.add(Chunk(": PACKAGE POLICY"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            mChunk = Chunk("SCHEDULE OF PREMIUM")
+            mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            table = PdfPTable(3)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            p = Paragraph()
+            p.add(Chunk("COVER DESCRIPTION"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("PREMIUM"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            table = PdfPTable(3)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            p = Paragraph()
+            p.add(Chunk("O D Basic"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. 550"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("IDV"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_bus_upto60_IDV_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("DATE"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_upto60_date_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("ZONE"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_upto60_zone!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("TYPE"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Upto 60 Passengers"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("IMT23"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_upto60_imt_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("N / D"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_upto60_nd_value!!.text.toString() + "%"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("N / D DISCOUNT"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_upto60_ndd_value!!.text.toString() + "%"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("U/W DISCOUNT"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_upto60_uwd_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("N C B"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_bus_ncb_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("(A) -> OD TOTAL", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_bus_upto60_od_value!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("TP BASIC"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + "14343"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Passengers Risk"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_bus_passrisk!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("P A to Owner - Driver"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_bus_upto60_paod_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("L L to Driver"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_bus_driver_upto60!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("L L to Conductor"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_bus_conductor_upto60!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("(B) -> TOTAL", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_bus_upto60_b_value!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("(A) + (B)"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_bus_upto60_ab_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Service Tax"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("18%"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Total Premium", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_bus_upto60_total_value!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            mChunk = Chunk("Shared from Motor Insurance Premium Calculator App")
+            mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            val uri = FileProvider.getUriForFile(
+                this@ppdisplay_bus_upto60,
+                BuildConfig.APPLICATION_ID + ".provider",
+                file!!
+            )
+            val share = Intent()
+            share.action = Intent.ACTION_SEND
+            share.type = "application/pdf"
+            share.putExtra(Intent.EXTRA_STREAM, uri)
+            startActivity(Intent.createChooser(share, "Share Using"))
+        } catch (e: DocumentException) {
+            e.printStackTrace()
         }
-
     }
 }

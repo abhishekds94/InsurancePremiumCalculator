@@ -1,995 +1,880 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import androidx.core.content.FileProvider;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.avidprogrammers.utils.PermissionsActivity;
-import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdView;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.TabSettings;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.LineSeparator;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import at.markushi.ui.CircleButton;
-
-import static com.avidprogrammers.utils.PermissionsActivity.PERMISSION_REQUEST_CODE;
-import static com.avidprogrammers.utils.PermissionsChecker.REQUIRED_PERMISSION;
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.os.Environment
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import at.markushi.ui.CircleButton
+import com.avidprogrammers.insurancepremiumcalculator.*
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.avidprogrammers.utils.PermissionsActivity
+import com.avidprogrammers.utils.PermissionsChecker
+import com.google.android.gms.ads.AdView
+import com.itextpdf.text.*
+import com.itextpdf.text.pdf.PdfPCell
+import com.itextpdf.text.pdf.PdfPTable
+import com.itextpdf.text.pdf.PdfWriter
+import com.itextpdf.text.pdf.draw.LineSeparator
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class ppdisplay_car_above1500 extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private AdView mAdView;
-
-    long diffInDays;
-    double dop_value;
-    int pp_lgkit_assumevalue,pp_scpass_value,pp_pa_pass_value;
-    float rounded_dop_value;
-    int pp_tax_value=18;
-    float value_nd;
-    float rounded_lgptype_value;
-    float rounded_value_nd,rounded_value_antitheft,rounded_uw_value,rounded_ncb_value;
-    double value_lgptype1,value_uw1,value_spin1,nild_value,value_ndd,rounded_ndd_value;
-    double value_lgptype2;
-    double pp_total_premium;
-
-    TextView pp_car_above1500_IDV_value;
-    TextView pp_car_above1500_date_value;
-    TextView pp_car_above1500_zone;
-    TextView pp_car_above1500_cc_value;
-    TextView pp_car_above1500_nd_value;
-    TextView pp_car_above1500_ndd_value;
-    TextView pp_car_above1500_uwd_value;
-    TextView pp_car_above1500_ncb_value;
-    TextView pp_car_above1500_lpg_value;
-    TextView pp_car_above1500_lpgtype_value;
-    TextView pp_car_above1500_antitheft;
-    TextView pp_car_above1500_paod_value;
-
-    TextView pp_car_above1500_od_value;
-    TextView pp_car_above1500_value_b;
-    TextView ppdisplay_car_above1500_ab_value;
-    TextView ppdisplay_car_above1500_lpgkit_value;
-    TextView ppdisplay_car_above1500_pa_pass_value;
-    TextView ppdisplay_car_above1500_total_value;
-
-    CircleButton share_btn;
-    File file;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class ppdisplay_car_above1500 : AppCompatActivity(), ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var diffInDays: Long = 0
+    var dop_value = 0.0
+    var pp_lgkit_assumevalue = 0
+    var pp_scpass_value = 0
+    var pp_pa_pass_value = 0
+    var rounded_dop_value = 0f
+    var pp_tax_value = 18
+    var value_nd = 0f
+    var rounded_lgptype_value = 0f
+    var rounded_value_nd = 0f
+    var rounded_value_antitheft = 0f
+    var rounded_uw_value = 0f
+    var rounded_ncb_value = 0f
+    var value_lgptype1 = 0.0
+    var value_uw1 = 0.0
+    var value_spin1 = 0.0
+    var nild_value = 0.0
+    var value_ndd = 0.0
+    var rounded_ndd_value = 0.0
+    var value_lgptype2 = 0.0
+    var pp_total_premium = 0.0
+    var pp_car_above1500_IDV_value: TextView? = null
+    var pp_car_above1500_date_value: TextView? = null
+    var pp_car_above1500_zone: TextView? = null
+    var pp_car_above1500_cc_value: TextView? = null
+    var pp_car_above1500_nd_value: TextView? = null
+    var pp_car_above1500_ndd_value: TextView? = null
+    var pp_car_above1500_uwd_value: TextView? = null
+    var pp_car_above1500_ncb_value: TextView? = null
+    var pp_car_above1500_lpg_value: TextView? = null
+    var pp_car_above1500_lpgtype_value: TextView? = null
+    var pp_car_above1500_antitheft: TextView? = null
+    var pp_car_above1500_paod_value: TextView? = null
+    var pp_car_above1500_od_value: TextView? = null
+    var pp_car_above1500_value_b: TextView? = null
+    var ppdisplay_car_above1500_ab_value: TextView? = null
+    var ppdisplay_car_above1500_lpgkit_value: TextView? = null
+    var ppdisplay_car_above1500_pa_pass_value: TextView? = null
+    var ppdisplay_car_above1500_total_value: TextView? = null
+    var share_btn: CircleButton? = null
+    var file: File? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(ppdisplay_car_above1500.this);
-
-        setContentView(R.layout.ppdisplay_car_above1500);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@ppdisplay_car_above1500)
+        setContentView(R.layout.ppdisplay_car_above1500)
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
-
-
-        Bundle b = getIntent().getExtras();
-         pp_car_above1500_IDV_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_IDV_value);
-         pp_car_above1500_date_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_date_value);
-         pp_car_above1500_zone = (TextView) findViewById(R.id.ppdisplay_car_above1500_zone_value);
-         pp_car_above1500_cc_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_cc_value);
-         pp_car_above1500_nd_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_nd_value);
-         pp_car_above1500_ndd_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_ndd_value);
-         pp_car_above1500_uwd_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_uwd_value);
-         pp_car_above1500_ncb_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_ncb_value);
-         pp_car_above1500_lpg_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_lpg_value);
-         pp_car_above1500_lpgtype_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_lpgtype_value);
-         pp_car_above1500_antitheft = (TextView) findViewById(R.id.ppdisplay_car_above1500_antitheft_value);
-        pp_car_above1500_paod_value = findViewById(R.id.ppdisplay_car_above1500_pa_value);
-
-         pp_car_above1500_od_value = (TextView) findViewById(R.id.ppdisplay_car_above1500_od_value);
-         pp_car_above1500_value_b = (TextView) findViewById(R.id.ppdisplay_car_above1500_b_value);
-         ppdisplay_car_above1500_ab_value= (TextView) findViewById(R.id.ppdisplay_car_above1500_ab_value);
-         ppdisplay_car_above1500_lpgkit_value= (TextView) findViewById(R.id.ppdisplay_car_above1500_lpgkit_value);
-         ppdisplay_car_above1500_pa_pass_value= (TextView) findViewById(R.id.ppdisplay_car_above1500_pa_pass_value);
-         ppdisplay_car_above1500_total_value  = (TextView) findViewById(R.id.ppdisplay_car_above1500_total_value);
-        pp_car_above1500_IDV_value.setText(b.getCharSequence("pp_car_above1500_idv_value"));
-        pp_car_above1500_date_value.setText(b.getCharSequence("pp_car_above1500_date_value"));
-        pp_car_above1500_zone.setText(b.getCharSequence("pp_car_above1500_zone"));
-        pp_car_above1500_cc_value.setText(b.getCharSequence("pp_car_above1500_cc_value"));
-        pp_car_above1500_nd_value.setText(b.getCharSequence("pp_car_above1500_nd_value"));
-        pp_car_above1500_ndd_value.setText(b.getCharSequence("pp_car_above1500_ndd_value"));
-        pp_car_above1500_uwd_value.setText(b.getCharSequence("pp_car_above1500_uwd_value"));
-        pp_car_above1500_paod_value.setText(b.getCharSequence("pp_car_above1500_paod_value"));
+        val b: Bundle = getIntent().getExtras()!!
+        pp_car_above1500_IDV_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_IDV_value) as TextView?
+        pp_car_above1500_date_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_date_value) as TextView?
+        pp_car_above1500_zone =
+            findViewById<View>(R.id.ppdisplay_car_above1500_zone_value) as TextView?
+        pp_car_above1500_cc_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_cc_value) as TextView?
+        pp_car_above1500_nd_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_nd_value) as TextView?
+        pp_car_above1500_ndd_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_ndd_value) as TextView?
+        pp_car_above1500_uwd_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_uwd_value) as TextView?
+        pp_car_above1500_ncb_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_ncb_value) as TextView?
+        pp_car_above1500_lpg_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_lpg_value) as TextView?
+        pp_car_above1500_lpgtype_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_lpgtype_value) as TextView?
+        pp_car_above1500_antitheft =
+            findViewById<View>(R.id.ppdisplay_car_above1500_antitheft_value) as TextView?
+        pp_car_above1500_paod_value = findViewById<TextView>(R.id.ppdisplay_car_above1500_pa_value)
+        pp_car_above1500_od_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_od_value) as TextView?
+        pp_car_above1500_value_b =
+            findViewById<View>(R.id.ppdisplay_car_above1500_b_value) as TextView?
+        ppdisplay_car_above1500_ab_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_ab_value) as TextView?
+        ppdisplay_car_above1500_lpgkit_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_lpgkit_value) as TextView?
+        ppdisplay_car_above1500_pa_pass_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_pa_pass_value) as TextView?
+        ppdisplay_car_above1500_total_value =
+            findViewById<View>(R.id.ppdisplay_car_above1500_total_value) as TextView?
+        pp_car_above1500_IDV_value!!.text = b.getCharSequence("pp_car_above1500_idv_value")
+        pp_car_above1500_date_value!!.text = b.getCharSequence("pp_car_above1500_date_value")
+        pp_car_above1500_zone!!.text = b.getCharSequence("pp_car_above1500_zone")
+        pp_car_above1500_cc_value!!.text = b.getCharSequence("pp_car_above1500_cc_value")
+        pp_car_above1500_nd_value!!.text = b.getCharSequence("pp_car_above1500_nd_value")
+        pp_car_above1500_ndd_value!!.text = b.getCharSequence("pp_car_above1500_ndd_value")
+        pp_car_above1500_uwd_value!!.text = b.getCharSequence("pp_car_above1500_uwd_value")
+        pp_car_above1500_paod_value!!.text = b.getCharSequence("pp_car_above1500_paod_value")
 
         //   pp_car_above1500_lpg.setText(b.getCharSequence("pp_car_above1500_lpg"));
         //  pp_car_above1500_lpgtype.setText(b.getCharSequence("pp_car_above1500_lpgtype"));
-        pp_car_above1500_antitheft.setText(b.getCharSequence("pp_car_above1500_antitheft"));
-
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Car Package Policy");
-
-        findViewById(R.id.ppdisplay_car_above1500_home).setOnClickListener(listener_ppdisplay_car_above1500_home);
-        share_btn = (CircleButton) findViewById(R.id.ppdisplay_car_above1500_share);
-        share_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PermissionsChecker checker = new PermissionsChecker(ppdisplay_car_above1500.this);
-                if (checker.lacksPermissions(REQUIRED_PERMISSION)) {
-
-                    PermissionsActivity.startActivityForResult(ppdisplay_car_above1500.this, PERMISSION_REQUEST_CODE, REQUIRED_PERMISSION);
-
-                } else {
-
-                    Date date = new Date();
-                    SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyyHHmmss");
-                    String filename = "InsurancePremium" + dateformat.format(date) + ".pdf";
-
-                    File direct = new File(Environment.getExternalStorageDirectory() + "/InsurancePremiumCalculator");
-
-                    if (!direct.exists()) {
-                        File myDirectory = new File("/sdcard/InsurancePremiumCalculator/");
-                        myDirectory.mkdirs();
-                        myDirectory.setReadable(true);
-                        myDirectory.setWritable(true);
-                        myDirectory.setExecutable(true);
-                    }
-
-                    file = new File(new File("/sdcard/InsurancePremiumCalculator/"), filename);
-                    if (file.exists()) {
-                        file.delete();
-                    }
-                    Document document = new Document(PageSize.A4, 30, 30, 30, 30);
-                    try {
-                        PdfWriter.getInstance(document, new FileOutputStream(file));
-                        document.open();
-                        settingUpPDF(document);
-                        document.close();
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        pp_car_above1500_antitheft!!.text = b.getCharSequence("pp_car_above1500_antitheft")
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()!!.setTitle("Car Package Policy")
+        findViewById<View>(R.id.ppdisplay_car_above1500_home).setOnClickListener(
+            listener_ppdisplay_car_above1500_home
+        )
+        share_btn =
+            findViewById<View>(R.id.ppdisplay_car_above1500_share) as CircleButton?
+        share_btn!!.setOnClickListener {
+            val checker = PermissionsChecker(this@ppdisplay_car_above1500)
+            if (checker.lacksPermissions(*PermissionsChecker.REQUIRED_PERMISSION)) {
+                PermissionsActivity.startActivityForResult(
+                    this@ppdisplay_car_above1500,
+                    PermissionsActivity.PERMISSION_REQUEST_CODE,
+                    *PermissionsChecker.REQUIRED_PERMISSION
+                )
+            } else {
+                val date = Date()
+                val dateformat = SimpleDateFormat("ddMMyyHHmmss")
+                val filename = "InsurancePremium" + dateformat.format(date) + ".pdf"
+                val direct = File(
+                    Environment.getExternalStorageDirectory()
+                        .toString() + "/InsurancePremiumCalculator"
+                )
+                if (!direct.exists()) {
+                    val myDirectory = File("/sdcard/InsurancePremiumCalculator/")
+                    myDirectory.mkdirs()
+                    myDirectory.setReadable(true)
+                    myDirectory.setWritable(true)
+                    myDirectory.setExecutable(true)
+                }
+                file = File(File("/sdcard/InsurancePremiumCalculator/"), filename)
+                if (file!!.exists()) {
+                    file!!.delete()
+                }
+                val document = Document(PageSize.A4, 30F, 30F, 30F, 30F)
+                try {
+                    PdfWriter.getInstance(document, FileOutputStream(file))
+                    document.open()
+                    settingUpPDF(document)
+                    document.close()
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
-        });
+        }
         //Calculation
-        String d1=b.getString("pp_car_above1500_date_value").toString();
-        String s = d1;
-        int y=b.getInt("year");
-        int m=b.getInt("month");
-        int d=b.getInt("day");
-
-
-        int old_day=d;
-        int old_month=m;
-        int old_year=y;
-
-        int mYear;
-        int mMonth;
-        int mDay;
+        val d1 = b.getString("pp_car_above1500_date_value").toString()
+        val s = d1
+        val y = b.getInt("year")
+        val m = b.getInt("month")
+        val d = b.getInt("day")
+        val mYear: Int
+        val mMonth: Int
+        val mDay: Int
         // Create Calendar instance
-        Calendar calendar1 = Calendar.getInstance();
-        Calendar calendar2 = Calendar.getInstance();
-        mYear = calendar1.get(Calendar.YEAR);
-        mMonth = calendar1.get(Calendar.MONTH);
-        mDay = calendar1.get(Calendar.DAY_OF_MONTH);
+        val calendar1 = Calendar.getInstance()
+        val calendar2 = Calendar.getInstance()
+        mYear = calendar1[Calendar.YEAR]
+        mMonth = calendar1[Calendar.MONTH]
+        mDay = calendar1[Calendar.DAY_OF_MONTH]
 
         // Set the values for the calendar fields YEAR, MONTH, and DAY_OF_MONTH.
-        calendar1.set(mYear, mMonth, mDay);
-        calendar2.set(old_year, old_month, old_day);
+        calendar1[mYear, mMonth] = mDay
+        calendar2[y, m] = d
 
-            /*
+        /*
             * Use getTimeInMillis() method to get the Calendar's time value in
             * milliseconds. This method returns the current time as UTC
             * milliseconds from the epoch
             */
-        long miliSecondForDate1 = calendar1.getTimeInMillis();
-        long miliSecondForDate2 = calendar2.getTimeInMillis();
+        val miliSecondForDate1 = calendar1.timeInMillis
+        val miliSecondForDate2 = calendar2.timeInMillis
 
         // Calculate the difference in millisecond between two dates
-        long diffInMilis = miliSecondForDate1 - miliSecondForDate2;
+        val diffInMilis = miliSecondForDate1 - miliSecondForDate2
 
-             /*
+        /*
               * Now we have difference between two date in form of millsecond we can
               * easily convert it Minute / Hour / Days by dividing the difference
               * with appropriate value. 1 Second : 1000 milisecond 1 Hour : 60 * 1000
               * millisecond 1 Day : 24 * 60 * 1000 milisecond
               */
-
-        long diffInSecond = diffInMilis / 1000;
-        long diffInMinute = diffInMilis / (60 * 1000);
-        long diffInHour = diffInMilis / (60 * 60 * 1000);
-        diffInDays = diffInMilis / ( 24 * 60 * 60 * 1000);
-
-
+        val diffInSecond = diffInMilis / 1000
+        val diffInMinute = diffInMilis / (60 * 1000)
+        val diffInHour = diffInMilis / (60 * 60 * 1000)
+        diffInDays = diffInMilis / (24 * 60 * 60 * 1000)
 
 
         //Calculation of Dop value
-
-        if((b.getString("pp_car_above1500_zone")).equals("A")) {
+        if (b.getString("pp_car_above1500_zone") == "A") {
             if (diffInDays < 1825) {
-                double idv_value=Integer.valueOf(b.getString("pp_car_above1500_idv_value"));
-                dop_value=idv_value*3.440/100;
-                double round_value=dop_value;
-                rounded_dop_value=new Float(Math.round(round_value));
-
-            }else if(diffInDays >= 1825 ) {
+                val idv_value =
+                    Integer.valueOf(b.getString("pp_car_above1500_idv_value")).toDouble()
+                dop_value = idv_value * 3.440 / 100
+                val round_value = dop_value
+                rounded_dop_value = Math.round(round_value).toFloat()
+            } else if (diffInDays >= 1825) {
                 if (diffInDays < 3650) {
-                    double idv_value = Integer.valueOf(b.getString("pp_car_above1500_idv_value"));
-                    dop_value = idv_value * 3.612 / 100;
-                    double round_value = dop_value;
-                    rounded_dop_value = new Float(Math.round(round_value));
-                } else if (diffInDays >=3650) {
-                    double idv_value = Integer.valueOf(b.getString("pp_car_above1500_idv_value"));
-                    dop_value = idv_value * 3.698 / 100;
-                    double round_value = dop_value;
-                    rounded_dop_value = new Float(Math.round(round_value));
-                }
-            }
-        }
-        else if((b.getString("pp_car_above1500_zone")).equals("B")){
-            if (diffInDays < 1825) {
-                double idv_value = Integer.valueOf(b.getString("pp_car_above1500_idv_value"));
-                dop_value = idv_value * 3.343 / 100;
-                double round_value = dop_value;
-                rounded_dop_value = new Float(Math.round(round_value));
-
-            } else if (diffInDays >=1825 ) {
-                if (diffInDays < 3650) {
-                    double idv_value = Integer.valueOf(b.getString("pp_car_above1500_idv_value"));
-                    dop_value = idv_value * 3.510 / 100;
-                    double round_value = dop_value;
-                    rounded_dop_value = new Float(Math.round(round_value));
+                    val idv_value =
+                        Integer.valueOf(b.getString("pp_car_above1500_idv_value"))
+                            .toDouble()
+                    dop_value = idv_value * 3.612 / 100
+                    val round_value = dop_value
+                    rounded_dop_value = Math.round(round_value).toFloat()
                 } else if (diffInDays >= 3650) {
-                    double idv_value = Integer.valueOf(b.getString("pp_car_above1500_idv_value"));
-                    dop_value = idv_value * 3.596 / 100;
-                    double round_value = dop_value;
-                    rounded_dop_value = new Float(Math.round(round_value));
+                    val idv_value =
+                        Integer.valueOf(b.getString("pp_car_above1500_idv_value"))
+                            .toDouble()
+                    dop_value = idv_value * 3.698 / 100
+                    val round_value = dop_value
+                    rounded_dop_value = Math.round(round_value).toFloat()
                 }
             }
-
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Please enter correct DoP",Toast.LENGTH_SHORT).show();
+        } else if (b.getString("pp_car_above1500_zone") == "B") {
+            if (diffInDays < 1825) {
+                val idv_value =
+                    Integer.valueOf(b.getString("pp_car_above1500_idv_value")).toDouble()
+                dop_value = idv_value * 3.343 / 100
+                val round_value = dop_value
+                rounded_dop_value = Math.round(round_value).toFloat()
+            } else if (diffInDays >= 1825) {
+                if (diffInDays < 3650) {
+                    val idv_value =
+                        Integer.valueOf(b.getString("pp_car_above1500_idv_value"))
+                            .toDouble()
+                    dop_value = idv_value * 3.510 / 100
+                    val round_value = dop_value
+                    rounded_dop_value = Math.round(round_value).toFloat()
+                } else if (diffInDays >= 3650) {
+                    val idv_value =
+                        Integer.valueOf(b.getString("pp_car_above1500_idv_value"))
+                            .toDouble()
+                    dop_value = idv_value * 3.596 / 100
+                    val round_value = dop_value
+                    rounded_dop_value = Math.round(round_value).toFloat()
+                }
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Please enter correct DoP", Toast.LENGTH_SHORT)
+                .show()
         }
 
         //LPG selection
-        String radio_button_value=b.getString("pp_car_above1500_lpg");
-        String yes=new String("Yes");
+        val radio_button_value = b.getString("pp_car_above1500_lpg")
+        val yes: String = "Yes"
 
         //Setting LPGkit values for radiobutton selected
-        if(radio_button_value.equals(yes)){
-            pp_lgkit_assumevalue=60;
-            pp_car_above1500_lpg_value.setText("Yes");
-
-        }
-        else{
-            pp_lgkit_assumevalue=0;
-            pp_car_above1500_lpg_value.setText("No");
-
+        if (radio_button_value == yes) {
+            pp_lgkit_assumevalue = 60
+            pp_car_above1500_lpg_value!!.text = "Yes"
+        } else {
+            pp_lgkit_assumevalue = 0
+            pp_car_above1500_lpg_value!!.text = "No"
         }
 
         //Calculation of U/W discount
-        double uw_value = Integer.valueOf(b.getString("pp_car_above1500_uwd_value"));
-        double val=((uw_value)*rounded_dop_value)/100;
-        value_uw1=rounded_dop_value - val;
-        double value_uw2=value_uw1;
-        rounded_uw_value = new Float(Math.round(value_uw2));
+        val uw_value =
+            Integer.valueOf(b.getString("pp_car_above1500_uwd_value")).toDouble()
+        val `val` = uw_value * rounded_dop_value / 100
+        value_uw1 = rounded_dop_value - `val`
+        val value_uw2 = value_uw1
+        rounded_uw_value = Math.round(value_uw2).toFloat()
 
 
         //Calculation of N/D Value
-        String x2="0";
-        if((b.getString("pp_car_above1500_nd_value")).equals(x2))
-        {
-
-            rounded_value_nd=rounded_uw_value;
-            Toast.makeText(getApplicationContext(), " DOP value :  " + rounded_dop_value,  Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), " UW value :  " + rounded_uw_value,  Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), " ND value :  " + rounded_value_nd,  Toast.LENGTH_SHORT).show();
-        }
-
-        else
-        {
-            double nd_value1=0.00;
+        val x2 = "0"
+        if (b.getString("pp_car_above1500_nd_value") == x2) {
+            rounded_value_nd = rounded_uw_value
+            Toast.makeText(
+                getApplicationContext(),
+                " DOP value :  $rounded_dop_value",
+                Toast.LENGTH_SHORT
+            ).show()
+            Toast.makeText(
+                getApplicationContext(),
+                " UW value :  $rounded_uw_value",
+                Toast.LENGTH_SHORT
+            ).show()
+            Toast.makeText(
+                getApplicationContext(),
+                " ND value :  $rounded_value_nd",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            var nd_value1 = 0.00
             if (diffInDays < 365) {
-                nd_value1=15;
-            }else if (diffInDays >= 365 && diffInDays < 730 ) {
-                nd_value1 = 25;
-            }else if (diffInDays >= 730 && diffInDays < 1825 ) {
-                nd_value1 = 35;
-            }else if (diffInDays >= 1825 && diffInDays < 3650 ) {
-                nd_value1 = 40;
-            }else if (diffInDays >= 3650 ){
-                nd_value1 = 0;
+                nd_value1 = 15.0
+            } else if (diffInDays >= 365 && diffInDays < 730) {
+                nd_value1 = 25.0
+            } else if (diffInDays >= 730 && diffInDays < 1825) {
+                nd_value1 = 35.0
+            } else if (diffInDays >= 1825 && diffInDays < 3650) {
+                nd_value1 = 40.0
+            } else if (diffInDays >= 3650) {
+                nd_value1 = 0.0
             }
 
             //  double nd_value1 = Integer.valueOf(b.getString("pp_car_above1500_nd_value"));
-            double value_nd1=(nd_value1)*rounded_dop_value/100;
-            double value_nd2=value_uw1 + value_nd1;
-            double value_nd3=value_nd2;
-            nild_value = new Float(Math.round(value_nd1));
-            rounded_value_nd = new Float(Math.round(value_nd3));
+            val value_nd1 = nd_value1 * rounded_dop_value / 100
+            val value_nd2 = value_uw1 + value_nd1
+            nild_value = Math.round(value_nd1).toDouble()
+            rounded_value_nd = Math.round(value_nd2).toFloat()
         }
-        int rounded_value_nd_int = (int) rounded_value_nd;
-
-        pp_car_above1500_nd_value.setText(b.getString("pp_car_above1500_nd_value"));
+        val rounded_value_nd_int = rounded_value_nd.toInt()
+        pp_car_above1500_nd_value!!.text = b.getString("pp_car_above1500_nd_value")
         //pp_car_above1500_nd_value.setText(String.valueOf(rounded_value_nd_int));
 
 
-
         //Calculation part of L P G type
-
-        String x="Inbuilt";
-        String fx="Fixed";
-        String button_value=b.getString("pp_car_above1500_lpgtype");
-
-        if((button_value.equals(x) && radio_button_value.equals(yes))){
-            rounded_lgptype_value=rounded_value_nd;
-            pp_car_above1500_lpgtype_value.setText("InBuilt");
-
-        }else if((button_value.equals(fx) && radio_button_value.equals(yes))) {
-            double lgptype_value = Integer.valueOf(b.getString("pp_car_scpassengers_lpgtype_value"));
-            value_lgptype1=rounded_value_nd + ((lgptype_value)*4)/100;
-            double value_lgptype2=value_lgptype1;
-            rounded_lgptype_value = new Float(Math.round(value_lgptype2));
-            int rounded_lgptype_value_int = (int) rounded_lgptype_value;
+        val x = "Inbuilt"
+        val fx = "Fixed"
+        val button_value = b.getString("pp_car_above1500_lpgtype")
+        if (button_value == x && radio_button_value == yes) {
+            rounded_lgptype_value = rounded_value_nd
+            pp_car_above1500_lpgtype_value!!.text = "InBuilt"
+        } else if (button_value == fx && radio_button_value == yes) {
+            val lgptype_value =
+                Integer.valueOf(b.getString("pp_car_scpassengers_lpgtype_value"))
+                    .toDouble()
+            value_lgptype1 = rounded_value_nd + lgptype_value * 4 / 100
+            val value_lgptype2 = value_lgptype1
+            rounded_lgptype_value = Math.round(value_lgptype2).toFloat()
+            val rounded_lgptype_value_int = rounded_lgptype_value.toInt()
             //pp_car_above1500_lpgtype_value.setText(String.valueOf(rounded_lgptype_value_int));
-            pp_car_above1500_lpgtype_value.setText("Fixed");
-
-        }else {
-            rounded_lgptype_value=rounded_value_nd;
-            pp_car_above1500_lpgtype_value.setText("N/A");
+            pp_car_above1500_lpgtype_value!!.text = "Fixed"
+        } else {
+            rounded_lgptype_value = rounded_value_nd
+            pp_car_above1500_lpgtype_value!!.text = "N/A"
         }
 
         //Calculation of Anti-Theft value
         //
-        String x3="No";
-        String a3="Yes";
-        if((b.getString("pp_car_above1500_antitheft")).equals(x3))
-        {
-
-            rounded_value_antitheft=rounded_lgptype_value ;
-
-        }
-        else if((b.getString("pp_car_above1500_antitheft")).equals(a3))
-        {
-            double l=rounded_lgptype_value*2.5/100;
-            double antitheft_value1 = Math.min((double)500,l);
-            double value_antitheft1=(rounded_lgptype_value)-(antitheft_value1);
-            double value_antitheft2=value_antitheft1;
-            rounded_value_antitheft = new Float(Math.round(value_antitheft2));
+        val x3 = "No"
+        val a3 = "Yes"
+        if (b.getString("pp_car_above1500_antitheft") == x3) {
+            rounded_value_antitheft = rounded_lgptype_value
+        } else if (b.getString("pp_car_above1500_antitheft") == a3) {
+            val l = rounded_lgptype_value * 2.5 / 100
+            val antitheft_value1 = Math.min(500.0, l)
+            val value_antitheft1 = rounded_lgptype_value - antitheft_value1
+            rounded_value_antitheft = Math.round(value_antitheft1).toFloat()
         }
 
 
         //Calculation of ND discount
-        double ndd_value = Integer.valueOf(b.getString("pp_car_above1500_ndd_value"));
-        double ndd = ((ndd_value) * nild_value) / 100;
-        value_ndd = rounded_value_nd - ndd;
-        double value_ndd2 = value_ndd;
-        rounded_ndd_value = new Float(Math.round(value_ndd2));
+        val ndd_value =
+            Integer.valueOf(b.getString("pp_car_above1500_ndd_value")).toDouble()
+        val ndd = ndd_value * nild_value / 100
+        value_ndd = rounded_value_nd - ndd
+        val value_ndd2 = value_ndd
+        rounded_ndd_value = Math.round(value_ndd2).toDouble()
 
 
         // Calculation of NCB
-        double spinner_value = Integer.valueOf(b.getString("pp_car_spinner_value"));
-        double spin_val=((spinner_value)*rounded_ndd_value)/100;
-        value_spin1=rounded_ndd_value - spin_val;
-        double value_spin2=value_spin1;
-        rounded_ncb_value = new Float(Math.round(value_spin2));
-        int rounded_ncb_value_int = (int) rounded_ncb_value;
-        pp_car_above1500_ncb_value.setText(b.getString("pp_car_spinner_value"));
+        val spinner_value =
+            Integer.valueOf(b.getString("pp_car_spinner_value")).toDouble()
+        val spin_val = spinner_value * rounded_ndd_value / 100
+        value_spin1 = rounded_ndd_value - spin_val
+        val value_spin2 = value_spin1
+        rounded_ncb_value = Math.round(value_spin2).toFloat()
+        val rounded_ncb_value_int = rounded_ncb_value.toInt()
+        pp_car_above1500_ncb_value!!.text = b.getString("pp_car_spinner_value")
         //pp_car_above1500_ncb_value.setText(String.valueOf(rounded_ncb_value_int));
-
-        pp_car_above1500_od_value.setText(String.valueOf(rounded_ncb_value_int));
-
+        pp_car_above1500_od_value!!.text = rounded_ncb_value_int.toString()
 
 
         //Calculation of Total of B part
-
-        pp_scpass_value= Integer.valueOf(b.getString("pp_car_scpassengers_above1500"));
-        String no="No";
-        String oneLac="1 Lacs";
-        String twoLac="2 Lacs";
-        if(b.getString("pp_car_patooccupants_above1500").equals(oneLac)) {
-            pp_pa_pass_value=(pp_scpass_value)*50;
-        }else if(b.getString("pp_car_patooccupants_above1500").equals(twoLac)){
-            pp_pa_pass_value=(pp_scpass_value)*100;
-        }else if(b.getString("pp_car_patooccupants_above1500").equals(no)){
-            pp_pa_pass_value=0;
+        pp_scpass_value = Integer.valueOf(b.getString("pp_car_scpassengers_above1500"))
+        val no = "No"
+        val oneLac = "1 Lacs"
+        val twoLac = "2 Lacs"
+        if (b.getString("pp_car_patooccupants_above1500") == oneLac) {
+            pp_pa_pass_value = pp_scpass_value * 50
+        } else if (b.getString("pp_car_patooccupants_above1500") == twoLac) {
+            pp_pa_pass_value = pp_scpass_value * 100
+        } else if (b.getString("pp_car_patooccupants_above1500") == no) {
+            pp_pa_pass_value = 0
         }
-        int pp_pa_pass_value_int = (int) pp_pa_pass_value;
-        ppdisplay_car_above1500_pa_pass_value.setText(String.valueOf(pp_pa_pass_value_int));
+        ppdisplay_car_above1500_pa_pass_value!!.text = pp_pa_pass_value.toString()
 
         //Calculation of Total by adding LPG Kit Value of 60 if Yes 0 if No
-        if(radio_button_value.equals(yes)){
-            pp_lgkit_assumevalue=60;
-
-
+        pp_lgkit_assumevalue = if (radio_button_value == yes) {
+            60
+        } else {
+            0
         }
-        else{
-            pp_lgkit_assumevalue=0;
-        }
-        ppdisplay_car_above1500_lpgkit_value.setText(String.valueOf(pp_lgkit_assumevalue));
-        double total=7897.00+Double.valueOf(pp_car_above1500_paod_value.getText().toString())+50.00+pp_lgkit_assumevalue+(double) pp_pa_pass_value;
-
-        pp_total_premium = total;
+        ppdisplay_car_above1500_lpgkit_value!!.text = pp_lgkit_assumevalue.toString()
+        val total =
+            7897.00 + java.lang.Double.valueOf(pp_car_above1500_paod_value!!.text.toString()) + 50.00 + pp_lgkit_assumevalue + pp_pa_pass_value.toDouble()
+        pp_total_premium = total
 
         //rounding of total_premium value
-        double round_value=pp_total_premium;
-        float rounded_total_premium=new Float(Math.round(round_value));
-        int rounded_total_premium_int = (int) rounded_total_premium;
-        pp_car_above1500_value_b.setText(String.valueOf(rounded_total_premium_int));
-
-        double total_ab=(double)rounded_total_premium+(double)rounded_ncb_value;
-        int total_ab_int = (int) total_ab;
-        ppdisplay_car_above1500_ab_value.setText(String.valueOf(total_ab_int));
-        double total_plus_service_tax=total_ab+total_ab*18/100;
-        double total_AB=total_plus_service_tax;
-        float rounded_total_AB=new Float(Math.round(total_AB));
-        int rounded_total_AB_int = (int) rounded_total_AB;
-        ppdisplay_car_above1500_total_value.setText(String.valueOf(rounded_total_AB_int));
-
+        val round_value = pp_total_premium
+        val rounded_total_premium = Math.round(round_value).toFloat()
+        val rounded_total_premium_int = rounded_total_premium.toInt()
+        pp_car_above1500_value_b!!.text = rounded_total_premium_int.toString()
+        val total_ab = rounded_total_premium.toDouble() + rounded_ncb_value.toDouble()
+        val total_ab_int = total_ab.toInt()
+        ppdisplay_car_above1500_ab_value!!.text = total_ab_int.toString()
+        val total_plus_service_tax = total_ab + total_ab * 18 / 100
+        val rounded_total_AB = Math.round(total_plus_service_tax).toFloat()
+        val rounded_total_AB_int = rounded_total_AB.toInt()
+        ppdisplay_car_above1500_total_value!!.text = rounded_total_AB_int.toString()
     }
 
-    View.OnClickListener listener_ppdisplay_car_above1500_home = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(ppdisplay_car_above1500.this, home_activity.class);
-            startActivity(intent);
-        }
-    };
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    var listener_ppdisplay_car_above1500_home = View.OnClickListener {
+        val intent = Intent(this@ppdisplay_car_above1500, home_activity::class.java)
+        startActivity(intent)
     }
 
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(ppdisplay_car_above1500.this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    private void settingUpPDF(Document document)
-    {
-        LineSeparator lineSeparator = new LineSeparator();
-        lineSeparator.setLineColor(BaseColor.BLACK);
-        Font white = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.WHITE);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this@ppdisplay_car_above1500)
+    }
 
+    private fun settingUpPDF(document: Document) {
+        val lineSeparator = LineSeparator()
+        lineSeparator.lineColor = BaseColor.BLACK
+        val white: Font = Font(Font.FontFamily.HELVETICA, 14F, Font.BOLD, BaseColor.WHITE)
         try {
-            Chunk mChunk = new Chunk("PREMIUM COMPUTATION SHEET");
-            Paragraph mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            Paragraph p;
-            p = new Paragraph();
-            p.add(new Chunk("Vehicle type"));
-            p.setTabSettings(new TabSettings(56f));
-            p.add(Chunk.TABBING);
-            p.add(new Chunk(": PRIVATE CAR"));
-
-            PdfPTable table = new PdfPTable(2);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-            PdfPCell pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Policy Type"));
-            p.setTabSettings(new TabSettings(56f));
-            p.add(Chunk.TABBING);
-            p.add(new Chunk(": PACKAGE POLICY"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-
-            mChunk = new Chunk("SCHEDULE OF PREMIUM");
-            mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            table = new PdfPTable(3);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-
-            p = new Paragraph();
-            p.add(new Chunk("COVER DESCRIPTION"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("PREMIUM"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-
-            table = new PdfPTable(3);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-
-            p = new Paragraph();
-            p.add(new Chunk("IDV"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_car_above1500_IDV_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("DATE"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_date_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("ZONE"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_zone.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("CC"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_cc_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("LPG"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_lpg_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("LPG Type"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_lpgtype_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("N / D"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_nd_value.getText().toString()+"%"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Anti-Theft"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_antitheft.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("N / D DISCOUNT"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_ndd_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("U/W DISCOUNT"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_uwd_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("N C B"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(pp_car_above1500_ncb_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("(A) -> OD TOTAL",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_car_above1500_od_value.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("TP BASIC"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+"7897"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("P A to Owner - Driver"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_car_above1500_paod_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("L L to Driver"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+"50"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("P A to Passenger"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_car_above1500_pa_pass_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("LPG Kit"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_car_above1500_lpgkit_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("(B) -> TOTAL",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+pp_car_above1500_value_b.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("(A) + (B)"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_car_above1500_ab_value.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Service Tax"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("18%"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Total Premium",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+ppdisplay_car_above1500_total_value.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-            mChunk = new Chunk("Shared from Motor Insurance Premium Calculator App");
-            mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            Uri uri = FileProvider.getUriForFile(ppdisplay_car_above1500.this, BuildConfig.APPLICATION_ID + ".provider",file);
-            Intent share = new Intent();
-            share.setAction(Intent.ACTION_SEND);
-            share.setType("application/pdf");
-            share.putExtra(Intent.EXTRA_STREAM, uri);
-
-            startActivity(Intent.createChooser(share,"Share Using"));
-
-
-        } catch (DocumentException e) {
-            e.printStackTrace();
+            var mChunk = Chunk("PREMIUM COMPUTATION SHEET")
+            var mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            var p: Paragraph
+            p = Paragraph()
+            p.add(Chunk("Vehicle type"))
+            p.tabSettings = TabSettings(56f)
+            p.add(Chunk.TABBING)
+            p.add(Chunk(": PRIVATE CAR"))
+            var table = PdfPTable(2)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            var pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Policy Type"))
+            p.tabSettings = TabSettings(56f)
+            p.add(Chunk.TABBING)
+            p.add(Chunk(": PACKAGE POLICY"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            mChunk = Chunk("SCHEDULE OF PREMIUM")
+            mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            table = PdfPTable(3)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            p = Paragraph()
+            p.add(Chunk("COVER DESCRIPTION"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("PREMIUM"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            table = PdfPTable(3)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            p = Paragraph()
+            p.add(Chunk("IDV"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_car_above1500_IDV_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("DATE"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_date_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("ZONE"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_zone!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("CC"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_cc_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("LPG"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_lpg_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("LPG Type"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_lpgtype_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("N / D"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_nd_value!!.text.toString() + "%"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Anti-Theft"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_antitheft!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("N / D DISCOUNT"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_ndd_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("U/W DISCOUNT"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_uwd_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("N C B"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(pp_car_above1500_ncb_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("(A) -> OD TOTAL", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_car_above1500_od_value!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("TP BASIC"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + "7897"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("P A to Owner - Driver"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_car_above1500_paod_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("L L to Driver"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + "50"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("P A to Passenger"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_car_above1500_pa_pass_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("LPG Kit"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_car_above1500_lpgkit_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("(B) -> TOTAL", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + pp_car_above1500_value_b!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("(A) + (B)"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_car_above1500_ab_value!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Service Tax"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("18%"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Total Premium", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + ppdisplay_car_above1500_total_value!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            mChunk = Chunk("Shared from Motor Insurance Premium Calculator App")
+            mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            val uri = FileProvider.getUriForFile(
+                this@ppdisplay_car_above1500,
+                BuildConfig.APPLICATION_ID + ".provider",
+                file!!
+            )
+            val share = Intent()
+            share.action = Intent.ACTION_SEND
+            share.type = "application/pdf"
+            share.putExtra(Intent.EXTRA_STREAM, uri)
+            startActivity(Intent.createChooser(share, "Share Using"))
+        } catch (e: DocumentException) {
+            e.printStackTrace()
         }
-
     }
-
 }

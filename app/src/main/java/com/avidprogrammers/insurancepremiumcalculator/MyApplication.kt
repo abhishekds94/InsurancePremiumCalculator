@@ -1,27 +1,24 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.app.Application;
+import android.app.Application
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 
-/**
- * Created by Bharadwaj on 05/09/2017.
- */
-public class MyApplication extends Application {
-    private static MyApplication mInstance;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+class MyApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        MyApplication.Companion.mInstance = this
+        }
 
-        mInstance = this;
+    fun setConnectivityListener(listener: ConnectivityReceiverListener?) {
+        ConnectivityReceiver.Companion.connectivityReceiverListener = listener
     }
 
-    public static synchronized MyApplication getInstance() {
-        return mInstance;
+    companion object {
+        private var mInstance: MyApplication? = null
+
+        @get:Synchronized
+        val instance: MyApplication?
+            get() = MyApplication.Companion.mInstance
     }
-
-    public void setConnectivityListener(ConnectivityReceiver.ConnectivityReceiverListener listener) {
-        ConnectivityReceiver.connectivityReceiverListener = listener;
-    }
-
-
 }

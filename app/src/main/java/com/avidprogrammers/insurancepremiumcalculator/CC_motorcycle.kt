@@ -1,123 +1,98 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import android.view.View;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
+import android.os.Bundle
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import com.avidprogrammers.insurancepremiumcalculator.R
+import com.google.firebase.analytics.FirebaseAnalytics
+import android.content.Intent
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdView;
-import com.google.firebase.analytics.FirebaseAnalytics;
+import android.view.View
+import com.avidprogrammers.insurancepremiumcalculatorimport.*
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class CC_motorcycle extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private static final String TAG = "CC_motorcycle";
-    private AdView mAdView;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class CC_motorcycle : AppCompatActivity(), ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(CC_motorcycle.this);
-
-        setContentView(R.layout.cc_motorcycle);
-        getSupportActionBar().setTitle("Motorcycle");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@CC_motorcycle)
+        setContentView(R.layout.cc_motorcycle)
+        supportActionBar!!.title = "Motorcycle"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         // Obtain the FirebaseAnalytics instance.
-        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "mipc_open_motorcycle");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "mipc_open_motorcycle")
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
 
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
-
-        findViewById(R.id.motorcycle_upto75).setOnClickListener(listener_upto75);
-        findViewById(R.id.motorcycle_upto150).setOnClickListener(listener_upto150);
-        findViewById(R.id.motorcycle_upto350).setOnClickListener(listener_upto350);
-        findViewById(R.id.motorcycle_above350).setOnClickListener(listener_above350);
-
-
-    };
-
-    View.OnClickListener listener_upto75 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(CC_motorcycle.this, pt_motorcycle_upto75.class);
-            startActivity(intent);
-        }
-    };
-
-    View.OnClickListener listener_upto150 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(CC_motorcycle.this, pt_motorcycle_upto150.class);
-            startActivity(intent);
-        }
-    };
-
-    View.OnClickListener listener_upto350 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(CC_motorcycle.this, pt_motorcycle_upto350.class);
-            startActivity(intent);
-        }
-    };
-
-    View.OnClickListener listener_above350 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(CC_motorcycle.this, pt_motorcycle_350above.class);
-            startActivity(intent);
-        }
-    };
-
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.motorcycle_upto75).setOnClickListener(
+            listener_upto75
+        )
+        findViewById<View>(R.id.motorcycle_upto150).setOnClickListener(listener_upto150)
+        findViewById<View>(R.id.motorcycle_upto350).setOnClickListener(listener_upto350)
+        findViewById<View>(R.id.motorcycle_above350).setOnClickListener(listener_above350)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    var listener_upto75 = View.OnClickListener {
+        val intent = Intent(this@CC_motorcycle, pt_motorcycle_upto75::class.java)
+        startActivity(intent)
+    }
+    var listener_upto150 = View.OnClickListener {
+        val intent = Intent(this@CC_motorcycle, pt_motorcycle_upto150::class.java)
+        startActivity(intent)
+    }
+    var listener_upto350 = View.OnClickListener {
+        val intent = Intent(this@CC_motorcycle,
+            pt_motorcycle_upto350::class.java)
+        startActivity(intent)
+    }
+    var listener_above350 = View.OnClickListener {
+        val intent = Intent(this@CC_motorcycle, pt_motorcycle_350above::class.java)
+        startActivity(intent)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(this);
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
+    }
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
+    companion object {
+        private const val TAG = "CC_motorcycle"
     }
 }

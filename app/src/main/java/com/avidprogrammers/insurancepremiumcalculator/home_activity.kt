@@ -1,344 +1,237 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
+import android.os.Bundle
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import android.content.Intent
+import android.content.SharedPreferences
+import com.avidprogrammers.database.DatabaseHelper
+import android.graphics.drawable.LayerDrawable
+import com.google.firebase.messaging.FirebaseMessaging
+import android.content.Context
+import android.util.Log
+import android.view.*
+import android.widget.*
+import com.avidprogrammers.app.Config
+import com.avidprogrammers.insurancepremiumcalculatorimport.*
+import com.avidprogrammers.utils.BadgeDrawable
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.avidprogrammers.app.Config;
-import com.avidprogrammers.database.DatabaseHelper;
-import com.avidprogrammers.utils.BadgeDrawable;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.messaging.FirebaseMessaging;
-
-public class home_activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-
+class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     //Create New Variable of type InterstitialAd
-    private Button btn_longterm;
-    private Button btn_motorcycle;
-    private Button btn_privatecar;
-    private Button btn_taxi_upto6;
-    private Button btn_bus;
-    private Button btn_passauto;
-    private Button btn_goodsauto_public;
-    private Button btn_goodsauto_private;
-    private Button btn_commercialvehiclepublic;
-    private Button btn_commercialvehicleprivate;
-    private Button btn_agri;
-    private Button btn_terms;
-    private Button btn_privacy;
-
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private static final String TAG = "home_activity";
-    private AdView mAdView;
-    SharedPreferences pref;
-    DatabaseHelper databaseHelper;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_menu, menu);
-        pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
-        int count = pref.getInt("newNoti",0);
-        if( count != 0)
-        {
-            MenuItem itemCart = menu.findItem(R.id.notification_menu);
-            LayerDrawable icon = (LayerDrawable) itemCart.getIcon();
-            setBadgeCount(this, icon, ""+count);
-            Log.e(TAG, "onCreateOptionsMenu: Setting Count" );
+    private var btn_longterm: Button? = null
+    private var btn_motorcycle: Button? = null
+    private var btn_privatecar: Button? = null
+    private var btn_taxi_upto6: Button? = null
+    private var btn_bus: Button? = null
+    private var btn_passauto: Button? = null
+    private var btn_goodsauto_public: Button? = null
+    private var btn_goodsauto_private: Button? = null
+    private var btn_commercialvehiclepublic: Button? = null
+    private var btn_commercialvehicleprivate: Button? = null
+    private var btn_agri: Button? = null
+    private var btn_terms: Button? = null
+    private var btn_privacy: Button? = null
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var pref: SharedPreferences? = null
+    var databaseHelper: DatabaseHelper? = null
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.home_menu, menu)
+        pref = applicationContext.getSharedPreferences(Config.SHARED_PREF, 0)
+        val count = pref!!.getInt("newNoti", 0)
+        if (count != 0) {
+            val itemCart = menu.findItem(R.id.notification_menu)
+            val icon = itemCart.icon as LayerDrawable
+            setBadgeCount(this, icon, "" + count)
+            Log.e(TAG, "onCreateOptionsMenu: Setting Count")
 
             // Obtain the FirebaseAnalytics instance.
-            FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-            Bundle bundle = new Bundle();
-            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "mipc_open");
-            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
+            val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "mipc_open")
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
         }
-        return true;
+        return true
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId())
-        {
-            case R.id.notification_menu:
-                databaseHelper = new DatabaseHelper(home_activity.this);
-                int count = databaseHelper.getNotificationCount();
-                if(count == 0)
-                {
-                    Toast.makeText(home_activity.this,"No Notification to display!",Toast.LENGTH_LONG).show();
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.notification_menu -> {
+                databaseHelper = DatabaseHelper(this@home_activity)
+                val count = databaseHelper!!.notificationCount
+                if (count == 0) {
+                    Toast.makeText(
+                        this@home_activity,
+                        "No Notification to display!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    startActivity(Intent(this@home_activity, NotificationActivity::class.java))
+                    finish()
                 }
-                else {
-                    startActivity(new Intent(home_activity.this, NotificationActivity.class));
-                    finish();
-                }
-                break;
+            }
         }
-        return true;
+        return true
     }
 
-    public void setBadgeCount(Context context, LayerDrawable icon, String count) {
-
-        BadgeDrawable badge;
+    fun setBadgeCount(context: Context?, icon: LayerDrawable, count: String?) {
+        val badge: BadgeDrawable
 
         // Reuse drawable if possible
-        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
-        if (reuse != null && reuse instanceof BadgeDrawable) {
-            badge = (BadgeDrawable) reuse;
+        val reuse = icon.findDrawableByLayerId(R.id.ic_badge)
+        badge = if (reuse != null && reuse is BadgeDrawable) {
+            reuse
         } else {
-            badge = new BadgeDrawable(context);
+            BadgeDrawable(context)
         }
-
-        badge.setCount(count);
-        icon.mutate();
-        icon.setDrawableByLayerId(R.id.ic_badge, badge);
+        badge.setCount(count)
+        icon.mutate()
+        icon.setDrawableByLayerId(R.id.ic_badge, badge)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if(getIntent().getBooleanExtra("EXIT",false)){
-            finishAndRemoveTask();
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (intent.getBooleanExtra("EXIT", false)) {
+            finishAndRemoveTask()
         }
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(home_activity.this);
-
-        setContentView(R.layout.activity_home);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
-        if(pref.getString("regID","NA").equals("NA"));
-        {
-            SharedPreferences.Editor editor = pref.edit();
-            Task<String> refreshedToken = FirebaseMessaging.getInstance().getToken();
-            FirebaseMessaging.getInstance().subscribeToTopic("all");
-            editor.putString("regId", String.valueOf(refreshedToken));
-            editor.commit();
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@home_activity)
+        setContentView(R.layout.activity_home)
+        val pref = applicationContext.getSharedPreferences(Config.SHARED_PREF, 0)
+        if (pref.getString("regID", "NA") == "NA");
+        run {
+            val editor = pref.edit()
+            val refreshedToken = FirebaseMessaging.getInstance().token
+            FirebaseMessaging.getInstance().subscribeToTopic("all")
+            editor.putString("regId", refreshedToken.toString())
+            editor.commit()
         }
-
-        btn_longterm = (Button) findViewById(R.id.longterm);
-        btn_longterm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_longterm();
-            }
-        });
-        btn_motorcycle = (Button) findViewById(R.id.motorcycle);
-        btn_motorcycle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_motorcycle();
-            }
-        });
-
-        btn_privatecar = (Button) findViewById(R.id.privatecar);
-        btn_privatecar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_privatecar();
-            }
-        });
-
-        btn_taxi_upto6 = (Button) findViewById(R.id.taxi_upto6);
-        btn_taxi_upto6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_taxi_upto6();
-            }
-        });
-
-        btn_bus = (Button) findViewById(R.id.bus);
-        btn_bus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_bus();
-            }
-        });
-
-        btn_passauto = (Button) findViewById(R.id.passauto);
-        btn_passauto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_passauto();
-            }
-        });
-
-        btn_goodsauto_public = (Button) findViewById(R.id.goodsauto_public);
-        btn_goodsauto_public.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_goodsauto_public();
-            }
-        });
-
-        btn_goodsauto_private = (Button) findViewById(R.id.goodsauto_private);
-        btn_goodsauto_private.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_goodsauto_private();
-            }
-        });
-
-        btn_commercialvehiclepublic = (Button) findViewById(R.id.commercialvehiclepublic);
-        btn_commercialvehiclepublic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_commercialvehiclepublic();
-            }
-        });
-
-        btn_commercialvehicleprivate = (Button) findViewById(R.id.commercialvehicleprivate);
-        btn_commercialvehicleprivate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_commercialvehicleprivate();
-            }
-        });
-
-        btn_agri = (Button) findViewById(R.id.agri);
-        btn_agri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_agri();
-            }
-        });
-
-        btn_privacy = (Button) findViewById(R.id.privacy);
-        btn_privacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_privacy();
-            }
-        });
-
-        btn_terms = (Button) findViewById(R.id.terms);
-        btn_terms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInterstitial_btn_terms();
-
-            }
-        });
+        btn_longterm = findViewById<View>(R.id.longterm) as Button
+        btn_longterm!!.setOnClickListener { showInterstitial_btn_longterm() }
+        btn_motorcycle = findViewById<View>(R.id.motorcycle) as Button
+        btn_motorcycle!!.setOnClickListener { showInterstitial_btn_motorcycle() }
+        btn_privatecar = findViewById<View>(R.id.privatecar) as Button
+        btn_privatecar!!.setOnClickListener { showInterstitial_btn_privatecar() }
+        btn_taxi_upto6 = findViewById<View>(R.id.taxi_upto6) as Button
+        btn_taxi_upto6!!.setOnClickListener { showInterstitial_btn_taxi_upto6() }
+        btn_bus = findViewById<View>(R.id.bus) as Button
+        btn_bus!!.setOnClickListener { showInterstitial_btn_bus() }
+        btn_passauto = findViewById<View>(R.id.passauto) as Button
+        btn_passauto!!.setOnClickListener { showInterstitial_btn_passauto() }
+        btn_goodsauto_public = findViewById<View>(R.id.goodsauto_public) as Button
+        btn_goodsauto_public!!.setOnClickListener { showInterstitial_btn_goodsauto_public() }
+        btn_goodsauto_private = findViewById<View>(R.id.goodsauto_private) as Button
+        btn_goodsauto_private!!.setOnClickListener { showInterstitial_btn_goodsauto_private() }
+        btn_commercialvehiclepublic = findViewById<View>(R.id.commercialvehiclepublic) as Button
+        btn_commercialvehiclepublic!!.setOnClickListener { showInterstitial_btn_commercialvehiclepublic() }
+        btn_commercialvehicleprivate = findViewById<View>(R.id.commercialvehicleprivate) as Button
+        btn_commercialvehicleprivate!!.setOnClickListener { showInterstitial_btn_commercialvehicleprivate() }
+        btn_agri = findViewById<View>(R.id.agri) as Button
+        btn_agri!!.setOnClickListener { showInterstitial_btn_agri() }
+        btn_privacy = findViewById<View>(R.id.privacy) as Button
+        btn_privacy!!.setOnClickListener { showInterstitial_btn_privacy() }
+        btn_terms = findViewById<View>(R.id.terms) as Button
+        btn_terms!!.setOnClickListener { showInterstitial_btn_terms() }
     }
 
-    public void showInterstitial_btn_longterm() {
-
-        Intent inte = new Intent(home_activity.this, longterm_vehicle.class);
-        startActivity(inte);
+    fun showInterstitial_btn_longterm() {
+        val inte = Intent(this@home_activity, longterm_vehicle::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_motorcycle() {
-        Intent inte = new Intent(home_activity.this, CC_motorcycle.class);
-        startActivity(inte);
+    fun showInterstitial_btn_motorcycle() {
+        val inte = Intent(this@home_activity, CC_motorcycle::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_privatecar() {
-        Intent inte = new Intent(home_activity.this, CC_car.class);
-        startActivity(inte);
+    fun showInterstitial_btn_privatecar() {
+        val inte = Intent(this@home_activity, CC_car::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_taxi_upto6() {
-        Intent inte = new Intent(home_activity.this, CC_taxi_upto6.class);
-        startActivity(inte);
+    fun showInterstitial_btn_taxi_upto6() {
+        val inte = Intent(this@home_activity, CC_taxi_upto6::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_bus() {
-        Intent inte = new Intent(home_activity.this, CC_bus.class);
-        startActivity(inte);
+    fun showInterstitial_btn_bus() {
+        val inte = Intent(this@home_activity, CC_bus::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_passauto() {
-        Intent inte = new Intent(home_activity.this, CC_passauto.class);
-        startActivity(inte);
+    fun showInterstitial_btn_passauto() {
+        val inte = Intent(this@home_activity, CC_passauto::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_goodsauto_public() {
-        Intent inte = new Intent(home_activity.this, pt_goodsauto_public.class);
-        startActivity(inte);
+    fun showInterstitial_btn_goodsauto_public() {
+        val inte = Intent(this@home_activity, pt_goodsauto_public::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_goodsauto_private() {
-        Intent inte = new Intent(home_activity.this, pt_goodsauto_private.class);
-        startActivity(inte);
+    fun showInterstitial_btn_goodsauto_private() {
+        val inte = Intent(this@home_activity, pt_goodsauto_private::class.java)
+        startActivity(inte)
     }
 
-    public void showInterstitial_btn_commercialvehiclepublic() {
-        Intent inte = new Intent(home_activity.this, CC_commercialvehiclepublic.class);
-        startActivity(inte);
+    fun showInterstitial_btn_commercialvehiclepublic() {
+        val inte = Intent(this@home_activity, CC_commercialvehiclepublic::class.java)
+        startActivity(inte)
     }
 
-
-    public void showInterstitial_btn_commercialvehicleprivate() {
-        Intent inte = new Intent(home_activity.this, CC_commercialvehicleprivate.class);
-        startActivity(inte);
+    fun showInterstitial_btn_commercialvehicleprivate() {
+        val inte = Intent(this@home_activity, CC_commercialvehicleprivate::class.java)
+        startActivity(inte)
     }
 
-
-    public void showInterstitial_btn_agri() {
-        Intent inte = new Intent(home_activity.this, pt_agri.class);
-        startActivity(inte);
+    fun showInterstitial_btn_agri() {
+        val inte = Intent(this@home_activity, pt_agri::class.java)
+        startActivity(inte)
     }
 
-
-    public void showInterstitial_btn_terms() {
-        Intent inte = new Intent(home_activity.this, terms.class);
-        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/terms.html");
-        startActivity(inte);
+    fun showInterstitial_btn_terms() {
+        val inte = Intent(this@home_activity, terms::class.java)
+        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/terms.html")
+        startActivity(inte)
     }
 
-
-    public void showInterstitial_btn_privacy() {
-        Intent inte = new Intent(home_activity.this, privacy.class);
-        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/privacy.html");
-        startActivity(inte);
+    fun showInterstitial_btn_privacy() {
+        val inte = Intent(this@home_activity, privacy::class.java)
+        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/privacy.html")
+        startActivity(inte)
     }
 
-
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
         //notification(isConnected,lp_taxi_upto18pass.this);
-        checkingStatus.notification(isConnected,context);
-
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkingStatus.notification(isConnected,this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkingStatus!!.notification(isConnected, this)
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
+    }
+
+    companion object {
+        private const val TAG = "home_activity"
     }
 }

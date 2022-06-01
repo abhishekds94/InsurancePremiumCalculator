@@ -1,108 +1,84 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculatorimport
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.*
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class longterm_CC_car extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private static final String TAG = "CC_motorcycle";
-    private AdView mAdView;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class longterm_CC_car : AppCompatActivity(), ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(longterm_CC_car.this);
-
-        setContentView(R.layout.longterm_cc_car);
-//        Toast.makeText(this, "longterm_cc_motorcycle", Toast.LENGTH_SHORT).show();
-        getSupportActionBar().setTitle("Motorcycle");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@longterm_CC_car)
+        setContentView(R.layout.longterm_cc_car)
+        //        Toast.makeText(this, "longterm_cc_motorcycle", Toast.LENGTH_SHORT).show();
+        getSupportActionBar()!!.setTitle("Motorcycle")
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
-
-        findViewById(R.id.lt_car_upto1000).setOnClickListener(listener_upto1000);
-        findViewById(R.id.lt_car_upto1500).setOnClickListener(listener_upto1500);
-        findViewById(R.id.lt_car_above1500).setOnClickListener(listener_above1500);
-
-
-    };
-
-    View.OnClickListener listener_upto1000 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(longterm_CC_car.this, longterm_pt_car_upto1000.class);
-            startActivity(intent);
-        }
-    };
-
-    View.OnClickListener listener_upto1500 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(longterm_CC_car.this, longterm_pt_car_upto1500.class);
-            startActivity(intent);
-        }
-    };
-
-    View.OnClickListener listener_above1500 = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(longterm_CC_car.this, longterm_pt_car_above1500.class);
-            startActivity(intent);
-        }
-    };
-
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lt_car_upto1000).setOnClickListener(
+            listener_upto1000
+        )
+        findViewById<View>(R.id.lt_car_upto1500).setOnClickListener(listener_upto1500)
+        findViewById<View>(R.id.lt_car_above1500).setOnClickListener(listener_above1500)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    var listener_upto1000 = View.OnClickListener {
+        val intent = Intent(this@longterm_CC_car, longterm_pt_car_upto1000::class.java)
+        startActivity(intent)
+    }
+    var listener_upto1500 = View.OnClickListener {
+        val intent = Intent(this@longterm_CC_car, longterm_pt_car_upto1500::class.java)
+        startActivity(intent)
+    }
+    var listener_above1500 = View.OnClickListener {
+        val intent = Intent(this@longterm_CC_car, longterm_pt_car_above1500::class.java)
+        startActivity(intent)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(this);
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
+    }
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
+    companion object {
+        private const val TAG = "CC_motorcycle"
     }
 }

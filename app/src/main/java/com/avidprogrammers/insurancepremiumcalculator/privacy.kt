@@ -1,52 +1,44 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 
 /**
  * Created by Abhishek on 04-Jan-18.
  */
-
-public class privacy extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-    private WebView myWebView;
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class privacy : AppCompatActivity(), ConnectivityReceiverListener {
+    private var myWebView: WebView? = null
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(privacy.this);
-
-        setContentView(R.layout.privacy);
-        getSupportActionBar().setTitle("Privacy Policy");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        String url = getIntent().getStringExtra("url");
-        myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.setWebViewClient(new WebViewClient());
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        myWebView.loadUrl(url);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@privacy)
+        setContentView(R.layout.privacy)
+        getSupportActionBar()!!.setTitle("Privacy Policy")
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        val url: String = getIntent().getStringExtra("url")!!
+        myWebView = findViewById<View>(R.id.webview) as WebView?
+        myWebView!!.webViewClient = WebViewClient()
+        val webSettings = myWebView!!.settings
+        webSettings.javaScriptEnabled = true
+        myWebView!!.loadUrl(url)
 
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
@@ -81,34 +73,26 @@ public class privacy extends AppCompatActivity implements ConnectivityReceiver.C
 
             }
         });*/
-
-    };
-
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 
     //checking connectivity
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
         //notification(isConnected,lp_taxi_upto18pass.this);
-        checkingStatus.notification(isConnected,context);
-
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this)
     }
-
 }

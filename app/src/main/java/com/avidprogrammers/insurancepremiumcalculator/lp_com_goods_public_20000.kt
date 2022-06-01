@@ -1,172 +1,161 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class lp_com_goods_public_20000 extends AppCompatActivity implements View.OnClickListener, ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private AdView mAdView;
-
-    Button lp_com_goods_public_20000btn;
-
-    EditText lp_com_goods_public_20000_act;
-    EditText lp_com_goods_public_20000_paod;
-    EditText lp_com_goods_public_20000_ll;
-    EditText lp_com_goods_public_20000_tax;
-    EditText lp_com_goods_public_20000_coolie;
-    EditText lp_com_goods_public_20000_nfpp;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class lp_com_goods_public_20000 : AppCompatActivity(), View.OnClickListener,
+    ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var lp_com_goods_public_20000btn: Button? = null
+    var lp_com_goods_public_20000_act: EditText? = null
+    var lp_com_goods_public_20000_paod: EditText? = null
+    var lp_com_goods_public_20000_ll: EditText? = null
+    var lp_com_goods_public_20000_tax: EditText? = null
+    var lp_com_goods_public_20000_coolie: EditText? = null
+    var lp_com_goods_public_20000_nfpp: EditText? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(lp_com_goods_public_20000.this);
-
-        setContentView(R.layout.lp_com_goods_public_20000);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Public Commercial Vehicle - Liability Policy");
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@lp_com_goods_public_20000)
+        setContentView(R.layout.lp_com_goods_public_20000)
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()!!.setTitle("Public Commercial Vehicle - Liability Policy")
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
-        findViewById(R.id.lp_com_goods_public_20000btn).setOnClickListener(listener_lp_com_goods_public_20000btn);
+        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lp_com_goods_public_20000btn).setOnClickListener(
+            listener_lp_com_goods_public_20000btn
+        )
 
 
         //start-passthevalues
         //Get the ids of view objects
-        findAllViewsId();
-
-        lp_com_goods_public_20000btn.setOnClickListener(this);
-        RadioButton pa_no=(RadioButton) findViewById(R.id.lp_com_goods_public_20000_paod_value_no);
-        pa_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText ed1= (EditText) findViewById(R.id.lp_com_goods_public_20000_paod_value);
-                ed1.setText("0");
-                ed1.setEnabled(false);
-            }
-        });
-        RadioButton pa_yes=(RadioButton) findViewById(R.id.lp_com_goods_public_20000_paod_value_yes);
-        pa_yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText ed1= (EditText) findViewById(R.id.lp_com_goods_public_20000_paod_value);
-                ed1.setText("320");
-                ed1.setEnabled(true);
-            }
-        });
+        findAllViewsId()
+        lp_com_goods_public_20000btn!!.setOnClickListener(this)
+        val pa_no = findViewById<View>(R.id.lp_com_goods_public_20000_paod_value_no) as RadioButton
+        pa_no.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lp_com_goods_public_20000_paod_value) as EditText
+            ed1.setText("0")
+            ed1.isEnabled = false
+        }
+        val pa_yes =
+            findViewById<View>(R.id.lp_com_goods_public_20000_paod_value_yes) as RadioButton
+        pa_yes.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lp_com_goods_public_20000_paod_value) as EditText
+            ed1.setText("320")
+            ed1.isEnabled = true
+        }
         //stop-passthevalues
-
     }
 
-    View.OnClickListener listener_lp_com_goods_public_20000btn = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(lp_com_goods_public_20000.this, lpdisplay_com_goods_public_20000.class);
-            startActivity(intent);
-        }
-
-    };
-
-
+    var listener_lp_com_goods_public_20000btn = View.OnClickListener {
+        val intent =
+            Intent(this@lp_com_goods_public_20000, lpdisplay_com_goods_public_20000::class.java)
+        startActivity(intent)
+    }
 
     //start-passthevalues
-    private void findAllViewsId() {
-        lp_com_goods_public_20000btn = (Button) findViewById(R.id.lp_com_goods_public_20000btn);
-
-        lp_com_goods_public_20000_act = (EditText) findViewById(R.id.lp_com_goods_public_20000_act);
-        lp_com_goods_public_20000_paod = (EditText) findViewById(R.id.lp_com_goods_public_20000_paod_value);
-        lp_com_goods_public_20000_ll = (EditText) findViewById(R.id.lp_com_goods_public_20000_ll);
-        lp_com_goods_public_20000_tax = (EditText) findViewById(R.id.lp_com_goods_public_20000_tax);
-        lp_com_goods_public_20000_coolie = (EditText) findViewById(R.id.lp_com_goods_public_20000_coolie);
-        lp_com_goods_public_20000_nfpp = (EditText) findViewById(R.id.lp_com_goods_public_20000_nfpp);
+    private fun findAllViewsId() {
+        lp_com_goods_public_20000btn =
+            findViewById<View>(R.id.lp_com_goods_public_20000btn) as Button?
+        lp_com_goods_public_20000_act =
+            findViewById<View>(R.id.lp_com_goods_public_20000_act) as EditText?
+        lp_com_goods_public_20000_paod =
+            findViewById<View>(R.id.lp_com_goods_public_20000_paod_value) as EditText?
+        lp_com_goods_public_20000_ll =
+            findViewById<View>(R.id.lp_com_goods_public_20000_ll) as EditText?
+        lp_com_goods_public_20000_tax =
+            findViewById<View>(R.id.lp_com_goods_public_20000_tax) as EditText?
+        lp_com_goods_public_20000_coolie =
+            findViewById<View>(R.id.lp_com_goods_public_20000_coolie) as EditText?
+        lp_com_goods_public_20000_nfpp =
+            findViewById<View>(R.id.lp_com_goods_public_20000_nfpp) as EditText?
     }
 
-
-
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), lpdisplay_com_goods_public_20000.class);
+    override fun onClick(v: View) {
+        val intent = Intent(getApplicationContext(), lpdisplay_com_goods_public_20000::class.java)
         //Create a bundle object
-        Bundle b = new Bundle();
+        val b = Bundle()
 
         //Inserts a String value into the mapping of this Bundle
-        b.putString("lp_com_goods_public_20000_act", lp_com_goods_public_20000_act.getText().toString());
-        b.putString("lp_com_goods_public_20000_paod", lp_com_goods_public_20000_paod.getText().toString());
-        b.putString("lp_com_goods_public_20000_ll", lp_com_goods_public_20000_ll.getText().toString());
-        b.putString("lp_com_goods_public_20000_tax", lp_com_goods_public_20000_tax.getText().toString());
-        b.putString("lp_com_goods_public_20000_coolie", lp_com_goods_public_20000_coolie.getText().toString());
-        b.putString("lp_com_goods_public_20000_nfpp", lp_com_goods_public_20000_nfpp.getText().toString());
+        b.putString(
+            "lp_com_goods_public_20000_act",
+            lp_com_goods_public_20000_act!!.text.toString()
+        )
+        b.putString(
+            "lp_com_goods_public_20000_paod",
+            lp_com_goods_public_20000_paod!!.text.toString()
+        )
+        b.putString("lp_com_goods_public_20000_ll", lp_com_goods_public_20000_ll!!.text.toString())
+        b.putString(
+            "lp_com_goods_public_20000_tax",
+            lp_com_goods_public_20000_tax!!.text.toString()
+        )
+        b.putString(
+            "lp_com_goods_public_20000_coolie",
+            lp_com_goods_public_20000_coolie!!.text.toString()
+        )
+        b.putString(
+            "lp_com_goods_public_20000_nfpp",
+            lp_com_goods_public_20000_nfpp!!.text.toString()
+        )
 
         //Add the bundle to the intent.
-        intent.putExtras(b);
-        String coolie_value = lp_com_goods_public_20000_coolie.getText().toString();
-        String nfpp_value = lp_com_goods_public_20000_nfpp.getText().toString();
-
-
-        if(coolie_value.equals("")||nfpp_value.equals("")){
-            Toast.makeText(getApplicationContext(),"Please enter all fields",Toast.LENGTH_SHORT).show();
-        }
-        else {
+        intent.putExtras(b)
+        val coolie_value = lp_com_goods_public_20000_coolie!!.text.toString()
+        val nfpp_value = lp_com_goods_public_20000_nfpp!!.text.toString()
+        if (coolie_value == "" || nfpp_value == "") {
+            Toast.makeText(getApplicationContext(), "Please enter all fields", Toast.LENGTH_SHORT)
+                .show()
+        } else {
             //start the DisplayActivity
-            startActivity(intent);
+            startActivity(intent)
         }
     }
+
     //stop-passthevalues
-
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this)
     }
 
     //BackButton in title bar
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

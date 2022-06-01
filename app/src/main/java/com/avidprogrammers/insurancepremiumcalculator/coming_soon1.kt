@@ -1,74 +1,58 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdView;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import android.os.Bundle
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 
 /**
  * Created by Abhishek on 04-Jan-18.
  */
-
-public class coming_soon1 extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private static final String TAG = "pt_agri";
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class coming_soon1 : AppCompatActivity(), ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(coming_soon1.this);
-
-        setContentView(R.layout.coming_soon1);
-        getSupportActionBar().setTitle("pt_goodsauto_public");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    };
-
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@coming_soon1)
+        setContentView(R.layout.coming_soon1)
+        supportActionBar!!.title = "pt_goodsauto_public"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 
     //checking connectivity
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
         //notification(isConnected,lp_taxi_upto18pass.this);
-        checkingStatus.notification(isConnected,context);
-
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this)
     }
 
+    companion object {
+        private const val TAG = "pt_agri"
+    }
 }

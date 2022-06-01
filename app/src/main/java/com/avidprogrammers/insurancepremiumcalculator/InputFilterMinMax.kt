@@ -1,38 +1,43 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextWatcher;
+import android.text.InputFilter
+import android.text.Spanned
+
 
 /**
  * Created by Abhishek on 21-Apr-18.
  */
+class InputFilterMinMax : InputFilter {
+    private var min: Int
+    private var max: Int
 
-public class InputFilterMinMax implements InputFilter {
-
-    private int min, max;
-
-    public InputFilterMinMax(int min, int max) {
-        this.min = min;
-        this.max = max;
+    constructor(min: Int, max: Int) {
+        this.min = min
+        this.max = max
     }
 
-    public InputFilterMinMax(String min, String max) {
-        this.min = Integer.parseInt(min);
-        this.max = Integer.parseInt(max);
+    constructor(min: String, max: String) {
+        this.min = min.toInt()
+        this.max = max.toInt()
     }
 
-    @Override
-    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+    override fun filter(
+        source: CharSequence,
+        start: Int,
+        end: Int,
+        dest: Spanned,
+        dstart: Int,
+        dend: Int
+    ): CharSequence {
         try {
-            int input = Integer.parseInt(dest.toString() + source.toString());
-            if (isInRange(min, max, input))
-                return null;
-        } catch (NumberFormatException nfe) { }
-        return "";
+            val input = (dest.toString() + source.toString()).toInt()
+            if (isInRange(min, max, input)) return null!!
+        } catch (nfe: NumberFormatException) {
+        }
+        return ""
     }
 
-    private boolean isInRange(int a, int b, int c) {
-        return b > a ? c >= a && c <= b : c >= b && c <= a;
+    private fun isInRange(a: Int, b: Int, c: Int): Boolean {
+        return if (b > a) c >= a && c <= b else c >= b && c <= a
     }
 }

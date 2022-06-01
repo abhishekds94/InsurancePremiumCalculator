@@ -1,510 +1,431 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import androidx.core.content.FileProvider;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
-
-import com.avidprogrammers.utils.PermissionsActivity;
-import com.avidprogrammers.utils.PermissionsChecker;
-import com.google.android.gms.ads.AdView;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.TabSettings;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.LineSeparator;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import at.markushi.ui.CircleButton;
-
-import static com.avidprogrammers.utils.PermissionsActivity.PERMISSION_REQUEST_CODE;
-import static com.avidprogrammers.utils.PermissionsChecker.REQUIRED_PERMISSION;
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.os.Environment
+import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import at.markushi.ui.CircleButton
+import com.avidprogrammers.insurancepremiumcalculator.*
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.avidprogrammers.utils.PermissionsActivity
+import com.avidprogrammers.utils.PermissionsChecker
+import com.google.android.gms.ads.AdView
+import com.itextpdf.text.*
+import com.itextpdf.text.pdf.PdfPCell
+import com.itextpdf.text.pdf.PdfPTable
+import com.itextpdf.text.pdf.PdfWriter
+import com.itextpdf.text.pdf.draw.LineSeparator
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class lpdisplay_goodsauto_private extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private AdView mAdView;
-    CircleButton share_btn;
-    File file;
-    TextView lp_goodsauto_private_act;
-    TextView lp_goodsauto_private_paod;
-    TextView lp_goodsauto_private_ll;
-    TextView lp_goodsauto_private_tax;
-    TextView lp_goodsauto_private_coolie;
-    TextView lp_goodsauto_private_tax_12;
-    TextView lp_goodsauto_private_tax_18;
-    TextView lp_goodsauto_private_nfpp,total_premium;
-    private double tax_18;
-    private double tax_12;
-
-    TextView lp_goodsauto_private_lpgkit;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class lpdisplay_goodsauto_private : AppCompatActivity(), ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var share_btn: CircleButton? = null
+    var file: File? = null
+    var lp_goodsauto_private_act: TextView? = null
+    var lp_goodsauto_private_paod: TextView? = null
+    var lp_goodsauto_private_ll: TextView? = null
+    var lp_goodsauto_private_tax: TextView? = null
+    var lp_goodsauto_private_coolie: TextView? = null
+    var lp_goodsauto_private_tax_12: TextView? = null
+    var lp_goodsauto_private_tax_18: TextView? = null
+    var lp_goodsauto_private_nfpp: TextView? = null
+    var total_premium: TextView? = null
+    private var tax_18 = 0.0
+    private var tax_12 = 0.0
+    var lp_goodsauto_private_lpgkit: TextView? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(lpdisplay_goodsauto_private.this);
-
-        setContentView(R.layout.lpdisplay_goodsauto_private);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@lpdisplay_goodsauto_private)
+        setContentView(R.layout.lpdisplay_goodsauto_private)
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
-
-
-        Bundle b = getIntent().getExtras();
-         lp_goodsauto_private_act = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_act_value);
-         lp_goodsauto_private_paod = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_paod_value);
-         lp_goodsauto_private_ll = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_ll_value);
-         //lp_goodsauto_private_tax = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax_value);
-         lp_goodsauto_private_coolie = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_coolie_value);
-         lp_goodsauto_private_nfpp = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_nfpp_value);
-         lp_goodsauto_private_tax_12 = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax12_value);
-         lp_goodsauto_private_tax_18 = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax18_value);
-         lp_goodsauto_private_lpgkit = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_lpgkit_value);
-
-
-
-        lp_goodsauto_private_act.setText(b.getCharSequence("lp_goodsauto_private_act"));
-        lp_goodsauto_private_paod.setText(b.getCharSequence("lp_goodsauto_private_paod"));
-        lp_goodsauto_private_ll.setText(b.getCharSequence("lp_goodsauto_private_ll"));
-//        lp_goodsauto_private_tax.setText(b.getCharSequence("lp_goodsauto_private_tax"));
-        lp_goodsauto_private_coolie.setText(b.getCharSequence("lp_goodsauto_private_coolie"));
-        lp_goodsauto_private_nfpp.setText(b.getCharSequence("lp_goodsauto_private_nfpp"));
-
-        lp_goodsauto_private_lpgkit.setText(b.getCharSequence("lp_goodsauto_private_lpgkit"));
+        val b: Bundle = getIntent().getExtras()!!
+        lp_goodsauto_private_act =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_act_value) as TextView?
+        lp_goodsauto_private_paod =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_paod_value) as TextView?
+        lp_goodsauto_private_ll =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_ll_value) as TextView?
+        //lp_goodsauto_private_tax = (TextView) findViewById(R.id.lpdisplay_goodsauto_private_tax_value);
+        lp_goodsauto_private_coolie =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_coolie_value) as TextView?
+        lp_goodsauto_private_nfpp =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_nfpp_value) as TextView?
+        lp_goodsauto_private_tax_12 =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_tax12_value) as TextView?
+        lp_goodsauto_private_tax_18 =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_tax18_value) as TextView?
+        lp_goodsauto_private_lpgkit =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_lpgkit_value) as TextView?
+        lp_goodsauto_private_act!!.text = b.getCharSequence("lp_goodsauto_private_act")
+        lp_goodsauto_private_paod!!.text = b.getCharSequence("lp_goodsauto_private_paod")
+        lp_goodsauto_private_ll!!.text = b.getCharSequence("lp_goodsauto_private_ll")
+        //        lp_goodsauto_private_tax.setText(b.getCharSequence("lp_goodsauto_private_tax"));
+        lp_goodsauto_private_coolie!!.text = b.getCharSequence("lp_goodsauto_private_coolie")
+        lp_goodsauto_private_nfpp!!.text = b.getCharSequence("lp_goodsauto_private_nfpp")
+        lp_goodsauto_private_lpgkit!!.text = b.getCharSequence("lp_goodsauto_private_lpgkit")
 
 
         //variables to take integer values
-        int act = Integer.parseInt(b.getString("lp_goodsauto_private_act"));
-        int paod = Integer.parseInt(b.getString("lp_goodsauto_private_paod"));
-        int ll = Integer.parseInt(b.getString("lp_goodsauto_private_ll"));
+        val act = b.getString("lp_goodsauto_private_act")!!.toInt()
+        val paod = b.getString("lp_goodsauto_private_paod")!!.toInt()
+        val ll = b.getString("lp_goodsauto_private_ll")!!.toInt()
         //int tax = Integer.parseInt(b.getString("lp_goodsauto_private_tax"));
-        String cngkit = b.getString("lp_goodsauto_private_lpgkit");
+        val cngkit = b.getString("lp_goodsauto_private_lpgkit")
         //int nfpp = Integer.parseInt(b.getString("lp_goodsauto_private_nfpp"));
         //int coolie = Integer.parseInt(b.getString("lp_goodsauto_private_coolie"));
 
         //nfpp and coolie
-        int nfpp = Integer.parseInt(lp_goodsauto_private_nfpp.getText().toString());
-        int coolie = Integer.parseInt(lp_goodsauto_private_coolie.getText().toString());
-        nfpp = nfpp*75;
-        coolie = coolie*50;
-        lp_goodsauto_private_coolie.setText(String.valueOf(coolie));
-        lp_goodsauto_private_nfpp.setText(String.valueOf(nfpp));
+        var nfpp = lp_goodsauto_private_nfpp!!.text.toString().toInt()
+        var coolie = lp_goodsauto_private_coolie!!.text.toString().toInt()
+        nfpp = nfpp * 75
+        coolie = coolie * 50
+        lp_goodsauto_private_coolie!!.text = coolie.toString()
+        lp_goodsauto_private_nfpp!!.text = nfpp.toString()
 
         //calculate the total premium for liability policy
-        double tot_premium = calculate(act,paod,ll,cngkit,nfpp,coolie);
+        val tot_premium = calculate(act, paod, ll, cngkit, nfpp, coolie)
 
         //print total premium
-         total_premium = (TextView)findViewById(R.id.lpdisplay_goodsauto_private_total_value);
-        int final_premium  = (int)( Math.round(tot_premium));// for rounding up
-        total_premium.setText(String.valueOf(final_premium));   //Setting final value to text view
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Goods Auto Private Liability Policy");
-
-        findViewById(R.id.lpdisplay_goodsauto_private_home).setOnClickListener(listener_lpdisplay_goodsauto_private_home);
-
-        share_btn = (CircleButton) findViewById(R.id.lpdisplay_goodsauto_private_share);
-        share_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PermissionsChecker checker = new PermissionsChecker(lpdisplay_goodsauto_private.this);
-                if (checker.lacksPermissions(REQUIRED_PERMISSION)) {
-
-                    PermissionsActivity.startActivityForResult(lpdisplay_goodsauto_private.this, PERMISSION_REQUEST_CODE, REQUIRED_PERMISSION);
-
-                } else {
-
-                    Date date = new Date();
-                    SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyyHHmmss");
-                    String filename = "InsurancePremium" + dateformat.format(date) + ".pdf";
-
-                    File direct = new File(Environment.getExternalStorageDirectory() + "/InsurancePremiumCalculator");
-
-                    if (!direct.exists()) {
-                        File myDirectory = new File("/sdcard/InsurancePremiumCalculator/");
-                        myDirectory.mkdirs();
-                        myDirectory.setReadable(true);
-                        myDirectory.setWritable(true);
-                        myDirectory.setExecutable(true);
-                    }
-
-                    file = new File(new File("/sdcard/InsurancePremiumCalculator/"), filename);
-                    if (file.exists()) {
-                        file.delete();
-                    }
-                    Document document = new Document(PageSize.A4, 30, 30, 30, 30);
-                    try {
-                        PdfWriter.getInstance(document, new FileOutputStream(file));
-                        document.open();
-                        settingUpPDF(document);
-                        document.close();
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        total_premium =
+            findViewById<View>(R.id.lpdisplay_goodsauto_private_total_value) as TextView?
+        val final_premium = Math.round(tot_premium).toInt() // for rounding up
+        total_premium!!.text = final_premium.toString() //Setting final value to text view
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()!!.setTitle("Goods Auto Private Liability Policy")
+        findViewById<View>(R.id.lpdisplay_goodsauto_private_home).setOnClickListener(
+            listener_lpdisplay_goodsauto_private_home
+        )
+        share_btn = findViewById<View>(R.id.lpdisplay_goodsauto_private_share) as CircleButton?
+        share_btn!!.setOnClickListener {
+            val checker = PermissionsChecker(this@lpdisplay_goodsauto_private)
+            if (checker.lacksPermissions(*PermissionsChecker.REQUIRED_PERMISSION)) {
+                PermissionsActivity.startActivityForResult(
+                    this@lpdisplay_goodsauto_private,
+                    PermissionsActivity.PERMISSION_REQUEST_CODE,
+                    *PermissionsChecker.REQUIRED_PERMISSION
+                )
+            } else {
+                val date = Date()
+                val dateformat = SimpleDateFormat("ddMMyyHHmmss")
+                val filename = "InsurancePremium" + dateformat.format(date) + ".pdf"
+                val direct = File(
+                    Environment.getExternalStorageDirectory()
+                        .toString() + "/InsurancePremiumCalculator"
+                )
+                if (!direct.exists()) {
+                    val myDirectory = File("/sdcard/InsurancePremiumCalculator/")
+                    myDirectory.mkdirs()
+                    myDirectory.setReadable(true)
+                    myDirectory.setWritable(true)
+                    myDirectory.setExecutable(true)
+                }
+                file = File(File("/sdcard/InsurancePremiumCalculator/"), filename)
+                if (file!!.exists()) {
+                    file!!.delete()
+                }
+                val document = Document(PageSize.A4, 30F, 30F, 30F, 30F)
+                try {
+                    PdfWriter.getInstance(document, FileOutputStream(file))
+                    document.open()
+                    settingUpPDF(document)
+                    document.close()
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
-        });
+        }
     }
 
     //Function to calculate
-    double calculate(int act,int paod,int ll,String cng,int nfpp,int coolie){
-        double total=0;
-        if(cng.equals("Yes")){
-            total+=act + paod + ll + nfpp+ coolie + 60;
+    fun calculate(act: Int, paod: Int, ll: Int, cng: String?, nfpp: Int, coolie: Int): Double {
+        var total = 0.0
+        if (cng == "Yes") {
+            total += (act + paod + ll + nfpp + coolie + 60).toDouble()
 
             //To calculate 18% tax
-            tax_18 = (total-3922)*0.18;
-            int tax_18_final = (int)Math.round(tax_18);
-            lp_goodsauto_private_tax_18.setText(String.valueOf(tax_18_final));
+            tax_18 = (total - 3922) * 0.18
+            val tax_18_final = Math.round(tax_18).toInt()
+            lp_goodsauto_private_tax_18!!.text = tax_18_final.toString()
 
             //To calculate 12% tax
-            tax_12 = 3922*0.12;
-            int tax_12_final = (int)Math.round(tax_12);
-            lp_goodsauto_private_tax_12.setText(String.valueOf(tax_12_final));
-
-            total = (total + tax_18_final + tax_12_final);
+            tax_12 = 3922 * 0.12
+            val tax_12_final = Math.round(tax_12).toInt()
+            lp_goodsauto_private_tax_12!!.text = tax_12_final.toString()
+            total = total + tax_18_final + tax_12_final
             //total = (total + (tax*total*0.01));
-        }
-        else {
-            total+=act + paod + ll + nfpp+ coolie ;
+        } else {
+            total += (act + paod + ll + nfpp + coolie).toDouble()
 
             //To calculate 18% tax
-            tax_18 = (total-3922)*0.18;
-            int tax_18_final = (int)Math.round(tax_18);
-            lp_goodsauto_private_tax_18.setText(String.valueOf(tax_18_final));
+            tax_18 = (total - 3922) * 0.18
+            val tax_18_final = Math.round(tax_18).toInt()
+            lp_goodsauto_private_tax_18!!.text = tax_18_final.toString()
 
             //To calculate 12% tax
-            tax_12 = 3922*0.12;
-            int tax_12_final = (int)Math.round(tax_12);
-            lp_goodsauto_private_tax_12.setText(String.valueOf(tax_12_final));
-
-            total = (total + tax_18_final + tax_12_final);
+            tax_12 = 3922 * 0.12
+            val tax_12_final = Math.round(tax_12).toInt()
+            lp_goodsauto_private_tax_12!!.text = tax_12_final.toString()
+            total = total + tax_18_final + tax_12_final
             //total = (total + (tax*total*0.01));
         }
-        return total;
+        return total
     }
 
-    View.OnClickListener listener_lpdisplay_goodsauto_private_home = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(lpdisplay_goodsauto_private.this, home_activity.class);
-            startActivity(intent);
-        }
-    };
-
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    var listener_lpdisplay_goodsauto_private_home = View.OnClickListener {
+        val intent = Intent(this@lpdisplay_goodsauto_private, home_activity::class.java)
+        startActivity(intent)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkingStatus.notification(isConnected,this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkingStatus!!.notification(isConnected, this)
     }
 
-    private void settingUpPDF(Document document)
-    {
-        LineSeparator lineSeparator = new LineSeparator();
-        lineSeparator.setLineColor(BaseColor.BLACK);
-        Font white = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.WHITE);
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 
+    private fun settingUpPDF(document: Document) {
+        val lineSeparator = LineSeparator()
+        lineSeparator.lineColor = BaseColor.BLACK
+        val white: Font = Font(Font.FontFamily.HELVETICA, 14F, Font.BOLD, BaseColor.WHITE)
         try {
-            Chunk mChunk = new Chunk("PREMIUM COMPUTATION SHEET");
-            Paragraph mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            Paragraph p;
-            p = new Paragraph();
-            p.add(new Chunk("Vehicle type"));
-            p.setTabSettings(new TabSettings(56f));
-            p.add(Chunk.TABBING);
-            p.add(new Chunk(": GOODS AUTO PRIVATE"));
-
-            PdfPTable table = new PdfPTable(2);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-            PdfPCell pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Policy Type"));
-            p.setTabSettings(new TabSettings(56f));
-            p.add(Chunk.TABBING);
-            p.add(new Chunk(": LIABILITY POLICY"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-
-            mChunk = new Chunk("SCHEDULE OF PREMIUM");
-            mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            table = new PdfPTable(3);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-
-            p = new Paragraph();
-            p.add(new Chunk("COVER DESCRIPTION"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("PREMIUM"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-
-            table = new PdfPTable(3);
-            table.setTotalWidth(document.getPageSize().getWidth() - 80);
-            table.setLockedWidth(true);
-
-            p = new Paragraph();
-            p.add(new Chunk("Act / Liability"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+lp_goodsauto_private_act.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("PA to Owner / Driver"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+lp_goodsauto_private_paod.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("L L to Driver"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+lp_goodsauto_private_ll.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("NFPP"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+lp_goodsauto_private_nfpp.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("COOLIE"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(lp_goodsauto_private_coolie.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-
-            p = new Paragraph();
-            p.add(new Chunk("CNG KIT"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk(lp_goodsauto_private_lpgkit.getText().toString()));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Service Tax"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("18%"));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.WHITE);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Total Premium",white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            table.addCell(pdfPCell);
-
-            p = new Paragraph();
-            p.add(new Chunk("Rs. "+total_premium.getText().toString(),white));
-            pdfPCell = new PdfPCell();
-            pdfPCell.setBorderColor(BaseColor.BLACK);
-            pdfPCell.setBackgroundColor(BaseColor.BLACK);
-            pdfPCell.addElement(p);
-            table.addCell(pdfPCell);
-
-            document.add(table);
-            document.add(new Chunk(lineSeparator));
-            mChunk = new Chunk("Shared from Motor Insurance Premium Calculator App");
-            mPara = new Paragraph(mChunk);
-            mPara.setAlignment(Element.ALIGN_CENTER);
-            document.add(mPara);
-            document.add(new Chunk(lineSeparator));
-
-            Uri uri = FileProvider.getUriForFile(lpdisplay_goodsauto_private.this, BuildConfig.APPLICATION_ID + ".provider",file);
-            Intent share = new Intent();
-            share.setAction(Intent.ACTION_SEND);
-            share.setType("application/pdf");
-            share.putExtra(Intent.EXTRA_STREAM, uri);
-
-            startActivity(Intent.createChooser(share,"Share Using"));
-
-
-        } catch (DocumentException e) {
-            e.printStackTrace();
+            var mChunk = Chunk("PREMIUM COMPUTATION SHEET")
+            var mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            var p: Paragraph
+            p = Paragraph()
+            p.add(Chunk("Vehicle type"))
+            p.tabSettings = TabSettings(56f)
+            p.add(Chunk.TABBING)
+            p.add(Chunk(": GOODS AUTO PRIVATE"))
+            var table = PdfPTable(2)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            var pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Policy Type"))
+            p.tabSettings = TabSettings(56f)
+            p.add(Chunk.TABBING)
+            p.add(Chunk(": LIABILITY POLICY"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            mChunk = Chunk("SCHEDULE OF PREMIUM")
+            mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            table = PdfPTable(3)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            p = Paragraph()
+            p.add(Chunk("COVER DESCRIPTION"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("PREMIUM"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            table = PdfPTable(3)
+            table.totalWidth = document.pageSize.width - 80
+            table.isLockedWidth = true
+            p = Paragraph()
+            p.add(Chunk("Act / Liability"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + lp_goodsauto_private_act!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("PA to Owner / Driver"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + lp_goodsauto_private_paod!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("L L to Driver"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + lp_goodsauto_private_ll!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("NFPP"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + lp_goodsauto_private_nfpp!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("COOLIE"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(lp_goodsauto_private_coolie!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("CNG KIT"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk(lp_goodsauto_private_lpgkit!!.text.toString()))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Service Tax"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("18%"))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.WHITE
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Total Premium", white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            table.addCell(pdfPCell)
+            p = Paragraph()
+            p.add(Chunk("Rs. " + total_premium!!.text.toString(), white))
+            pdfPCell = PdfPCell()
+            pdfPCell.borderColor = BaseColor.BLACK
+            pdfPCell.backgroundColor = BaseColor.BLACK
+            pdfPCell.addElement(p)
+            table.addCell(pdfPCell)
+            document.add(table)
+            document.add(Chunk(lineSeparator))
+            mChunk = Chunk("Shared from Motor Insurance Premium Calculator App")
+            mPara = Paragraph(mChunk)
+            mPara.alignment = Element.ALIGN_CENTER
+            document.add(mPara)
+            document.add(Chunk(lineSeparator))
+            val uri = FileProvider.getUriForFile(
+                this@lpdisplay_goodsauto_private,
+                BuildConfig.APPLICATION_ID + ".provider",
+                file!!
+            )
+            val share = Intent()
+            share.action = Intent.ACTION_SEND
+            share.type = "application/pdf"
+            share.putExtra(Intent.EXTRA_STREAM, uri)
+            startActivity(Intent.createChooser(share, "Share Using"))
+        } catch (e: DocumentException) {
+            e.printStackTrace()
         }
-
     }
 }

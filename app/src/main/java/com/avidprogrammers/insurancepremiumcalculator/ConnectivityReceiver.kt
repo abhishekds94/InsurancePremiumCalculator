@@ -1,52 +1,40 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
+import android.util.Log
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-public class ConnectivityReceiver extends BroadcastReceiver {
-
-    public static ConnectivityReceiverListener connectivityReceiverListener;
-
-    public ConnectivityReceiver() {
-        super();
-    }
-
-    @Override
-    public void onReceive(Context context, Intent arg1) {
-
-        ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null
-                && activeNetwork.isConnectedOrConnecting();
-        if(connectivityReceiverListener!=null) {
-            connectivityReceiverListener.onNetworkConnectionChanged(isConnected);
+class ConnectivityReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, arg1: Intent) {
+        val cm = context
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        val isConnected = (activeNetwork != null
+                && activeNetwork.isConnectedOrConnecting)
+        if (connectivityReceiverListener != null) {
+            connectivityReceiverListener!!.onNetworkConnectionChanged(isConnected)
         }
-        Log.v("Checking n/w receiver ", String.valueOf(isConnected));
+        Log.v("Checking n/w receiver ", isConnected.toString())
     }
 
-
-    public static boolean isConnected() {
-        ConnectivityManager
-                cm = (ConnectivityManager) MyApplication.getInstance().getApplicationContext()
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null
-                && activeNetwork.isConnectedOrConnecting();
+    interface ConnectivityReceiverListener {
+        fun onNetworkConnectionChanged(isConnected: Boolean)
     }
 
-
-    public interface ConnectivityReceiverListener {
-        void onNetworkConnectionChanged(boolean isConnected);
+    companion object {
+        var connectivityReceiverListener: ConnectivityReceiverListener? = null
+        val isConnected: Boolean
+            get() {
+                val cm = MyApplication.Companion.instance!!.applicationContext
+                    .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val activeNetwork = cm.activeNetworkInfo
+                return (activeNetwork != null
+                        && activeNetwork.isConnectedOrConnecting)
+            }
     }
 }

@@ -1,335 +1,253 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Build;
-import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.appcompat.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-import java.util.Calendar;
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import android.app.Dialog
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Build
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.Gravity
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
+import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class longterm_pp_car_upto1500 extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener,ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private static final String TAG = "lt_bp_car_upto1500";
-    private AdView mAdView;
-    String selected;
-    private TextView mDateDisplay;
-    private Button mPickDate;
-    private int mYear;
-    private int mMonth;
-    private int mDay;
-    long diffInDays;
-
-    Button lt_bp_car_upto1500_btn;
-
-    EditText lt_bp_car_upto1500_idv_value;
-    EditText lt_bp_car_upto1500_date_value;
-    EditText lt_bp_car_upto1500_cc_value;
-    EditText lt_bp_car_upto1500_nd_value;
-    EditText lt_bp_car_upto1500_ndd_value;
-    EditText lt_bp_car_upto1500_uwd_value;
-    EditText lt_bp_car_scpassengers_upto1500;
-    EditText lt_bp_car_upto1500_lpgtype_value;
-    EditText lt_bp_car_upto1500_paod_value;
-
-    RadioGroup lt_bp_car_upto1500_zone;
-    RadioGroup lt_bp_car_upto1500_lpg;
-    RadioGroup lt_bp_car_upto1500_lpgtype;
-    RadioGroup lt_bp_car_upto1500_antitheft;
-    RadioGroup lt_bp_car_patooccupants_upto1500;
-    RadioGroup lt_bp_car_upto1500_nd;
-    RadioButton radioButton2;
-    RadioButton radioButton3;
-
-
-    static final int DATE_DIALOG_ID = 0;
-
-    EditText ndd;
-    int num1;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class longterm_pp_car_upto1500 : AppCompatActivity(), AdapterView.OnItemSelectedListener,
+    View.OnClickListener, ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var selected: String? = null
+    private var mDateDisplay: TextView? = null
+    private var mPickDate: Button? = null
+    private var mYear = 0
+    private var mMonth = 0
+    private var mDay = 0
+    var diffInDays: Long = 0
+    var lt_bp_car_upto1500_btn: Button? = null
+    var lt_bp_car_upto1500_idv_value: EditText? = null
+    var lt_bp_car_upto1500_date_value: EditText? = null
+    var lt_bp_car_upto1500_cc_value: EditText? = null
+    var lt_bp_car_upto1500_nd_value: EditText? = null
+    var lt_bp_car_upto1500_ndd_value: EditText? = null
+    var lt_bp_car_upto1500_uwd_value: EditText? = null
+    var lt_bp_car_scpassengers_upto1500: EditText? = null
+    var lt_bp_car_upto1500_lpgtype_value: EditText? = null
+    var lt_bp_car_upto1500_paod_value: EditText? = null
+    var lt_bp_car_upto1500_zone: RadioGroup? = null
+    var lt_bp_car_upto1500_lpg: RadioGroup? = null
+    var lt_bp_car_upto1500_lpgtype: RadioGroup? = null
+    var lt_bp_car_upto1500_antitheft: RadioGroup? = null
+    var lt_bp_car_patooccupants_upto1500: RadioGroup? = null
+    var lt_bp_car_upto1500_nd: RadioGroup? = null
+    var radioButton2: RadioButton? = null
+    var radioButton3: RadioButton? = null
+    var ndd: EditText? = null
+    var num1 = 0
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(longterm_pp_car_upto1500.this);
-
-        setContentView(R.layout.longterm_pp_car_upto1500);
-        getSupportActionBar().setTitle("Car Package Policy");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@longterm_pp_car_upto1500)
+        setContentView(R.layout.longterm_pp_car_upto1500)
+        getSupportActionBar()!!.setTitle("Car Package Policy")
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);*/
-
-        RadioButton pa_no =  findViewById(R.id.lt_bp_car_upto1500_paod_value_no);
-        pa_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lt_bp_car_upto1500_paod_value.setText("0");
-                lt_bp_car_upto1500_paod_value.setEnabled(false);
+        val pa_no: RadioButton = findViewById<RadioButton>(R.id.lt_bp_car_upto1500_paod_value_no)
+        pa_no.setOnClickListener {
+            lt_bp_car_upto1500_paod_value!!.setText("0")
+            lt_bp_car_upto1500_paod_value!!.isEnabled = false
+        }
+        val pa_yes: RadioButton = findViewById<RadioButton>(R.id.lt_bp_car_upto1500_paod_value_yes)
+        pa_yes.setOnClickListener {
+            lt_bp_car_upto1500_paod_value!!.setText("900")
+            lt_bp_car_upto1500_paod_value!!.isEnabled = true
+        }
+        val lpg_no = findViewById<View>(R.id.lt_bp_car_upto1500_lpg_value_no) as RadioButton
+        lpg_no.setOnClickListener(no_lpg_listener)
+        val lpg_yes = findViewById<View>(R.id.lt_bp_car_upto1500_lpg_value_yes) as RadioButton
+        lpg_yes.setOnClickListener(yes_lpg_listener)
+        val nd_no = findViewById<View>(R.id.lt_bp_car_upto1500_nd_value_no) as RadioButton
+        nd_no.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_nd_value) as EditText
+            ed1.isEnabled = false
+            ed1.setText("0")
+        }
+        val nd_yes = findViewById<View>(R.id.lt_bp_car_upto1500_nd_value_yes) as RadioButton
+        nd_yes.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_nd_value) as EditText
+            val diffInDays = CalculateDifferenceInDays()
+            var nd_value1 = 0.00
+            if (diffInDays < 365) {
+                nd_value1 = 1.32
+            } else if (diffInDays >= 365 && diffInDays < 730) {
+                nd_value1 = 1.32
+            } else if (diffInDays >= 730 && diffInDays < 1825) {
+                nd_value1 = 1.32
+            } else if (diffInDays >= 1825 && diffInDays < 3650) {
+                nd_value1 = 1.32
+            } else if (diffInDays >= 3650) {
+                nd_value1 = 0.0
             }
-        });
-        RadioButton pa_yes = findViewById(R.id.lt_bp_car_upto1500_paod_value_yes);
-        pa_yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lt_bp_car_upto1500_paod_value.setText("900");
-                lt_bp_car_upto1500_paod_value.setEnabled(true);
-            }
-        });
-
-        RadioButton lpg_no = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpg_value_no);
-        lpg_no.setOnClickListener(no_lpg_listener);
-        RadioButton lpg_yes = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpg_value_yes);
-        lpg_yes.setOnClickListener(yes_lpg_listener);
-
-        RadioButton nd_no = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_nd_value_no);
-        nd_no.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-
-                EditText ed1=(EditText)findViewById(R.id.lt_bp_car_upto1500_nd_value);
-                ed1.setEnabled(false);
-                ed1.setText("0");
-
-
-
-            }
-        });
-        RadioButton nd_yes = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_nd_value_yes);
-        nd_yes.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                EditText ed1=(EditText)findViewById(R.id.lt_bp_car_upto1500_nd_value);
-                long diffInDays=CalculateDifferenceInDays();
-                double nd_value1=0.00;
-                if (diffInDays < 365) {
-                    nd_value1=1.32;
-                }else if (diffInDays >= 365 && diffInDays < 730 ) {
-                    nd_value1 = 1.32;
-                }else if (diffInDays >= 730 && diffInDays < 1825 ) {
-                    nd_value1 = 1.32;
-                }else if (diffInDays >= 1825 && diffInDays < 3650 ) {
-                    nd_value1 = 1.32;
-                }else if (diffInDays >= 3650 ){
-                    nd_value1 = 0;
-                }
-                float  nd_value1_int =(float) nd_value1;
-                ed1.setText(String.valueOf(nd_value1_int));
-
-                ed1.setEnabled(false);
-                ed1.setVisibility(View.VISIBLE);
-                TextView nd_sym= (TextView)findViewById(R.id.nd_sym);
-                nd_sym.setVisibility(View.VISIBLE);
-
-            }
-        });
-        RadioButton rb1 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_fixed);
-        RadioButton rb2 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt);
-        rb1.setClickable(false);
-        rb2.setClickable(false);
-        rb2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                EditText ed1 = (EditText) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value);
-                ed1.setVisibility(View.INVISIBLE);
-                TextView lpg_sym= (TextView)findViewById(R.id.lpg_sym);
-                lpg_sym.setVisibility(View.INVISIBLE);
-            }});
-        rb1.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                EditText ed1 = (EditText) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value);
-                ed1.setVisibility(View.VISIBLE);
-                TextView lpg_sym= (TextView)findViewById(R.id.lpg_sym);
-                lpg_sym.setVisibility(View.VISIBLE);
-                ed1.setEnabled(true);
-
-            }});
+            val nd_value1_int = nd_value1.toFloat()
+            ed1.setText(nd_value1_int.toString())
+            ed1.isEnabled = false
+            ed1.visibility = View.VISIBLE
+            val nd_sym = findViewById<View>(R.id.nd_sym) as TextView
+            nd_sym.visibility = View.VISIBLE
+        }
+        val rb1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_fixed) as RadioButton
+        val rb2 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt) as RadioButton
+        rb1.isClickable = false
+        rb2.isClickable = false
+        rb2.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value) as EditText
+            ed1.visibility = View.INVISIBLE
+            val lpg_sym = findViewById<View>(R.id.lpg_sym) as TextView
+            lpg_sym.visibility = View.INVISIBLE
+        }
+        rb1.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value) as EditText
+            ed1.visibility = View.VISIBLE
+            val lpg_sym = findViewById<View>(R.id.lpg_sym) as TextView
+            lpg_sym.visibility = View.VISIBLE
+            ed1.isEnabled = true
+        }
         //Date-start
-        mDateDisplay = (TextView) findViewById(R.id.lt_bp_car_upto1500_date_value);
-        mPickDate = (Button) findViewById(R.id.lt_bp_car_upto1500_date_btn);
-
-
-        mPickDate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showDialog(DATE_DIALOG_ID);
-            }
-        });
-
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-
-        updateDisplay();
+        mDateDisplay = findViewById<View>(R.id.lt_bp_car_upto1500_date_value) as TextView?
+        mPickDate = findViewById<View>(R.id.lt_bp_car_upto1500_date_btn) as Button?
+        mPickDate!!.setOnClickListener { showDialog(longterm_pp_car_upto1500.Companion.DATE_DIALOG_ID) }
+        val c = Calendar.getInstance()
+        mYear = c[Calendar.YEAR]
+        mMonth = c[Calendar.MONTH]
+        mDay = c[Calendar.DAY_OF_MONTH]
+        updateDisplay()
         //Date-end
 
 
         //spinner-start
-        Spinner spin = (Spinner) findViewById(R.id.lt_bp_car_upto1500_ncb_value);
-        spin.setOnItemSelectedListener(this);
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ncb);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(aa);
+        val spin = findViewById<View>(R.id.lt_bp_car_upto1500_ncb_value) as Spinner
+        spin.onItemSelectedListener = this
+        val aa: ArrayAdapter<String> =
+            ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ncb)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spin.adapter = aa
         //spinner-end
-
-
-        findViewById(R.id.lt_bp_car_upto1500_btn).setOnClickListener(listener_lt_bp_car_upto1500_btn);
+        findViewById<View>(R.id.lt_bp_car_upto1500_btn).setOnClickListener(
+            listener_lt_bp_car_upto1500_btn
+        )
 
 
         //start-passthevalues
         //Get the ids of view objects
-        findAllViewsId();
-
-        lt_bp_car_upto1500_btn.setOnClickListener(this);
+        findAllViewsId()
+        lt_bp_car_upto1500_btn!!.setOnClickListener(this)
         //stop-passthevalues
+        ndd = findViewById<View>(R.id.lt_bp_car_upto1500_ndd_value) as EditText?
+        ndd!!.addTextChangedListener(textWatcher)
+    }
 
-        ndd= (EditText) findViewById(R.id.lt_bp_car_upto1500_ndd_value);
-        ndd.addTextChangedListener(textWatcher);
-
-    };
-    View.OnClickListener no_lpg_listener = new View.OnClickListener(){
-        public void onClick(View v) {
-
-            RadioButton rb1 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_fixed);
-            RadioButton rb2 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt);
-            rb1.setEnabled(false);
-            rb2.setEnabled(false);
-            EditText ed1=(EditText)findViewById(R.id.lt_bp_car_upto1500_lpgtype_value);
-            ed1.setEnabled(false);
-            ed1.setVisibility(View.INVISIBLE);
+    var no_lpg_listener = View.OnClickListener {
+        val rb1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_fixed) as RadioButton
+        val rb2 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt) as RadioButton
+        rb1.isEnabled = false
+        rb2.isEnabled = false
+        val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value) as EditText
+        ed1.isEnabled = false
+        ed1.visibility = View.INVISIBLE
+    }
+    var yes_lpg_listener = View.OnClickListener {
+        val rb1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_fixed) as RadioButton
+        val rb2 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt) as RadioButton
+        rb1.isEnabled = true
+        rb2.isEnabled = true
+        rb2.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value) as EditText
+            ed1.visibility = View.INVISIBLE
+            val lpg_sym = findViewById<View>(R.id.lpg_sym) as TextView
+            lpg_sym.visibility = View.INVISIBLE
         }
-    };
-    View.OnClickListener yes_lpg_listener = new View.OnClickListener(){
-        public void onClick(View v) {
-
-            RadioButton rb1 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_fixed);
-            RadioButton rb2 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt);
-            rb1.setEnabled(true);
-            rb2.setEnabled(true);
-            rb2.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v) {
-                    EditText ed1 = (EditText) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value);
-                    ed1.setVisibility(View.INVISIBLE);
-                    TextView lpg_sym= (TextView)findViewById(R.id.lpg_sym);
-                    lpg_sym.setVisibility(View.INVISIBLE);
-                }});
-            rb1.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v) {
-                    EditText ed1 = (EditText) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value);
-                    ed1.setVisibility(View.VISIBLE);
-                    TextView lpg_sym= (TextView)findViewById(R.id.lpg_sym);
-                    lpg_sym.setVisibility(View.VISIBLE);
-                    ed1.setEnabled(true);
-
-                }});
-
+        rb1.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value) as EditText
+            ed1.visibility = View.VISIBLE
+            val lpg_sym = findViewById<View>(R.id.lpg_sym) as TextView
+            lpg_sym.visibility = View.VISIBLE
+            ed1.isEnabled = true
         }
-    };
-
-
-
-    View.OnClickListener yes_nd_listener = new View.OnClickListener(){
-        public void onClick(View v) {
-
-
-            EditText ed1=(EditText)findViewById(R.id.lt_bp_car_upto1500_nd_value);
-            long diffInDays=CalculateDifferenceInDays();
-            double nd_value1=0.00;
-            if (diffInDays < 365) {
-                nd_value1=1.32;
-            }else if (diffInDays >= 365 && diffInDays < 730 ) {
-                nd_value1 = 1.32;
-            }else if (diffInDays >= 730 && diffInDays < 1825 ) {
-                nd_value1 = 1.32;
-            }else if (diffInDays >= 1825 && diffInDays < 3650 ) {
-                nd_value1 = 1.32;
-            }else if (diffInDays >= 3650 ){
-                nd_value1 = 0;
-            }
-            float  nd_value1_int =(float) nd_value1;
-            ed1.setText(String.valueOf(nd_value1_int));
-            ed1.setEnabled(false);
+    }
+    var yes_nd_listener = View.OnClickListener {
+        val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_nd_value) as EditText
+        val diffInDays = CalculateDifferenceInDays()
+        var nd_value1 = 0.00
+        if (diffInDays < 365) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 365 && diffInDays < 730) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 730 && diffInDays < 1825) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 1825 && diffInDays < 3650) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 3650) {
+            nd_value1 = 0.0
         }
-    };
+        val nd_value1_int = nd_value1.toFloat()
+        ed1.setText(nd_value1_int.toString())
+        ed1.isEnabled = false
+    }
+    var listener_lt_bp_car_upto1500_btn = View.OnClickListener {
+        val intent =
+            Intent(this@longterm_pp_car_upto1500, longterm_ppdisplay_car_upto1500::class.java)
+        startActivity(intent)
+    }
 
-
-
-    View.OnClickListener listener_lt_bp_car_upto1500_btn = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(longterm_pp_car_upto1500.this, longterm_ppdisplay_car_upto1500.class);
-            startActivity(intent);
-        }
-    };
-
-
-
-    public long  CalculateDifferenceInDays(){
-
-        int mYear_now,mMonth_now,mDay_now;
+    fun CalculateDifferenceInDays(): Long {
+        val mYear_now: Int
+        val mMonth_now: Int
+        val mDay_now: Int
         // Create Calendar instance
-        Calendar calendar1 = Calendar.getInstance();
-        Calendar calendar2 = Calendar.getInstance();
-        mYear_now = calendar1.get(Calendar.YEAR);
-        mMonth_now = calendar1.get(Calendar.MONTH);
-        mDay_now = calendar1.get(Calendar.DAY_OF_MONTH);
+        val calendar1 = Calendar.getInstance()
+        val calendar2 = Calendar.getInstance()
+        mYear_now = calendar1[Calendar.YEAR]
+        mMonth_now = calendar1[Calendar.MONTH]
+        mDay_now = calendar1[Calendar.DAY_OF_MONTH]
 
         // Set the values for the calendar fields YEAR, MONTH, and DAY_OF_MONTH.
-        calendar2.set(mYear, mMonth, mDay);
-        calendar1.set(mYear_now, mMonth_now, mDay_now);
+        calendar2[mYear, mMonth] = mDay
+        calendar1[mYear_now, mMonth_now] = mDay_now
 
         /*
          * Use getTimeInMillis() method to get the Calendar's time value in
          * milliseconds. This method returns the current time as UTC
          * milliseconds from the epoch
          */
-        long miliSecondForDate1 = calendar1.getTimeInMillis();
-        long miliSecondForDate2 = calendar2.getTimeInMillis();
+        val miliSecondForDate1 = calendar1.timeInMillis
+        val miliSecondForDate2 = calendar2.timeInMillis
 
         // Calculate the difference in millisecond between two dates
-        long diffInMilis = miliSecondForDate1 - miliSecondForDate2;
+        val diffInMilis = miliSecondForDate1 - miliSecondForDate2
 
         /*
          * Now we have difference between two date in form of millsecond we can
@@ -337,301 +255,273 @@ public class longterm_pp_car_upto1500 extends AppCompatActivity implements Adapt
          * with appropriate value. 1 Second : 1000 milisecond 1 Hour : 60 * 1000
          * millisecond 1 Day : 24 * 60 * 1000 milisecond
          */
-
-        long diffInSecond = diffInMilis / 1000;
-        long diffInMinute = diffInMilis / (60 * 1000);
-        long diffInHour = diffInMilis / (60 * 60 * 1000);
-        diffInDays = diffInMilis / ( 24 * 60 * 60 * 1000);
-
-        return diffInDays;
-
-
+        val diffInSecond = diffInMilis / 1000
+        val diffInMinute = diffInMilis / (60 * 1000)
+        val diffInHour = diffInMilis / (60 * 60 * 1000)
+        diffInDays = diffInMilis / (24 * 60 * 60 * 1000)
+        return diffInDays
     }
 
     //start-passthevalues
-    private void findAllViewsId() {
-        lt_bp_car_upto1500_btn = (Button) findViewById(R.id.lt_bp_car_upto1500_btn);
-
-        lt_bp_car_upto1500_idv_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_idv_value);
-        lt_bp_car_upto1500_date_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_date_value);
-        lt_bp_car_upto1500_cc_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_cc_value);
-        lt_bp_car_upto1500_nd_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_nd_value);
-        lt_bp_car_upto1500_ndd_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_ndd_value);
-        lt_bp_car_upto1500_uwd_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_uwd_value);
-        lt_bp_car_scpassengers_upto1500 = (EditText) findViewById(R.id.lt_bp_car_scpassengers_upto1500);
-        lt_bp_car_upto1500_lpgtype_value = (EditText) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value);
-        lt_bp_car_upto1500_paod_value = findViewById(R.id.lt_bp_car_upto1500_paod);
-
-        final ScrollView scrollview = ((ScrollView) findViewById(R.id.pp_car_upto1500_sv));
-
-        lt_bp_car_upto1500_uwd_value.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
-                if(action == EditorInfo.IME_ACTION_NEXT)
-                    scrollview.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollview.scrollTo(0, scrollview.getBottom());
-                            lt_bp_car_scpassengers_upto1500.requestFocus();
-                        }
-                    });
-                return false;
+    private fun findAllViewsId() {
+        lt_bp_car_upto1500_btn = findViewById<View>(R.id.lt_bp_car_upto1500_btn) as Button?
+        lt_bp_car_upto1500_idv_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_idv_value) as EditText?
+        lt_bp_car_upto1500_date_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_date_value) as EditText?
+        lt_bp_car_upto1500_cc_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_cc_value) as EditText?
+        lt_bp_car_upto1500_nd_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_nd_value) as EditText?
+        lt_bp_car_upto1500_ndd_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_ndd_value) as EditText?
+        lt_bp_car_upto1500_uwd_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_uwd_value) as EditText?
+        lt_bp_car_scpassengers_upto1500 =
+            findViewById<View>(R.id.lt_bp_car_scpassengers_upto1500) as EditText?
+        lt_bp_car_upto1500_lpgtype_value =
+            findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value) as EditText?
+        lt_bp_car_upto1500_paod_value = findViewById<EditText>(R.id.lt_bp_car_upto1500_paod)
+        val scrollview = findViewById<View>(R.id.pp_car_upto1500_sv) as ScrollView
+        lt_bp_car_upto1500_uwd_value!!.setOnEditorActionListener { textView, action, keyEvent ->
+            if (action == EditorInfo.IME_ACTION_NEXT) scrollview.post {
+                scrollview.scrollTo(0, scrollview.bottom)
+                lt_bp_car_scpassengers_upto1500!!.requestFocus()
             }
-        });
-
-        lt_bp_car_scpassengers_upto1500.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
-                if(action == EditorInfo.IME_ACTION_DONE)
-                    scrollview.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollview.scrollTo(0, scrollview.getBottom());
-                            lt_bp_car_upto1500_btn.requestFocus();
-                        }
-                    });
-                return false;
+            false
+        }
+        lt_bp_car_scpassengers_upto1500!!.setOnEditorActionListener { textView, action, keyEvent ->
+            if (action == EditorInfo.IME_ACTION_DONE) scrollview.post {
+                scrollview.scrollTo(0, scrollview.bottom)
+                lt_bp_car_upto1500_btn!!.requestFocus()
             }
-        });
-
-        lt_bp_car_upto1500_zone = (RadioGroup) findViewById(R.id.lt_bp_car_upto1500_zone);
-        lt_bp_car_upto1500_lpg = (RadioGroup) findViewById(R.id.lt_bp_car_upto1500_lpg);
-        lt_bp_car_upto1500_lpgtype = (RadioGroup) findViewById(R.id.lt_bp_car_upto1500_lpgtype);
-        lt_bp_car_upto1500_antitheft = (RadioGroup) findViewById(R.id.lt_bp_car_upto1500_antitheft);
-        lt_bp_car_upto1500_nd = (RadioGroup) findViewById(R.id.lt_bp_car_upto1500_nd);
-        lt_bp_car_patooccupants_upto1500 = (RadioGroup) findViewById(R.id.lt_bp_car_patooccupants_upto1500);
-
-
+            false
+        }
+        lt_bp_car_upto1500_zone = findViewById<View>(R.id.lt_bp_car_upto1500_zone) as RadioGroup?
+        lt_bp_car_upto1500_lpg = findViewById<View>(R.id.lt_bp_car_upto1500_lpg) as RadioGroup?
+        lt_bp_car_upto1500_lpgtype =
+            findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype) as RadioGroup?
+        lt_bp_car_upto1500_antitheft =
+            findViewById<View>(R.id.lt_bp_car_upto1500_antitheft) as RadioGroup?
+        lt_bp_car_upto1500_nd = findViewById<View>(R.id.lt_bp_car_upto1500_nd) as RadioGroup?
+        lt_bp_car_patooccupants_upto1500 =
+            findViewById<View>(R.id.lt_bp_car_patooccupants_upto1500) as RadioGroup?
     }
 
-
-    @Override
-    public void onClick(View v) {
+    override fun onClick(v: View) {
         //Check for any EditText being null
-        String idv_value = lt_bp_car_upto1500_idv_value.getText().toString();
-        String nd_value = lt_bp_car_upto1500_nd_value.getText().toString();
-        String ndd_value = lt_bp_car_upto1500_ndd_value.getText().toString();
-        String uwd_value =lt_bp_car_upto1500_uwd_value.getText().toString();
-        String scpass_value =lt_bp_car_scpassengers_upto1500.getText().toString();
-        String pp_lpgtype_value=lt_bp_car_upto1500_lpgtype_value.getText().toString();
-        RadioButton rb2 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_fixed);
-        RadioButton rb1 = (RadioButton) findViewById(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt);
+        val idv_value = lt_bp_car_upto1500_idv_value!!.text.toString()
+        val nd_value = lt_bp_car_upto1500_nd_value!!.text.toString()
+        val ndd_value = lt_bp_car_upto1500_ndd_value!!.text.toString()
+        val uwd_value = lt_bp_car_upto1500_uwd_value!!.text.toString()
+        val scpass_value = lt_bp_car_scpassengers_upto1500!!.text.toString()
+        val pp_lpgtype_value = lt_bp_car_upto1500_lpgtype_value!!.text.toString()
+        val rb2 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_fixed) as RadioButton
+        val rb1 = findViewById<View>(R.id.lt_bp_car_upto1500_lpgtype_value_inbuilt) as RadioButton
+        if (idv_value == "" || uwd_value == "" || scpass_value == "" || ndd_value == "") {
+            val bar =
+                Snackbar.make(v, "Please enter all fields to Calculate!", Snackbar.LENGTH_LONG)
+            val mainTextView =
+                bar.view.findViewById<View>(com.google.android.material.R.id.snackbar_text) as TextView
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) mainTextView.textAlignment =
+                View.TEXT_ALIGNMENT_CENTER else mainTextView.gravity = Gravity.CENTER_HORIZONTAL
+            mainTextView.gravity = Gravity.CENTER_HORIZONTAL
 
-
-        if(idv_value.equals("")|| uwd_value.equals("")||scpass_value.equals("")||ndd_value.equals("")){
-
-            Snackbar bar = Snackbar.make(v, "Please enter all fields to Calculate!", Snackbar.LENGTH_LONG);
-            TextView mainTextView = (TextView) (bar.getView()).findViewById(com.google.android.material.R.id.snackbar_text);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-                mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            else
-                mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-            mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-
- /*                   .setAction("Dismiss", new View.OnClickListener() {
+            /*                   .setAction("Dismiss", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             // Handle user action
                         }
-                    });*/
-            bar.setActionTextColor(getResources().getColor(R.color.colorSnackBarDismiss));
-            TextView tv = (TextView) bar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
-            tv.setTextColor(getResources().getColor(R.color.colorSnackBar));
-            View view = bar.getView();
-            view.setBackgroundColor(getResources().getColor(R.color.colorSnackBarBg));
-            bar.show();
-
-        }
-        else {
-            if (lt_bp_car_upto1500_lpgtype_value.getVisibility() == View.VISIBLE && pp_lpgtype_value.equals("")) {
-                Toast.makeText(getApplicationContext(),"Please enter all fields",Toast.LENGTH_SHORT).show();
+                    });*/bar.setActionTextColor(getResources().getColor(R.color.colorSnackBarDismiss))
+            val tv =
+                bar.view.findViewById<View>(com.google.android.material.R.id.snackbar_text) as TextView
+            tv.setTextColor(getResources().getColor(R.color.colorSnackBar))
+            val view = bar.view
+            view.setBackgroundColor(getResources().getColor(R.color.colorSnackBarBg))
+            bar.show()
+        } else {
+            if (lt_bp_car_upto1500_lpgtype_value!!.visibility == View.VISIBLE && pp_lpgtype_value == "") {
+                Toast.makeText(
+                    getApplicationContext(),
+                    "Please enter all fields",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
-                Intent intent = new Intent(getApplicationContext(), longterm_ppdisplay_car_upto1500.class);
+                val intent =
+                    Intent(getApplicationContext(), longterm_ppdisplay_car_upto1500::class.java)
                 //Create a bundle object
-                Bundle b = new Bundle();
-                b.putString("lt_bp_car_upto1500_idv_value", lt_bp_car_upto1500_idv_value.getText().toString());
-                b.putString("lt_bp_car_upto1500_date_value", lt_bp_car_upto1500_date_value.getText().toString());
-                b.putString("lt_bp_car_upto1500_cc_value", lt_bp_car_upto1500_cc_value.getText().toString());
-                b.putString("lt_bp_car_upto1500_nd_value", lt_bp_car_upto1500_nd_value.getText().toString());
-                b.putString("lt_bp_car_upto1500_ndd_value", lt_bp_car_upto1500_ndd_value.getText().toString());
-                b.putString("lt_bp_car_upto1500_uwd_value", lt_bp_car_upto1500_uwd_value.getText().toString());
-                b.putString("lt_bp_car_scpassengers_upto1500", lt_bp_car_scpassengers_upto1500.getText().toString());
-                b.putString("lt_bp_car_upto1500_paod_value", lt_bp_car_upto1500_paod_value.getText().toString());
-
-                b.putString("lt_bp_car_scpassengers_lpgtype_value", lt_bp_car_upto1500_lpgtype_value.getText().toString());
-
-                b.putString("lt_bp_car_spinner_value", selected);
-
-                int id1 = lt_bp_car_upto1500_zone.getCheckedRadioButtonId();
-                RadioButton radioButton1 = (RadioButton) findViewById(id1);
-                b.putString("lt_bp_car_upto1500_zone", radioButton1.getText().toString());
-
-
-                int id2 = lt_bp_car_upto1500_lpg.getCheckedRadioButtonId();
-                radioButton2 = (RadioButton) findViewById(id2);
-                b.putString("lt_bp_car_upto1500_lpg", radioButton2.getText().toString());
-
-
-                int id3 = lt_bp_car_upto1500_lpgtype.getCheckedRadioButtonId();
-                radioButton3 = (RadioButton) findViewById(id3);
-                b.putString("lt_bp_car_upto1500_lpgtype", radioButton3.getText().toString());
-
-
-                int id6 = lt_bp_car_upto1500_nd.getCheckedRadioButtonId();
-                RadioButton radioButton6 = (RadioButton) findViewById(id6);
-                b.putString("lt_bp_car_upto1500_nd", radioButton6.getText().toString());
-
-                int id4 = lt_bp_car_upto1500_antitheft.getCheckedRadioButtonId();
-                RadioButton radioButton4 = (RadioButton) findViewById(id4);
-                b.putString("lt_bp_car_upto1500_antitheft", radioButton4.getText().toString());
-
-
-                int id5 = lt_bp_car_patooccupants_upto1500.getCheckedRadioButtonId();
-                RadioButton radioButton5 = (RadioButton) findViewById(id5);
-                b.putString("lt_bp_car_patooccupants_upto1500", radioButton5.getText().toString());
-
-                b.putInt("year", mYear);
-                b.putInt("month", mMonth);
-                b.putInt("day", mDay);
+                val b = Bundle()
+                b.putString(
+                    "lt_bp_car_upto1500_idv_value",
+                    lt_bp_car_upto1500_idv_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_upto1500_date_value",
+                    lt_bp_car_upto1500_date_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_upto1500_cc_value",
+                    lt_bp_car_upto1500_cc_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_upto1500_nd_value",
+                    lt_bp_car_upto1500_nd_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_upto1500_ndd_value",
+                    lt_bp_car_upto1500_ndd_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_upto1500_uwd_value",
+                    lt_bp_car_upto1500_uwd_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_scpassengers_upto1500",
+                    lt_bp_car_scpassengers_upto1500!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_upto1500_paod_value",
+                    lt_bp_car_upto1500_paod_value!!.text.toString()
+                )
+                b.putString(
+                    "lt_bp_car_scpassengers_lpgtype_value",
+                    lt_bp_car_upto1500_lpgtype_value!!.text.toString()
+                )
+                b.putString("lt_bp_car_spinner_value", selected)
+                val id1 = lt_bp_car_upto1500_zone!!.checkedRadioButtonId
+                val radioButton1 = findViewById<View>(id1) as RadioButton
+                b.putString("lt_bp_car_upto1500_zone", radioButton1.text.toString())
+                val id2 = lt_bp_car_upto1500_lpg!!.checkedRadioButtonId
+                radioButton2 = findViewById<View>(id2) as RadioButton?
+                b.putString("lt_bp_car_upto1500_lpg", radioButton2!!.text.toString())
+                val id3 = lt_bp_car_upto1500_lpgtype!!.checkedRadioButtonId
+                radioButton3 = findViewById<View>(id3) as RadioButton?
+                b.putString("lt_bp_car_upto1500_lpgtype", radioButton3!!.text.toString())
+                val id6 = lt_bp_car_upto1500_nd!!.checkedRadioButtonId
+                val radioButton6 = findViewById<View>(id6) as RadioButton
+                b.putString("lt_bp_car_upto1500_nd", radioButton6.text.toString())
+                val id4 = lt_bp_car_upto1500_antitheft!!.checkedRadioButtonId
+                val radioButton4 = findViewById<View>(id4) as RadioButton
+                b.putString("lt_bp_car_upto1500_antitheft", radioButton4.text.toString())
+                val id5 = lt_bp_car_patooccupants_upto1500!!.checkedRadioButtonId
+                val radioButton5 = findViewById<View>(id5) as RadioButton
+                b.putString("lt_bp_car_patooccupants_upto1500", radioButton5.text.toString())
+                b.putInt("year", mYear)
+                b.putInt("month", mMonth)
+                b.putInt("day", mDay)
                 //Add the bundle to the intent.
-                intent.putExtras(b);
+                intent.putExtras(b)
 
                 //start the DisplayActivity
-                startActivity(intent);
+                startActivity(intent)
             }
         }
-
     }
 
     //stop-passthevalues
-
-
     //Date-start
-    private void updateDisplay() {
-        mDateDisplay.setText(
-                new StringBuilder()
-                        // Month is 0 based so add 1
-                        .append(mDay).append("-")
-                        .append(mMonth + 1).append("-")
-                        .append(mYear).append(" "));
-        EditText ed1=(EditText)findViewById(R.id.lt_bp_car_upto1500_nd_value);
-        long diffInDays=CalculateDifferenceInDays();
-        double nd_value1=0.00;
+    private fun updateDisplay() {
+        mDateDisplay!!.text = StringBuilder() // Month is 0 based so add 1
+            .append(mDay).append("-")
+            .append(mMonth + 1).append("-")
+            .append(mYear).append(" ")
+        val ed1 = findViewById<View>(R.id.lt_bp_car_upto1500_nd_value) as EditText
+        val diffInDays = CalculateDifferenceInDays()
+        var nd_value1 = 0.00
         if (diffInDays < 365) {
-            nd_value1=1.32;
-        }else if (diffInDays >= 365 && diffInDays < 730 ) {
-            nd_value1 = 1.32;
-        }else if (diffInDays >= 730 && diffInDays < 1825 ) {
-            nd_value1 = 1.32;
-        }else if (diffInDays >= 1825 && diffInDays < 3650 ) {
-            nd_value1 = 1.32;
-        }else if (diffInDays >= 3650 ){
-            nd_value1 = 0;
+            nd_value1 = 1.32
+        } else if (diffInDays >= 365 && diffInDays < 730) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 730 && diffInDays < 1825) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 1825 && diffInDays < 3650) {
+            nd_value1 = 1.32
+        } else if (diffInDays >= 3650) {
+            nd_value1 = 0.0
         }
-        float  nd_value1_int =(float) nd_value1;
-        ed1.setText(String.valueOf(nd_value1_int));
-        ed1.setEnabled(false);
+        val nd_value1_int = nd_value1.toFloat()
+        ed1.setText(nd_value1_int.toString())
+        ed1.isEnabled = false
     }
-    private DatePickerDialog.OnDateSetListener mDateSetListener =
-            new DatePickerDialog.OnDateSetListener() {
 
-                public void onDateSet(DatePicker view, int year,
-                                      int monthOfYear, int dayOfMonth) {
-                    mYear = year;
-                    mMonth = monthOfYear;
-                    mDay = dayOfMonth;
-                    updateDisplay();
-                }
-            };
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_DIALOG_ID:
-                return new DatePickerDialog(this,
-                        mDateSetListener,
-                        mYear, mMonth, mDay);
-        }
-        return null;
+    private val mDateSetListener = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        mYear = year
+        mMonth = monthOfYear
+        mDay = dayOfMonth
+        updateDisplay()
     }
+
+    protected override fun onCreateDialog(id: Int): Dialog {
+        when (id) {
+            longterm_pp_car_upto1500.Companion.DATE_DIALOG_ID -> return DatePickerDialog(
+                this,
+                mDateSetListener,
+                mYear, mMonth, mDay
+            )
+        }
+        return null!!
+    }
+
     //Date-end
-
-
     //BackButton in title bar
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
-
-
-
 
     //Spinner
-    String[] ncb={"0","20","25","35","45","50"};
+    var ncb = arrayOf("0", "20", "25", "35", "45", "50")
 
     //Performing action onItemSelected and onNothing selected
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View arg1, int position,long id) {
-        Toast.makeText(getApplicationContext(), ncb[position], Toast.LENGTH_LONG);
-        selected=parent.getItemAtPosition(position).toString();
+    override fun onItemSelected(parent: AdapterView<*>, arg1: View, position: Int, id: Long) {
+        Toast.makeText(getApplicationContext(), ncb[position], Toast.LENGTH_LONG)
+        selected = parent.getItemAtPosition(position).toString()
     }
 
-
-
     //To check NDD value
-    TextWatcher textWatcher =new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if(ndd.getText().length()>0) {
-                int num = Integer.parseInt(ndd.getText().toString());
-                if (num>=0 && num<=50)
-                {
+    var textWatcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (ndd!!.text.length > 0) {
+                val num = ndd!!.text.toString().toInt()
+                num1 = if (num >= 0 && num <= 50) {
                     //save the number
-                    num1=num;
-                }
-                else{
-
-                    Toast.makeText(longterm_pp_car_upto1500.this,"NDD range should be of 1-50",Toast.LENGTH_SHORT).show();
-                    ndd.setText("");
-                    num1=-1;
+                    num
+                } else {
+                    Toast.makeText(
+                        this@longterm_pp_car_upto1500,
+                        "NDD range should be of 1-50",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    ndd!!.setText("")
+                    -1
                 }
             }
         }
 
-        @Override
-        public void afterTextChanged(Editable s) {
+        override fun afterTextChanged(s: Editable?) {}
+    }
 
-        }
-    };
-
-
-
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
+    override fun onNothingSelected(arg0: AdapterView<*>?) {
 // TODO Auto-generated method stub
-
     }
 
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkingStatus.notification(isConnected,this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkingStatus!!.notification(isConnected, this)
     }
 
+    companion object {
+        private const val TAG = "lt_bp_car_upto1500"
+        const val DATE_DIALOG_ID = 0
+    }
 }

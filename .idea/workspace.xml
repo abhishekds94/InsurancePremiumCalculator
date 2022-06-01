@@ -18,201 +18,418 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="update agri rates">
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="convert everything to kotlin">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_4_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_4_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_startup_startup_runtime_1_1_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_bus.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_car.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_commercialvehicleprivate.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_commercialvehiclepublic.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_motorcycle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_passauto.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_taxi_upto6.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CheckingStatus.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ConnectivityReceiver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/InputFilterMinMax.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/MyApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/NotificationActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/WebViewActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/coming_soon1.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/coming_soon2.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/coming_soon3.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/home_activity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_CC_car.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_CC_motorcycle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_vehicle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_agri.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_above60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_upto18.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_upto36.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_upto60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_goodsauto_private.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_goodsauto_public.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_passauto_upto6.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_taxi_upto6_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_taxi_upto6_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_taxi_upto6_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_agri.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_above60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_upto18.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_upto36.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_upto60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_private.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_passauto_upto6.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_taxi_upto6_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_taxi_upto6_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_taxi_upto6_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_agri.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_above60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_upto18.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_upto36.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_upto60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_goodsauto_private.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_goodsauto_public.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_passauto_upto6.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_taxi_upto6_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_taxi_upto6_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_taxi_upto6_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_agri.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_above60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto18.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto36.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_passauto_upto6.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_taxi_upto6_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_taxi_upto6_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_taxi_upto6_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/privacy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_agri.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_above60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_upto18.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_upto36.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_upto60.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_car_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_car_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_car_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_40000above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto12000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto20000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto40000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto7500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_goodsauto_private.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_goodsauto_public.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_350above.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_upto150.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_upto350.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_upto75.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_passauto_upto6.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_taxi_upto6_above1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_taxi_upto6_upto1000.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_taxi_upto6_upto1500.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/terms.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_bus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_bus.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_car.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_car.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehicleprivate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehicleprivate.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehiclepublic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_commercialvehiclepublic.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_motorcycle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_motorcycle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_passauto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_passauto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cc_taxi_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cc_taxi_upto6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/coming_soon3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bp_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_car.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_car.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_motorcycle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_cc_motorcycle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pp_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_above350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_above350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_pt_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_vehicle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_vehicle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_agri.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_above60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto36.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_bus_upto60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_private_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_com_goods_public_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_goodsauto_public.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_calc_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_passauto_upto6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lp_taxi_upto6_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_agri.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_above60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto36.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_bus_upto60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_private_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_com_goods_public_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_goodsauto_public.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_passauto_upto6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lpdisplay_taxi_upto6_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_agri.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_above60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto36.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_bus_upto60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_private_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_com_goods_public_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_goodsauto_public.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_passauto_upto6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pp_taxi_upto6_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_agri.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_above60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto36.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_bus_upto60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_private_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_com_goods_public_7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_goodsauto_public.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_passauto_upto6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/ppdisplay_taxi_upto6_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/privacy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/privacy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_agri.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_agri.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_above60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_above60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto36.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto36.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_bus_upto60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_car_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_40000above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_40000above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehicleprivate_upto7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_above40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_above40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto12000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto12000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto20000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto20000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto40000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto40000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto7500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_commercialvehiclepublic_upto7500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_public.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_goodsauto_public.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_350above.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_350above.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_passauto_upto6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_above1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_above1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1000.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1000.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1500.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pt_taxi_upto6_upto1500.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/terms.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/terms.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_4_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_3_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_4_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_startup_startup_runtime_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.unitTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_bus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_commercialvehicleprivate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_commercialvehiclepublic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_motorcycle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_passauto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CC_taxi_upto6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/CheckingStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ConnectivityReceiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/InputFilterMinMax.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/MyApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/NotificationActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/WebViewActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/coming_soon1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/coming_soon2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/coming_soon3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/home_activity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_CC_car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_CC_motorcycle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_agri.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_above60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_upto18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_upto36.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_bus_upto60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_private_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_com_goods_public_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_goodsauto_private.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_goodsauto_public.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_passauto_upto6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_taxi_upto6_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_taxi_upto6_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_taxi_upto6_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_agri.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_above60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_upto18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_upto36.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_bus_upto60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_private_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_com_goods_public_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_private.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_goodsauto_public.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_passauto_upto6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_taxi_upto6_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_taxi_upto6_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lpdisplay_taxi_upto6_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_agri.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_above60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_upto18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_upto36.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_bus_upto60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_private_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_com_goods_public_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_goodsauto_private.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_goodsauto_public.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_passauto_upto6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_taxi_upto6_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_taxi_upto6_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_taxi_upto6_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_agri.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_above60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto36.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_bus_upto60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_private_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_com_goods_public_7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_private.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_goodsauto_public.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_passauto_upto6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_taxi_upto6_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_taxi_upto6_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/ppdisplay_taxi_upto6_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/privacy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_agri.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_above60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_upto18.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_upto36.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_bus_upto60.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_car_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_car_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_car_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehicleprivate_upto7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_40000above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto12000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto20000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto40000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_commercialvehiclepublic_upto7500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_goodsauto_private.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_goodsauto_public.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_350above.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_upto150.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_upto350.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_motorcycle_upto75.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_passauto_upto6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_taxi_upto6_above1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_taxi_upto6_upto1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pt_taxi_upto6_upto1500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/terms.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,6 +463,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -490,7 +708,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653950541325</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="remove banner ad layouts">
+      <created>1653951744458</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653951744458</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -503,6 +728,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="API 29 update and Admob SDK turn-off" />
@@ -516,6 +742,8 @@
     <MESSAGE value="update private goods auto rates" />
     <MESSAGE value="update public goods vehicle rates" />
     <MESSAGE value="update agri rates" />
-    <option name="LAST_COMMIT_MESSAGE" value="update agri rates" />
+    <MESSAGE value="remove banner ad layouts" />
+    <MESSAGE value="convert everything to kotlin" />
+    <option name="LAST_COMMIT_MESSAGE" value="convert everything to kotlin" />
   </component>
 </project>

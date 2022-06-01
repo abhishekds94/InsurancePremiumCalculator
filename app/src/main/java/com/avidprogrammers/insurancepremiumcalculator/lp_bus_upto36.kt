@@ -1,197 +1,161 @@
-package com.avidprogrammers.insurancepremiumcalculator;
+package com.avidprogrammers.insurancepremiumcalculator
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import com.google.android.gms.ads.AdView
 
 /**
  * Created by Abhishek on 26-Mar-17.
  */
-
-public class lp_bus_upto36 extends AppCompatActivity implements View.OnClickListener, ConnectivityReceiver.ConnectivityReceiverListener {
-
-    ConnectivityReceiver conn;
-
-    CheckingStatus checkingStatus;
-
-    private AdView mAdView;
-    Button lp_bus_upto36btn;
-
-    EditText lp_bus_upto36_act;
-    EditText lp_bus_upto36_paod;
-    EditText lp_bus_upto36_tax;
-
-    EditText lp_bus_scpassengers_upto36;
-    EditText lp_bus_driver_upto36;
-    EditText lp_bus_conductor_upto36;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(conn);
+class lp_bus_upto36 : AppCompatActivity(), View.OnClickListener, ConnectivityReceiverListener {
+    var conn: ConnectivityReceiver? = null
+    var checkingStatus: CheckingStatus? = null
+    private val mAdView: AdView? = null
+    var lp_bus_upto36btn: Button? = null
+    var lp_bus_upto36_act: EditText? = null
+    var lp_bus_upto36_paod: EditText? = null
+    var lp_bus_upto36_tax: EditText? = null
+    var lp_bus_scpassengers_upto36: EditText? = null
+    var lp_bus_driver_upto36: EditText? = null
+    var lp_bus_conductor_upto36: EditText? = null
+    protected override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(conn)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        checkingStatus=new CheckingStatus();
-        conn=new ConnectivityReceiver();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(conn, intentFilter);
-        checkfunction(lp_bus_upto36.this);
-
-        setContentView(R.layout.lp_bus_upto36);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Passenger Vehicle Liability Policy");
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        checkingStatus = CheckingStatus()
+        conn = ConnectivityReceiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(conn, intentFilter)
+        checkfunction(this@lp_bus_upto36)
+        setContentView(R.layout.lp_bus_upto36)
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()!!.setTitle("Passenger Vehicle Liability Policy")
 
 /*        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
-        findViewById(R.id.lp_bus_upto36btn).setOnClickListener(listener_lp_bus_upto36btn);
+        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lp_bus_upto36btn).setOnClickListener(
+            listener_lp_bus_upto36btn
+        )
 
 
         //start-passthevalues
         //Get the ids of view objects
-        findAllViewsId();
-
-        lp_bus_upto36btn.setOnClickListener(this);
+        findAllViewsId()
+        lp_bus_upto36btn!!.setOnClickListener(this)
         //stop-passthevalues
-
-        RadioButton pa_no=(RadioButton) findViewById(R.id.lp_bus_upto36_paod_value_no);
-        pa_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText ed1= (EditText) findViewById(R.id.lp_bus_upto36_paod);
-                ed1.setText("0");
-                ed1.setEnabled(false);
-            }
-        });
-        RadioButton pa_yes=(RadioButton) findViewById(R.id.lp_bus_upto36_paod_value_yes);
-        pa_yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText ed1= (EditText) findViewById(R.id.lp_bus_upto36_paod);
-                ed1.setText("320");
-                ed1.setEnabled(true);
-            }
-        });
-
+        val pa_no = findViewById<View>(R.id.lp_bus_upto36_paod_value_no) as RadioButton
+        pa_no.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lp_bus_upto36_paod) as EditText
+            ed1.setText("0")
+            ed1.isEnabled = false
+        }
+        val pa_yes = findViewById<View>(R.id.lp_bus_upto36_paod_value_yes) as RadioButton
+        pa_yes.setOnClickListener {
+            val ed1 = findViewById<View>(R.id.lp_bus_upto36_paod) as EditText
+            ed1.setText("320")
+            ed1.isEnabled = true
+        }
     }
 
-    View.OnClickListener listener_lp_bus_upto36btn = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(lp_bus_upto36.this, lpdisplay_bus_upto36.class);
-            startActivity(intent);
-        }
-
-    };
-
-
+    var listener_lp_bus_upto36btn = View.OnClickListener {
+        val intent = Intent(this@lp_bus_upto36, lpdisplay_bus_upto36::class.java)
+        startActivity(intent)
+    }
 
     //start-passthevalues
-    private void findAllViewsId() {
-        lp_bus_upto36btn = (Button) findViewById(R.id.lp_bus_upto36btn);
-
-        lp_bus_upto36_act = (EditText) findViewById(R.id.lp_bus_upto36_act);
-        lp_bus_upto36_paod = (EditText) findViewById(R.id.lp_bus_upto36_paod);
-        lp_bus_upto36_tax = (EditText) findViewById(R.id.lp_bus_upto36_tax);
-
-        lp_bus_scpassengers_upto36 = (EditText) findViewById(R.id.lp_bus_scpassengers_upto36);
-        lp_bus_driver_upto36 = (EditText) findViewById(R.id.lp_bus_driver_upto36);
-        lp_bus_conductor_upto36 = (EditText) findViewById(R.id.lp_bus_conductor_upto36);
-
-
+    private fun findAllViewsId() {
+        lp_bus_upto36btn = findViewById<View>(R.id.lp_bus_upto36btn) as Button?
+        lp_bus_upto36_act = findViewById<View>(R.id.lp_bus_upto36_act) as EditText?
+        lp_bus_upto36_paod = findViewById<View>(R.id.lp_bus_upto36_paod) as EditText?
+        lp_bus_upto36_tax = findViewById<View>(R.id.lp_bus_upto36_tax) as EditText?
+        lp_bus_scpassengers_upto36 =
+            findViewById<View>(R.id.lp_bus_scpassengers_upto36) as EditText?
+        lp_bus_driver_upto36 = findViewById<View>(R.id.lp_bus_driver_upto36) as EditText?
+        lp_bus_conductor_upto36 = findViewById<View>(R.id.lp_bus_conductor_upto36) as EditText?
     }
 
     //calculation
-    public int value(){
-        double Totalcost=14343;
-        if(!lp_bus_scpassengers_upto36.getText().toString().trim().isEmpty()){
-            if(!lp_bus_driver_upto36.getText().toString().trim().isEmpty()){
-                if(!lp_bus_conductor_upto36.getText().toString().trim().isEmpty()){
-                    Totalcost=14343+(Integer.parseInt(lp_bus_upto36_paod.getText().toString()))+
-                            (Integer.parseInt(lp_bus_conductor_upto36.getText().toString())*50)
-                            +(Integer.parseInt(lp_bus_scpassengers_upto36.getText().toString())*877)
-                            +(Integer.parseInt(lp_bus_driver_upto36.getText().toString())*50);
-                    Totalcost=Totalcost*(1.18);
-                    return  (int)Math.ceil(Totalcost);
-                }else{
-                    lp_bus_conductor_upto36.setError("Empty field");
+    fun value(): Int {
+        var Totalcost = 14343.0
+        if (!lp_bus_scpassengers_upto36!!.text.toString().trim { it <= ' ' }.isEmpty()) {
+            if (!lp_bus_driver_upto36!!.text.toString().trim { it <= ' ' }.isEmpty()) {
+                if (!lp_bus_conductor_upto36!!.text.toString().trim { it <= ' ' }.isEmpty()) {
+                    Totalcost = (14343 + lp_bus_upto36_paod!!.text.toString().toInt() +
+                            lp_bus_conductor_upto36!!.text.toString().toInt() * 50
+                            + lp_bus_scpassengers_upto36!!.text.toString().toInt() * 877
+                            + lp_bus_driver_upto36!!.text.toString().toInt() * 50).toDouble()
+                    Totalcost = Totalcost * 1.18
+                    return Math.ceil(Totalcost).toInt()
+                } else {
+                    lp_bus_conductor_upto36!!.error = "Empty field"
                 }
-            }else{
-                lp_bus_driver_upto36.setError("Empty Field");
+            } else {
+                lp_bus_driver_upto36!!.error = "Empty Field"
             }
-        }else{
-            lp_bus_scpassengers_upto36.setError("Empty Field");
+        } else {
+            lp_bus_scpassengers_upto36!!.error = "Empty Field"
         }
-        return 0;
+        return 0
     }
 
-    @Override
-    public void onClick(View v) {
-        int x=value();
-        if(x!=0) {
-            Intent intent = new Intent(getApplicationContext(), lpdisplay_bus_upto36.class);
+    override fun onClick(v: View) {
+        val x = value()
+        if (x != 0) {
+            val intent = Intent(getApplicationContext(), lpdisplay_bus_upto36::class.java)
             //Create a bundle object
-            Bundle b = new Bundle();
+            val b = Bundle()
 
             //Inserts a String value into the mapping of this Bundle
-            b.putString("lp_bus_upto36_act", lp_bus_upto36_act.getText().toString());
-            b.putString("lp_bus_upto36_paod", lp_bus_upto36_paod.getText().toString());
-            b.putString("lp_bus_upto36_tax", lp_bus_upto36_tax.getText().toString());
-
-            b.putString("lp_bus_scpassengers_upto36", lp_bus_scpassengers_upto36.getText().toString());
-            b.putString("lp_bus_driver_upto36", lp_bus_driver_upto36.getText().toString());
-            b.putString("lp_bus_conductor_upto36", lp_bus_conductor_upto36.getText().toString());
+            b.putString("lp_bus_upto36_act", lp_bus_upto36_act!!.text.toString())
+            b.putString("lp_bus_upto36_paod", lp_bus_upto36_paod!!.text.toString())
+            b.putString("lp_bus_upto36_tax", lp_bus_upto36_tax!!.text.toString())
+            b.putString("lp_bus_scpassengers_upto36", lp_bus_scpassengers_upto36!!.text.toString())
+            b.putString("lp_bus_driver_upto36", lp_bus_driver_upto36!!.text.toString())
+            b.putString("lp_bus_conductor_upto36", lp_bus_conductor_upto36!!.text.toString())
             //final value with tax
-            b.putString("lp_bus_total_premium",String.valueOf(x));
+            b.putString("lp_bus_total_premium", x.toString())
             //Add the bundle to the intent.
-            intent.putExtras(b);
+            intent.putExtras(b)
 
             //start the DisplayActivity
-            startActivity(intent);
-        }else{
-            Toast.makeText(lp_bus_upto36.this, "Empty fields", Toast.LENGTH_SHORT).show();
+            startActivity(intent)
+        } else {
+            Toast.makeText(this@lp_bus_upto36, "Empty fields", Toast.LENGTH_SHORT).show()
         }
     }
+
     //stop-passthevalues
-
-    public void checkfunction(Context context){
-        boolean isConnected=ConnectivityReceiver.isConnected();
-        checkingStatus.notification(isConnected,context);
-
+    fun checkfunction(context: Context?) {
+        val isConnected: Boolean = ConnectivityReceiver.Companion.isConnected
+        checkingStatus!!.notification(isConnected, context!!)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.getInstance().setConnectivityListener(this);
+    protected override fun onResume() {
+        super.onResume()
+        MyApplication.Companion.instance!!.setConnectivityListener(this)
     }
 
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        checkfunction(this);
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        checkfunction(this)
     }
 
     //BackButton in title bar
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
