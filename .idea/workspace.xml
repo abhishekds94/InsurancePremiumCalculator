@@ -18,21 +18,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="convert everything to kotlin">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_350above.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_350above.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto150.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto350.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto350.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bpdisplay_motorcycle_upto75.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_350above.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_350above.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto150.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto350.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto350.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_ppdisplay_motorcycle_upto75.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto350.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto350.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_bpdisplay_motorcycle_upto75.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto150.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto150.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto75.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/longterm_ppdisplay_motorcycle_upto75.xml" afterDir="false" />
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="update long term motorcycle rates">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_CC_car.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_CC_car.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto75.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pt_motorcycle_upto75.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_vehicle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_vehicle.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto150.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_upto150.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654043839098</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="update long term motorcycle rates">
+      <created>1654048828085</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654048828085</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -354,6 +354,7 @@
     <MESSAGE value="update agri rates" />
     <MESSAGE value="remove banner ad layouts" />
     <MESSAGE value="convert everything to kotlin" />
-    <option name="LAST_COMMIT_MESSAGE" value="convert everything to kotlin" />
+    <MESSAGE value="update long term motorcycle rates" />
+    <option name="LAST_COMMIT_MESSAGE" value="update long term motorcycle rates" />
   </component>
 </project>

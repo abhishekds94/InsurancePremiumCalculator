@@ -1,4 +1,4 @@
-package com.avidprogrammers.insurancepremiumcalculatorimport
+package com.avidprogrammers.insurancepremiumcalculator
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener

@@ -12,7 +12,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
-import com.avidprogrammers.insurancepremiumcalculatorimport.lp_motorcycle_upto150
 import com.google.android.gms.ads.AdView
 
 class lp_motorcycle_calc_upto150 : AppCompatActivity(), View.OnClickListener,

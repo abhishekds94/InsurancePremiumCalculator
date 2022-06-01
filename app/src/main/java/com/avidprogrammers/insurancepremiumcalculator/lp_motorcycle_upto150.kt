@@ -1,4 +1,4 @@
-package com.avidprogrammers.insurancepremiumcalculatorimport
+package com.avidprogrammers.insurancepremiumcalculator
 
 import android.content.Context
 import android.content.Intent

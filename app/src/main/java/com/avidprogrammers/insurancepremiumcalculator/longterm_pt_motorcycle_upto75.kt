@@ -1,19 +1,15 @@
 package com.avidprogrammers.insurancepremiumcalculator
 
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
-import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver
-import com.avidprogrammers.insurancepremiumcalculator.CheckingStatus
+import com.avidprogrammers.insurancepremiumcalculator.longterm_pp_motorcycle_upto75
 import com.google.android.gms.ads.AdView
-import android.os.Bundle
-import android.content.IntentFilter
-import android.net.ConnectivityManager
-import com.avidprogrammers.insurancepremiumcalculator.R
-import android.content.Intent
-import com.avidprogrammers.insurancepremiumcalculator.MyApplication
-import com.avidprogrammers.insurancepremiumcalculatorimport.longterm_pp_motorcycle_upto75
 
 /**
  * Created by Abhishek on 26-Mar-17.
