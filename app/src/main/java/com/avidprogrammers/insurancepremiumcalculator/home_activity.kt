@@ -203,13 +203,13 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
 
     fun showInterstitial_btn_terms() {
         val inte = Intent(this@home_activity, terms::class.java)
-        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/terms.html")
+        inte.putExtra("url", "https://abhishekds.site/personal/avid-terms.html")
         startActivity(inte)
     }
 
     fun showInterstitial_btn_privacy() {
         val inte = Intent(this@home_activity, privacy::class.java)
-        inte.putExtra("url", "http://anugrahacomputers.co.in/avidprogrammers/privacy.html")
+        inte.putExtra("url", "https://abhishekds.site/personal/avid-privacy.html")
         startActivity(inte)
     }
 
