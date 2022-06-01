@@ -433,7 +433,7 @@ class longterm_bpdisplay_car_above1500 : AppCompatActivity(), ConnectivityReceiv
             0
         }
         lt_bpdisplay_car_above1500_lpgkit_value!!.text = lt_bp_lgkit_assumevalue.toString()
-        val total = 24305.00 + java.lang.Double.valueOf(
+        val total = 24596.00 + java.lang.Double.valueOf(
             lt_bp_car_above1500_paod_value!!.getText().toString()
         ) + 150.00 + lt_bp_lgkit_assumevalue + lt_bp_pa_pass_value.toDouble()
         lt_bp_total_premium = total

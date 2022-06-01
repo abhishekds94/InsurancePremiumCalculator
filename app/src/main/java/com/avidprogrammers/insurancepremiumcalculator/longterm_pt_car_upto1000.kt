@@ -32,7 +32,7 @@ class longterm_pt_car_upto1000 : AppCompatActivity(), ConnectivityReceiverListen
         registerReceiver(conn, intentFilter)
         checkfunction(this@longterm_pt_car_upto1000)
         setContentView(R.layout.longterm_pt_car_upto1000)
-        Toast.makeText(this, "longterm_pt_car_upto1000", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "longterm_pt_car_upto1000", Toast.LENGTH_SHORT).show()
         supportActionBar!!.title = "Car Policy Type"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 

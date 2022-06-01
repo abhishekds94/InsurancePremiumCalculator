@@ -340,16 +340,16 @@ class ppdisplay_motorcycle_350above : AppCompatActivity(), ConnectivityReceiverL
             b.getString("pp_motorcycle_350above_spinner_value")
         //pp_motorcycle_upto150_ncb_value.setText(String.valueOf(rounded_ncb_value_int));
         pp_motorcycle_350above_od_value!!.text = rounded_ncb_value_int.toString()
-        Toast.makeText(getApplicationContext(), " DOP:  $rounded_dop_value", Toast.LENGTH_SHORT)
-            .show()
-        Toast.makeText(getApplicationContext(), " UW:  $rounded_uw_value", Toast.LENGTH_SHORT)
-            .show()
-        Toast.makeText(getApplicationContext(), " ND:  $rounded_value_nd", Toast.LENGTH_SHORT)
-            .show()
-        Toast.makeText(getApplicationContext(), " NDD:  $rounded_ndd_value", Toast.LENGTH_SHORT)
-            .show()
-        Toast.makeText(getApplicationContext(), " NCB:  $rounded_ncb_value", Toast.LENGTH_SHORT)
-            .show()
+//        Toast.makeText(getApplicationContext(), " DOP:  $rounded_dop_value", Toast.LENGTH_SHORT)
+//            .show()
+//        Toast.makeText(getApplicationContext(), " UW:  $rounded_uw_value", Toast.LENGTH_SHORT)
+//            .show()
+//        Toast.makeText(getApplicationContext(), " ND:  $rounded_value_nd", Toast.LENGTH_SHORT)
+//            .show()
+//        Toast.makeText(getApplicationContext(), " NDD:  $rounded_ndd_value", Toast.LENGTH_SHORT)
+//            .show()
+//        Toast.makeText(getApplicationContext(), " NCB:  $rounded_ncb_value", Toast.LENGTH_SHORT)
+//            .show()
 
 
         //Calculation of B part
