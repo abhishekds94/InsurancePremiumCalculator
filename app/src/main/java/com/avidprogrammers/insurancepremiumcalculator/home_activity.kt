@@ -19,6 +19,7 @@ import com.avidprogrammers.database.DatabaseHelper
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.avidprogrammers.utils.BadgeDrawable
 import com.google.android.gms.ads.AdView
+import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -102,6 +103,7 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
         if (intent.getBooleanExtra("EXIT", false)) {
             finishAndRemoveTask()
         }
+        FirebaseApp.initializeApp(this)
         checkingStatus = CheckingStatus()
         conn = ConnectivityReceiver()
         val intentFilter = IntentFilter()
