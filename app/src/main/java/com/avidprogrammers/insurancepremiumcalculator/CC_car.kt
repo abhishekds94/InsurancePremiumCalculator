@@ -7,8 +7,8 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.insurancepremiumcalculator.*
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
-import com.avidprogrammers.insurancepremiumcalculatorimport.*
 import com.google.android.gms.ads.AdView
 import com.google.firebase.analytics.FirebaseAnalytics
 

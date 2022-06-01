@@ -1,24 +1,26 @@
 package com.avidprogrammers.insurancepremiumcalculator
 
-import androidx.appcompat.app.AppCompatActivity
-import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
-import com.google.android.gms.ads.AdView
-import android.os.Bundle
-import android.content.IntentFilter
-import android.net.ConnectivityManager
-import com.google.firebase.analytics.FirebaseAnalytics
-import android.content.Intent
-import android.content.SharedPreferences
-import com.avidprogrammers.database.DatabaseHelper
-import android.graphics.drawable.LayerDrawable
-import com.google.firebase.messaging.FirebaseMessaging
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
+import android.graphics.drawable.LayerDrawable
+import android.net.ConnectivityManager
+import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.widget.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.avidprogrammers.app.Config
-import com.avidprogrammers.insurancepremiumcalculatorimport.*
+import com.avidprogrammers.database.DatabaseHelper
+import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.avidprogrammers.utils.BadgeDrawable
+import com.google.android.gms.ads.AdView
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.messaging.FirebaseMessaging
 
 class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     //Create New Variable of type InterstitialAd

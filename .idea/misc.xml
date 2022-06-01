@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.3466666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/activity_notification.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lp_bus_above60.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lp_car_above1500.xml" value="0.35208333333333336" />

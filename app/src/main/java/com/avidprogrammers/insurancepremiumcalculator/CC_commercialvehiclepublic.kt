@@ -1,16 +1,15 @@
 package com.avidprogrammers.insurancepremiumcalculator
 
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
-import android.os.Bundle
-import android.content.IntentFilter
-import android.net.ConnectivityManager
 import com.google.firebase.analytics.FirebaseAnalytics
-import android.content.Intent
-import android.content.Context
-import com.avidprogrammers.insurancepremiumcalculatorimport.*
-import android.view.View
 
 /**
  * Created by Abhishek on 26-Mar-17.

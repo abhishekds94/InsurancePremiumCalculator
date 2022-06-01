@@ -56,7 +56,7 @@ class lp_motorcycle_upto150 : AppCompatActivity(), ConnectivityReceiverListener 
         setContentView(R.layout.lp_motorcycle_upto150)
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()!!.setTitle("Motorcycle Liability Policy")
-        mAdView = findViewById<View>(R.id.adView) as AdView?
+//        mAdView = findViewById<View>(R.id.adView) as AdView?
         val adRequest = AdRequest.Builder().build()
         /*mAdView.loadAd(adRequest);*/lppaupto150_paod_value =
             findViewById<TextView>(R.id.lppaupto150)
