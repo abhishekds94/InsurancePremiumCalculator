@@ -4,9 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/7fb4c4941f4d6abd3529debe9016c446/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/7fb4c4941f4d6abd3529debe9016c446/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/circlebutton-1.1.aar/7fb4c4941f4d6abd3529debe9016c446/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f50cdc4bca82ea05d994c046da7a3c7/transformed/circlebutton-1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f50cdc4bca82ea05d994c046da7a3c7/transformed/circlebutton-1.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9f50cdc4bca82ea05d994c046da7a3c7/transformed/circlebutton-1.1/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c0bc25ff5715552bbe5cead77590c77a/transformed/circlebutton-1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c0bc25ff5715552bbe5cead77590c77a/transformed/circlebutton-1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c0bc25ff5715552bbe5cead77590c77a/transformed/circlebutton-1.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.markushi/circlebutton/1.1/8db7ec3193bb29297bfdea07f9099ac58133c8a3/circlebutton-1.1-javadoc.jar!/" />

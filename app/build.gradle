@@ -13,8 +13,8 @@ android {
         applicationId "com.avidprogrammers.insurancepremiumcalculator"
         minSdk 28
         targetSdk 32
-        versionCode 20
-        versionName "2.0"
+        versionCode 21
+        versionName "2.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
 
@@ -52,7 +52,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:21.0.0'
     implementation 'com.google.firebase:firebase-database:20.0.5'
     implementation 'com.google.firebase:firebase-messaging:23.0.5'
-    implementation 'com.google.android.gms:play-services-ads:21.0.0'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.android.material:material:1.6.0'
@@ -61,5 +60,8 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.android.gms:play-services-ads:21.0.0'
     implementation 'com.google.firebase:firebase-auth:21.0.5'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'

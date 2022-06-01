@@ -62,7 +62,9 @@ class MainActivity : Activity(), ConnectivityReceiverListener {
                 val i = Intent(this@MainActivity, home_activity::class.java)
                 startActivity(i)
                 finish()
-                appOpenManager!!.showAdIfAvailable()
+                if (appOpenManager!=null){
+                    appOpenManager!!.showAdIfAvailable()
+                }
             } else {
                 Toast.makeText(this@MainActivity, "Check Internet Connection !", Toast.LENGTH_SHORT)
                     .show()
