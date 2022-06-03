@@ -11,7 +11,9 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import com.avidprogrammers.ads.AppOpenManager
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
+import timber.log.Timber
 
 
 /**
@@ -21,6 +23,7 @@ class MainActivity : Activity(), ConnectivityReceiverListener {
     var conn: ConnectivityReceiver? = null
     var checkingStatus: CheckingStatus? = null
     var appOpenManager: AppOpenManager? = null
+    var interstitialAdManager: InterstitialAdManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

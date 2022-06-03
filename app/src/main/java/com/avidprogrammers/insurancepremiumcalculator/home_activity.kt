@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.AppOpenManager
 import com.avidprogrammers.app.Config
 import com.avidprogrammers.database.DatabaseHelper
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
@@ -43,6 +44,9 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     private val mAdView: AdView? = null
     var pref: SharedPreferences? = null
     var databaseHelper: DatabaseHelper? = null
+
+    var appOpenManager: AppOpenManager? = null
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.home_menu, menu)
@@ -103,6 +107,11 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
         if (intent.getBooleanExtra("EXIT", false)) {
             finishAndRemoveTask()
         }
+
+        appOpenManager = AppOpenManager(applicationContext as MyApplication)
+        appOpenManager!!.fetchAd()
+
+
         FirebaseApp.initializeApp(this)
         checkingStatus = CheckingStatus()
         conn = ConnectivityReceiver()
