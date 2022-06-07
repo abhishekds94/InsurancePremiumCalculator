@@ -17,6 +17,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 import java.util.concurrent.TimeUnit
@@ -54,13 +55,21 @@ class pp_bus_above60 : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     var pp_bus_above60_idv_value_b: RadioButton? = null
     var pp_bus_above60_idv_value_a: RadioButton? = null
     var nild_value = 0.0
+    var ndd: EditText? = null
+    var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
     }
 
-    var ndd: EditText? = null
-    var num1 = 0
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
+    }
+
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkingStatus = CheckingStatus()
@@ -73,9 +82,8 @@ class pp_bus_above60 : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         getSupportActionBar()!!.setTitle("Passenger Vehicle Package Policy")
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val pa_no: RadioButton = findViewById<RadioButton>(R.id.pp_bus_above60_paod_value_no)
         pa_no.setOnClickListener {
             pp_bus_above60_paod_value!!.setText("0")

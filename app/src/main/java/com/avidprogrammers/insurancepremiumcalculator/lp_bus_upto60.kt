@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 
@@ -28,9 +29,17 @@ class lp_bus_upto60 : AppCompatActivity(), View.OnClickListener, ConnectivityRec
     var lp_bus_scpassengers_upto60: EditText? = null
     var lp_bus_driver_upto60: EditText? = null
     var lp_bus_conductor_upto60: EditText? = null
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +54,9 @@ class lp_bus_upto60 : AppCompatActivity(), View.OnClickListener, ConnectivityRec
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()!!.setTitle("Passenger Vehicle Liability Policy")
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lp_bus_upto60btn).setOnClickListener(
+        interstitialAdManager = InterstitialAdManager(this)
+
+        findViewById<View>(R.id.lp_bus_upto60btn).setOnClickListener(
             listener_lp_bus_upto60btn
         )
 
