@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 
@@ -24,9 +25,17 @@ class lp_motorcycle_calc_upto75 : AppCompatActivity(), View.OnClickListener,
     var lp_motocyc_calc_upto75_paod: EditText? = null
     var lp_motocyc_calc_upto75_tax: EditText? = null
     var lp_motocyc_calc_upto75_lpgkit: RadioGroup? = null
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,10 +50,9 @@ class lp_motorcycle_calc_upto75 : AppCompatActivity(), View.OnClickListener,
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()!!.setTitle("Motorcycle Upto 75CC Liability Policy")
 
+        interstitialAdManager = InterstitialAdManager(this)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lp_motocyc_calc_upto75_btn).setOnClickListener(
+        findViewById<View>(R.id.lp_motocyc_calc_upto75_btn).setOnClickListener(
             listener_lp_motocyc_calc_upto75_btn
         )
 
