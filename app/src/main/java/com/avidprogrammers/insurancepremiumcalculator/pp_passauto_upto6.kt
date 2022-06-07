@@ -17,6 +17,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 
@@ -54,9 +55,17 @@ class pp_passauto_upto6 : AppCompatActivity(), AdapterView.OnItemSelectedListene
     @RequiresApi(api = Build.VERSION_CODES.N)
     var ndd: EditText? = null
     var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,9 +80,8 @@ class pp_passauto_upto6 : AppCompatActivity(), AdapterView.OnItemSelectedListene
         getSupportActionBar()!!.setTitle("Passenger Auto Package Policy")
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val pa_no: RadioButton = findViewById<RadioButton>(R.id.pp_passauto_upto6_paod_value_no)
         pa_no.setOnClickListener {
             pp_passauto_upto6_paod_value!!.setText("0")
