@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 
@@ -27,9 +28,17 @@ class lp_car_above1500 : AppCompatActivity(), View.OnClickListener, Connectivity
     var lp_car_above1500_ll: EditText? = null
     var lp_car_above1500_tax: EditText? = null
     var lp_car_above1500_lpgkit: RadioGroup? = null
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +53,9 @@ class lp_car_above1500 : AppCompatActivity(), View.OnClickListener, Connectivity
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()!!.setTitle("Car Liability Policy")
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lp_car_above1500btn).setOnClickListener(
+        interstitialAdManager = InterstitialAdManager(this)
+
+        findViewById<View>(R.id.lp_car_above1500btn).setOnClickListener(
             listener_lp_car_above1500btn
         )
 

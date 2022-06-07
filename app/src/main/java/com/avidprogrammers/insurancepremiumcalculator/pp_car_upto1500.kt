@@ -16,6 +16,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 import com.google.android.material.snackbar.Snackbar
@@ -56,9 +57,17 @@ class pp_car_upto1500 : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     var radioButton3: RadioButton? = null
     var ndd: EditText? = null
     var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,9 +82,8 @@ class pp_car_upto1500 : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         getSupportActionBar()!!.setTitle("Car Package Policy")
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val pa_no: RadioButton = findViewById<RadioButton>(R.id.pp_car_upto1500_paod_value_no)
         pa_no.setOnClickListener {
             pp_car_upto1500_paod_value!!.setText("0")
