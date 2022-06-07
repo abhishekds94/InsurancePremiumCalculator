@@ -15,6 +15,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 import com.google.android.material.snackbar.Snackbar
@@ -47,9 +48,17 @@ class longterm_bp_motorcycle_upto350 : AppCompatActivity(), AdapterView.OnItemSe
     var ndRadioGroup: RadioGroup? = null
     var ndd: EditText? = null
     var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,9 +74,8 @@ class longterm_bp_motorcycle_upto350 : AppCompatActivity(), AdapterView.OnItemSe
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         Toast.makeText(this, "longterm_bp_motorcycle_upto350", Toast.LENGTH_SHORT).show()
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val nd_no = findViewById<View>(R.id.lt_bp_motorcycle_upto350_nd_no) as RadioButton
         nd_no.setOnClickListener {
             val ed1 = findViewById<View>(R.id.lt_bp_motorcycle_upto350_nd_value) as EditText

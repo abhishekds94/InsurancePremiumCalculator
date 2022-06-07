@@ -19,25 +19,33 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="update permissions">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_ktx_21_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_ktx_20_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_crashlytics_18_2_11_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_crashlytics_ktx_18_2_11_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_5_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_20_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/InterstitialAdManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/InterstitialAdManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_350above.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_350above.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto150.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto350.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto350.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/lp_motorcycle_calc_upto75.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_350above.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_350above.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto150.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto350.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto350.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/pp_motorcycle_upto75.kt" afterDir="false" />
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="add interstitials for motorcycle">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/jarAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_above1500.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_above1500.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1000.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1000.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1500.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_car_upto1500.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_350above.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_350above.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto150.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto350.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto350.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_bp_motorcycle_upto75.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_above1500.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_above1500.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1000.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1000.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1500.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_car_upto1500.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_350above.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_350above.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto150.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto150.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto350.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto350.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto75.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/longterm_pp_motorcycle_upto75.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -427,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654228076804</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="add interstitials for motorcycle">
+      <created>1654561593049</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1654561593049</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,6 +483,7 @@
     <MESSAGE value="crash fix" />
     <MESSAGE value="git ignore" />
     <MESSAGE value="update permissions" />
-    <option name="LAST_COMMIT_MESSAGE" value="update permissions" />
+    <MESSAGE value="add interstitials for motorcycle" />
+    <option name="LAST_COMMIT_MESSAGE" value="add interstitials for motorcycle" />
   </component>
 </project>

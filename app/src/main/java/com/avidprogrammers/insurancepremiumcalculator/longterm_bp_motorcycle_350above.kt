@@ -18,6 +18,7 @@ import android.app.Dialog
 import android.content.Context
 import android.view.View
 import android.widget.*
+import com.avidprogrammers.ads.InterstitialAdManager
 import java.lang.StringBuilder
 import java.util.*
 
@@ -48,9 +49,17 @@ class longterm_bp_motorcycle_350above : AppCompatActivity(), AdapterView.OnItemS
     var ndRadioGroup: RadioGroup? = null
     var ndd: EditText? = null
     var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,9 +74,8 @@ class longterm_bp_motorcycle_350above : AppCompatActivity(), AdapterView.OnItemS
         supportActionBar!!.title = "Motorcycle Package Policy"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val nd_no = findViewById<View>(R.id.lt_bp_motorcycle_350above_nd_no) as RadioButton
         nd_no.setOnClickListener {
             val ed1 = findViewById<View>(R.id.lt_bp_motorcycle_350above_nd_value) as EditText

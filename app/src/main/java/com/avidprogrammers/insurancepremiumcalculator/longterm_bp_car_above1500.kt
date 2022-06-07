@@ -19,6 +19,7 @@ import android.app.Dialog
 import android.content.Context
 import android.view.View
 import android.widget.*
+import com.avidprogrammers.ads.InterstitialAdManager
 import java.lang.StringBuilder
 import java.util.*
 
@@ -57,9 +58,17 @@ class longterm_bp_car_above1500 : AppCompatActivity(), AdapterView.OnItemSelecte
     var radioButton3: RadioButton? = null
     var ndd: EditText? = null
     var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,9 +83,8 @@ class longterm_bp_car_above1500 : AppCompatActivity(), AdapterView.OnItemSelecte
         supportActionBar!!.title = "Car Package Policy"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val pa_no = findViewById<RadioButton>(R.id.lt_bp_car_above1500_paod_value_no)
         pa_no.setOnClickListener {
             lt_bp_car_above1500_paod_value!!.setText("0")
