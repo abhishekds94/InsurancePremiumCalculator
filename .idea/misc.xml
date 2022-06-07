@@ -24,11 +24,13 @@
         <entry key="app/src/main/res/layout/lp_motorcycle_upto350.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lp_motorcycle_upto75.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lp_passauto_upto6.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/lp_taxi_upto6_above1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lp_taxi_upto6_upto1000.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lp_taxi_upto6_upto1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/lpdisplay_passauto_upto6.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/notification_recyclerview_layout.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/pp_agri.xml" value="0.35208333333333336" />
+        <entry key="app/src/main/res/layout/pp_taxi_upto6_above1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/pp_taxi_upto6_upto1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/ppdisplay_car_above1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/ppdisplay_car_upto1000.xml" value="0.35208333333333336" />

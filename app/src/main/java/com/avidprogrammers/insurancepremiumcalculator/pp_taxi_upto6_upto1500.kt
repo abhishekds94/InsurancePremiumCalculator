@@ -18,6 +18,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 import com.google.android.material.snackbar.Snackbar
@@ -70,9 +71,17 @@ class pp_taxi_upto6_upto1500 : AppCompatActivity(), AdapterView.OnItemSelectedLi
     @RequiresApi(api = Build.VERSION_CODES.N)
     var ndd: EditText? = null
     var num1 = 0
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,10 +96,7 @@ class pp_taxi_upto6_upto1500 : AppCompatActivity(), AdapterView.OnItemSelectedLi
         getSupportActionBar()!!.setTitle("Taxi Package Policy")
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-
+        interstitialAdManager = InterstitialAdManager(this)
 
         //Date-start
         mDateDisplay = findViewById<View>(R.id.pp_taxi_upto6_upto1500_date_value) as TextView?
