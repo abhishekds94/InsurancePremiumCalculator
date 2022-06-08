@@ -13,6 +13,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 
@@ -45,9 +46,17 @@ class pp_agri : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.On
     var pp_agri_nd: RadioGroup? = null
     var pp_agri_trailer: RadioGroup? = null
     var selected: String? = null
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,9 +71,8 @@ class pp_agri : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.On
         getSupportActionBar()!!.setTitle("Tractors & Trailers Package Policy")
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        interstitialAdManager = InterstitialAdManager(this)
+
         val pa_no: RadioButton = findViewById<RadioButton>(R.id.pp_agri_paod_value_no)
         pa_no.setOnClickListener {
             pp_agri_paod_value!!.setText("0")
