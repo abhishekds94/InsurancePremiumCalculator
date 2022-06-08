@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.google.android.gms.ads.AdView
 
@@ -27,9 +28,17 @@ class lp_goodsauto_private : AppCompatActivity(), View.OnClickListener,
     var lp_goodsauto_private_nfpp: EditText? = null
     var lp_goodsauto_private_coolie: EditText? = null
     var lp_goodsauto_private_lpgkit: RadioGroup? = null
+
+    private var interstitialAdManager: InterstitialAdManager? = null
+
     protected override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        interstitialAdManager!!.showInterstitial(this)
     }
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +53,10 @@ class lp_goodsauto_private : AppCompatActivity(), View.OnClickListener,
         getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()!!.setTitle("Goods Auto Private Liability Policy")
 
-/*        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/findViewById<View>(R.id.lp_goodsauto_privatebtn).setOnClickListener(
+
+        interstitialAdManager = InterstitialAdManager(this)
+
+        findViewById<View>(R.id.lp_goodsauto_privatebtn).setOnClickListener(
             listener_lp_goodsauto_privatebtn
         )
 
