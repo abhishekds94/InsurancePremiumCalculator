@@ -19,8 +19,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="add interstitials for goods vehicles">
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="inc ver">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +66,6 @@
     <option name="KEY_STORE_PATH" value="$USER_HOME$/Desktop/insapp_keystorefile.jks" />
     <option name="KEY_ALIAS" value="key_ver1" />
     <option name="REMEMBER_PASSWORDS" value="true" />
-    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -474,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654660532535</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="inc ver">
+      <created>1654660912354</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1654660912354</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update private goods auto rates" />
     <MESSAGE value="update public goods vehicle rates" />
     <MESSAGE value="update agri rates" />
     <MESSAGE value="remove banner ad layouts" />
@@ -516,6 +522,7 @@
     <MESSAGE value="add interstitials for goods auto" />
     <MESSAGE value="add interstitials for agri" />
     <MESSAGE value="add interstitials for goods vehicles" />
-    <option name="LAST_COMMIT_MESSAGE" value="add interstitials for goods vehicles" />
+    <MESSAGE value="inc ver" />
+    <option name="LAST_COMMIT_MESSAGE" value="inc ver" />
   </component>
 </project>
