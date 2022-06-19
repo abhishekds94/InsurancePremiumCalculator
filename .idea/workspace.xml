@@ -6,8 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="admobTest123" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="AutoImportSettings">
@@ -19,10 +18,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="inc ver">
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="remove legacy storage permission and inc ver">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/AdmobNativeManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/native_ad.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/AppOpenAdManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/AppOpenAdManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/InterstitialAdManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/ads/InterstitialAdManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/home_activity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/home_activity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +63,7 @@
       <list>
         <option value="resourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -481,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654660912354</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="remove legacy storage permission and inc ver">
+      <created>1654918136325</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1654918136325</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +512,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update public goods vehicle rates" />
     <MESSAGE value="update agri rates" />
     <MESSAGE value="remove banner ad layouts" />
     <MESSAGE value="convert everything to kotlin" />
@@ -523,6 +536,7 @@
     <MESSAGE value="add interstitials for agri" />
     <MESSAGE value="add interstitials for goods vehicles" />
     <MESSAGE value="inc ver" />
-    <option name="LAST_COMMIT_MESSAGE" value="inc ver" />
+    <MESSAGE value="remove legacy storage permission and inc ver" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove legacy storage permission and inc ver" />
   </component>
 </project>

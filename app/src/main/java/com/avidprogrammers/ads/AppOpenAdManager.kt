@@ -32,11 +32,12 @@ class AppOpenManager(myApplication: MyApplication) : LifecycleObserver,
                     override fun onAdDismissedFullScreenContent() {
                         appOpenAd = null
                         isShowingAd = false
-                        fetchAd()
+//                        fetchAd()
                     }
 
                     override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                         Log.d(LOG_TAG, "Can not show ad."+adError)
+                        fetchAd()
                     }
                     override fun onAdShowedFullScreenContent() {
                         isShowingAd = true

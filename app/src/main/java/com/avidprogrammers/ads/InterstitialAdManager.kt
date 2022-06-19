@@ -43,7 +43,7 @@ class InterstitialAdManager(
                     mInterstitialAd = null
                     super.onAdDismissedFullScreenContent()
                     Log.d("admobTest123", "Ad was dismissed.")
-                    loadAd()
+//                    loadAd()
                 }
 
                 override fun onAdFailedToShowFullScreenContent(p0: AdError) {
