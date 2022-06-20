@@ -271,17 +271,38 @@ class pp_taxi_upto6_upto1500 : AppCompatActivity(), AdapterView.OnItemSelectedLi
     }
 
     fun nd() {
-        val x = score_time_update(mDay, mMonth + 1, mYear)
+        val x = score_time_update_nd(mDay, mMonth + 1, mYear)
         if (pp_radiobutton_yes_nd!!.isChecked) {
-            if (x < 1) {
-                pp_taxi_upto6_upto1500_nd_value!!.setText("15", TextView.BufferType.EDITABLE)
-            } else if (x >= 1 && x < 5) {
-                pp_taxi_upto6_upto1500_nd_value!!.setText("25", TextView.BufferType.EDITABLE)
+            if (x < 182) {
+                pp_taxi_upto6_upto1500_nd_value!!.setText("10", TextView.BufferType.EDITABLE)
+            } else if (x in 182..729) {
+                pp_taxi_upto6_upto1500_nd_value!!.setText("20", TextView.BufferType.EDITABLE)
+            } else if (x in 730..1824) {
+                pp_taxi_upto6_upto1500_nd_value!!.setText("30", TextView.BufferType.EDITABLE)
+            } else if (x >= 1825) {
+                pp_taxi_upto6_upto1500_nd_value!!.setText("0", TextView.BufferType.EDITABLE)
             }
         } else {
             pp_taxi_upto6_upto1500_nd_value!!.setText("0", TextView.BufferType.EDITABLE)
         }
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    fun score_time_update_nd(x: Int, y: Int, z: Int): Long {
+        //Toast.makeText(pp_bus_upto1000.this, ""+String.valueOf(z)+"-"+String.valueOf(x)+"-"+String.valueOf(y), Toast.LENGTH_SHORT).show();
+        val date1 = Calendar.getInstance()
+        val date2 = Calendar.getInstance()
+        val c = Calendar.getInstance()
+        date1.clear()
+        date1[z, y] = x
+        date2.clear()
+        date2[c[Calendar.YEAR], c[Calendar.MONTH] + 1] = c[Calendar.DAY_OF_MONTH]
+        val msdiff = -date2.timeInMillis + date1.timeInMillis
+        var daydiff = TimeUnit.MILLISECONDS.toDays(msdiff)
+        daydiff = Math.abs(daydiff)
+        return daydiff
+    }
+
 
     fun zone_checking(x: String, l: Long): Double {
         if (l < 5) {
