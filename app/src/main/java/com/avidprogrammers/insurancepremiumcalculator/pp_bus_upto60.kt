@@ -8,12 +8,14 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.icu.util.Calendar
 import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.avidprogrammers.ads.InterstitialAdManager
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
@@ -283,18 +285,36 @@ class pp_bus_upto60 : AppCompatActivity(), AdapterView.OnItemSelectedListener, V
 
     //stop-passthevalues
     fun nd() {
-        val x = score_time_update(mDay, mMonth + 1, mYear)
+        val x = score_time_update_nd(mDay, mMonth + 1, mYear)
         if (pp_bus_upto60_nd_value_yes!!.isChecked) {
-            if (x < 1) {
-                pp_bus_upto60_nd_value!!.setText("15", TextView.BufferType.EDITABLE)
-            } else if (x >= 1 && x < 5) {
-                pp_bus_upto60_nd_value!!.setText("25", TextView.BufferType.EDITABLE)
-            } else if (x >= 5) {
+            if (x < 182) {
+                pp_bus_upto60_nd_value!!.setText("10", TextView.BufferType.EDITABLE)
+            } else if (x in 182..729) {
+                pp_bus_upto60_nd_value!!.setText("20", TextView.BufferType.EDITABLE)
+            } else if (x in 730..1824) {
+                pp_bus_upto60_nd_value!!.setText("30", TextView.BufferType.EDITABLE)
+            } else if (x >= 1825) {
                 pp_bus_upto60_nd_value!!.setText("0", TextView.BufferType.EDITABLE)
             }
         } else {
             pp_bus_upto60_nd_value!!.setText("0", TextView.BufferType.EDITABLE)
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    fun score_time_update_nd(x: Int, y: Int, z: Int): Long {
+        //Toast.makeText(pp_bus_upto1000.this, ""+String.valueOf(z)+"-"+String.valueOf(x)+"-"+String.valueOf(y), Toast.LENGTH_SHORT).show();
+        val date1 = Calendar.getInstance()
+        val date2 = Calendar.getInstance()
+        val c = Calendar.getInstance()
+        date1.clear()
+        date1[z, y] = x
+        date2.clear()
+        date2[c[Calendar.YEAR], c[Calendar.MONTH] + 1] = c[Calendar.DAY_OF_MONTH]
+        val msdiff = -date2.timeInMillis + date1.timeInMillis
+        var daydiff = TimeUnit.MILLISECONDS.toDays(msdiff)
+        daydiff = Math.abs(daydiff)
+        return daydiff
     }
 
     fun zone_checking(): Double {
