@@ -86,16 +86,6 @@ class pp_motorcycle_upto75 : AppCompatActivity(), AdapterView.OnItemSelectedList
             val ed1 = findViewById<View>(R.id.pp_motorcycle_upto75_nd_value) as EditText
             val diffInDays = CalculateDifferenceInDays()
             var nd_value1 = 0.00
-            //                if (diffInDays < 365) {
-//                    nd_value1=15;
-//                }else if (diffInDays >= 365 ) {
-//                    if(diffInDays < 1825){
-//                        nd_value1 = 25;
-//                    }
-//                    else if (diffInDays >= 1825 ){
-//                        nd_value1 = 0;
-//                    }
-//                }
             if (diffInDays < 182) {
                 nd_value1 = 10.0
             } else if (diffInDays in 182..729) {

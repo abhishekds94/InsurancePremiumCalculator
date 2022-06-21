@@ -313,13 +313,13 @@ class longterm_bpdisplay_motorcycle_upto150 : AppCompatActivity(), ConnectivityR
         if (radio_button_value == "NO") {
             rounded_value_nd = rounded_dop_value
         } else {
-            if (diffInDays < 365) {
-                nd_value1 = 15.0
-            } else if (diffInDays >= 365 && diffInDays < 730) {
-                nd_value1 = 25.0
-            } else if (diffInDays >= 730 && diffInDays < 1825) {
-                nd_value1 = 35.0
-            } else if (diffInDays >= 1825 && diffInDays < 3650) {
+            if (diffInDays < 182) {
+                nd_value1 = 10.0
+            } else if (diffInDays in 182..729) {
+                nd_value1 = 20.0
+            } else if (diffInDays in 730..1824) {
+                nd_value1 = 30.0
+            } else if (diffInDays in 1825..3649) {
                 nd_value1 = 40.0
             } else if (diffInDays >= 3650) {
                 nd_value1 = 0.0
