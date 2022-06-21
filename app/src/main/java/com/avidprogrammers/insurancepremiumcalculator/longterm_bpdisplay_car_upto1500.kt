@@ -335,8 +335,6 @@ class longterm_bpdisplay_car_upto1500 : AppCompatActivity(), ConnectivityReceive
                 nd_value1 = 20.0
             } else if (diffInDays in 730..1824) {
                 nd_value1 = 30.0
-            } else if (diffInDays in 1825..3649) {
-                nd_value1 = 40.0
             } else if (diffInDays >= 3650) {
                 nd_value1 = 0.0
             }

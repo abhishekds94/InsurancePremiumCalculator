@@ -265,7 +265,7 @@
                     android:focusable="false"
                     android:hint="@string/value"
                     android:nextFocusDown="@+id/pp_agri_uwd_value"
-                    android:text="@string/public_nd_val"
+                    android:text="10"
                     android:textAlignment="center"
                     android:textColor="#000" />
 

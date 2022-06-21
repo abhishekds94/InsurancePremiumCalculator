@@ -208,14 +208,12 @@ class pp_car_above1500 : AppCompatActivity(), AdapterView.OnItemSelectedListener
         val ed1 = findViewById<View>(R.id.pp_car_above1500_nd_value) as EditText
         val diffInDays = CalculateDifferenceInDays()
         var nd_value1 = 0.00
-        if (diffInDays < 365) {
-            nd_value1 = 15.0
-        } else if (diffInDays >= 365 && diffInDays < 730) {
-            nd_value1 = 25.0
-        } else if (diffInDays >= 730 && diffInDays < 1825) {
-            nd_value1 = 35.0
-        } else if (diffInDays >= 1825 && diffInDays < 3650) {
-            nd_value1 = 40.0
+        if (diffInDays < 182) {
+            nd_value1 = 10.0
+        } else if (diffInDays in 182..729) {
+            nd_value1 = 20.0
+        } else if (diffInDays in 730..1824) {
+            nd_value1 = 30.0
         } else if (diffInDays >= 3650) {
             nd_value1 = 0.0
         }
@@ -429,14 +427,12 @@ class pp_car_above1500 : AppCompatActivity(), AdapterView.OnItemSelectedListener
         val ed1 = findViewById<View>(R.id.pp_car_above1500_nd_value) as EditText
         val diffInDays = CalculateDifferenceInDays()
         var nd_value1 = 0.00
-        if (diffInDays < 365) {
-            nd_value1 = 15.0
-        } else if (diffInDays >= 365 && diffInDays < 730) {
-            nd_value1 = 25.0
-        } else if (diffInDays >= 730 && diffInDays < 1825) {
-            nd_value1 = 35.0
-        } else if (diffInDays >= 1825 && diffInDays < 3650) {
-            nd_value1 = 40.0
+        if (diffInDays < 182) {
+            nd_value1 = 10.0
+        } else if (diffInDays in 182..729) {
+            nd_value1 = 20.0
+        } else if (diffInDays in 730..1824) {
+            nd_value1 = 30.0
         } else if (diffInDays >= 3650) {
             nd_value1 = 0.0
         }

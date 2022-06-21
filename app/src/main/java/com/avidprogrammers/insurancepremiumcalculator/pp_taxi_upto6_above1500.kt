@@ -394,14 +394,16 @@ class pp_taxi_upto6_above1500 : AppCompatActivity(), AdapterView.OnItemSelectedL
     }
 
     fun nd_radiobutton(l: Double) {
-        val x = score_time_update(mDay, mMonth + 1, mYear)
+        val x = score_time_update_nd(mDay, mMonth + 1, mYear)
         Totalcost = l
         if (pp_radiobutton_yes_nd!!.isChecked) {
-            if (x <= 1) {
-                Totalcost += Totalcost * 0.15
-            } else if (x > 1 && x < 5) {
-                Totalcost += Totalcost * 0.25
-            } else if (x >= 5) {
+            if (x <= 182) {
+                Totalcost += Totalcost * 0.10
+            } else if (x in 182..729) {
+                Totalcost += Totalcost * 0.20
+            } else if (x in 730..1824) {
+                Totalcost += Totalcost * 0.30
+            } else if (x >= 1825) {
                 Totalcost += 0.0
             }
         } else {

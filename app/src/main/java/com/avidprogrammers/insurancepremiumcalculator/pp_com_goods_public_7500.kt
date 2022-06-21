@@ -193,14 +193,14 @@ class pp_com_goods_public_7500 : AppCompatActivity(), AdapterView.OnItemSelected
         val ed1 = findViewById<View>(R.id.pp_com_goods_public_7500_nd_value) as EditText
         val diffInDays = CalculateDifferenceInDays()
         var nd_value1 = 0.00
-        if (diffInDays < 365) {
-            nd_value1 = 15.0
-        } else if (diffInDays >= 365) {
-            if (diffInDays < 1825) {
-                nd_value1 = 25.0
-            } else if (diffInDays >= 1825) {
-                nd_value1 = 0.0
-            }
+        if (diffInDays < 182) {
+            nd_value1 = 10.0
+        } else if (diffInDays in 182..729) {
+            nd_value1 = 20.0
+        } else if (diffInDays in 730..1824) {
+            nd_value1 = 30.0
+        } else if (diffInDays >= 3650) {
+            nd_value1 = 0.0
         }
         val nd_value1_int = nd_value1.toInt()
         ed1.setText(nd_value1_int.toString())

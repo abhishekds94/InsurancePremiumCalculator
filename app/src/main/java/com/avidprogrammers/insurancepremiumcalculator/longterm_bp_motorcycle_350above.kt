@@ -93,8 +93,6 @@ class longterm_bp_motorcycle_350above : AppCompatActivity(), AdapterView.OnItemS
                 nd_value1 = 20.0
             } else if (diffInDays in 730..1824) {
                 nd_value1 = 30.0
-            } else if (diffInDays in 1825..3649) {
-                nd_value1 = 40.0
             } else if (diffInDays >= 3650) {
                 nd_value1 = 0.0
             }
@@ -268,14 +266,12 @@ class longterm_bp_motorcycle_350above : AppCompatActivity(), AdapterView.OnItemS
         val ed1 = findViewById<View>(R.id.lt_bp_motorcycle_350above_nd_value) as EditText
         val diffInDays = CalculateDifferenceInDays()
         var nd_value1 = 0.00
-        if (diffInDays < 365) {
-            nd_value1 = 15.0
-        } else if (diffInDays >= 365 && diffInDays < 730) {
-            nd_value1 = 25.0
-        } else if (diffInDays >= 730 && diffInDays < 1825) {
-            nd_value1 = 35.0
-        } else if (diffInDays >= 1825 && diffInDays < 3650) {
-            nd_value1 = 40.0
+        if (diffInDays < 182) {
+            nd_value1 = 10.0
+        } else if (diffInDays in 182..729) {
+            nd_value1 = 20.0
+        } else if (diffInDays in 730..1824) {
+            nd_value1 = 30.0
         } else if (diffInDays >= 3650) {
             nd_value1 = 0.0
         }

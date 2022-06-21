@@ -32,6 +32,12 @@
         <entry key="app/src/main/res/layout/notification_recyclerview_layout.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/pp_agri.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/pp_bus_above60.xml" value="0.3466666666666667" />
+        <entry key="app/src/main/res/layout/pp_bus_upto36.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/pp_com_goods_private_20000.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/pp_com_goods_private_40000.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/pp_goodsauto_private.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/pp_goodsauto_public.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/pp_passauto_upto6.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/layout/pp_taxi_upto6_above1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/pp_taxi_upto6_upto1500.xml" value="0.35208333333333336" />
         <entry key="app/src/main/res/layout/ppdisplay_car_above1500.xml" value="0.35208333333333336" />
