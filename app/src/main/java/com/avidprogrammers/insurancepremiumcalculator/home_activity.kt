@@ -6,20 +6,25 @@ import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.graphics.drawable.LayerDrawable
 import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.avidprogrammers.ads.AppOpenManager
 import com.avidprogrammers.app.Config
 import com.avidprogrammers.database.DatabaseHelper
 import com.avidprogrammers.insurancepremiumcalculator.ConnectivityReceiver.ConnectivityReceiverListener
 import com.avidprogrammers.utils.BadgeDrawable
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.nativead.MediaView
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.nativead.NativeAdView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.messaging.FirebaseMessaging
@@ -44,8 +49,10 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     private val mAdView: AdView? = null
     var pref: SharedPreferences? = null
     var databaseHelper: DatabaseHelper? = null
+    var ad_frame: FrameLayout? = null
 
     var appOpenManager: AppOpenManager? = null
+    var currentNativeAd: NativeAd? = null
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -111,6 +118,15 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
         appOpenManager = AppOpenManager(applicationContext as MyApplication)
         appOpenManager!!.fetchAd()
 
+        MobileAds.initialize(this) {}
+        MobileAds.setRequestConfiguration(
+            RequestConfiguration.Builder()
+                .setTestDeviceIds(listOf("8262955E063A02F1F3DA99CEE3B1AB67"))
+                .build()
+        )
+
+        refreshAd()
+
 
         FirebaseApp.initializeApp(this)
         checkingStatus = CheckingStatus()
@@ -129,6 +145,7 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
             editor.putString("regId", refreshedToken.toString())
             editor.commit()
         }
+        ad_frame = findViewById<FrameLayout>(R.id.ad_frame)
         btn_longterm = findViewById<View>(R.id.longterm) as Button
         btn_longterm!!.setOnClickListener { showInterstitial_btn_longterm() }
         btn_motorcycle = findViewById<View>(R.id.motorcycle) as Button
@@ -242,6 +259,122 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
+        currentNativeAd?.destroy()
+    }
+
+    private fun refreshAd() {
+
+        val builder = AdLoader.Builder(this, BuildConfig.ADMOB_NATIVE)
+
+        builder.forNativeAd { nativeAd ->
+            var activityDestroyed = false
+
+            if (activityDestroyed ) {
+                nativeAd.destroy()
+                return@forNativeAd
+            }
+            currentNativeAd?.destroy()
+            currentNativeAd = nativeAd
+            val adView = layoutInflater
+                .inflate(R.layout.native_ad, null) as NativeAdView
+            populateNativeAdView(nativeAd, adView)
+
+            ad_frame!!.visibility = View.VISIBLE
+
+            ad_frame!!.removeAllViews()
+            ad_frame!!.addView(adView)
+        }
+
+        val videoOptions = VideoOptions.Builder()
+            .build()
+
+        val adOptions = NativeAdOptions.Builder()
+            .setVideoOptions(videoOptions)
+            .build()
+
+        builder.withNativeAdOptions(adOptions)
+
+        val adLoader = builder.withAdListener(object : AdListener() {
+            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                Log.d("admobAd123","ad failed" +loadAdError?.message)
+                Log.d("admobAd123"," native ad failed" +loadAdError)
+                val error =
+                    """
+           domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
+          """"
+            }
+
+            override fun onAdImpression() {
+                super.onAdImpression()
+            }
+
+        }).build()
+
+        adLoader.loadAd(AdRequest.Builder().build())
+
+    }
+
+    private fun populateNativeAdView(nativeAd: NativeAd, adView: NativeAdView) {
+        // Set the media view.
+        adView.mediaView = adView.findViewById<MediaView>(R.id.ad_media)
+
+        // Set other ad assets.
+        adView.headlineView = adView.findViewById(R.id.ad_headline)
+        adView.bodyView = adView.findViewById(R.id.ad_body)
+        adView.callToActionView = adView.findViewById(R.id.ad_call_to_action)
+//        adView.iconView = adView.findViewById(R.id.ad_app_icon)
+//        adView.priceView = adView.findViewById(R.id.ad_price)
+        adView.starRatingView = adView.findViewById(R.id.ad_stars)
+//        adView.storeView = adView.findViewById(R.id.ad_store)
+        adView.advertiserView = adView.findViewById(R.id.ad_advertiser)
+
+        // The headline and media content are guaranteed to be in every UnifiedNativeAd.
+        (adView.headlineView as TextView).text = nativeAd.headline
+        adView.mediaView!!.setMediaContent(nativeAd.mediaContent!!)
+
+        // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
+        // check before trying to display them.
+        if (nativeAd.body == null) {
+            adView.bodyView!!.visibility = View.INVISIBLE
+        } else {
+            adView.bodyView!!.visibility = View.VISIBLE
+            (adView.bodyView as TextView).text = nativeAd.body
+        }
+
+        if (nativeAd.callToAction == null) {
+            adView.callToActionView!!.visibility = View.INVISIBLE
+        } else {
+            adView.callToActionView!!.visibility = View.VISIBLE
+            (adView.callToActionView as Button).text = nativeAd.callToAction
+        }
+
+        if (nativeAd.starRating == null) {
+            adView.starRatingView!!.visibility = View.INVISIBLE
+        } else {
+            (adView.starRatingView as RatingBar).rating = nativeAd.starRating!!.toFloat()
+            adView.starRatingView!!.visibility = View.VISIBLE
+        }
+
+        if (nativeAd.advertiser == null) {
+            adView.advertiserView!!.visibility = View.INVISIBLE
+        } else {
+            (adView.advertiserView as TextView).text = nativeAd.advertiser
+            adView.advertiserView!!.visibility = View.VISIBLE
+        }
+
+        adView.setNativeAd(nativeAd)
+
+        val vc = nativeAd.mediaContent!!.videoController
+
+        if (vc.hasVideoContent()) {
+            vc.videoLifecycleCallbacks = object : VideoController.VideoLifecycleCallbacks() {
+                override fun onVideoEnd() {
+                    super.onVideoEnd()
+                }
+            }
+        } else {
+
+        }
     }
 
     companion object {
