@@ -14,8 +14,8 @@ android {
         applicationId "com.avidprogrammers.insurancepremiumcalculator"
         minSdk 28
         targetSdk 32
-        versionCode 24
-        versionName "2.4"
+        versionCode 25
+        versionName "2.5"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
 

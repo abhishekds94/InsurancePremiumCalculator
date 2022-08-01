@@ -322,7 +322,7 @@ class ppdisplay_agri : AppCompatActivity(), ConnectivityReceiverListener {
 
 
         //Calculation of B
-        val pp_agri_tp_basic_tractor = 6847
+        val pp_agri_tp_basic_tractor = 7267
         val no = "No"
         val pp_agri_tp_basic_trailer: Int
         pp_agri_tp_basic_trailer = if (b.getString("pp_agri_trailer") == no) {
@@ -568,7 +568,7 @@ class ppdisplay_agri : AppCompatActivity(), ConnectivityReceiverListener {
             pdfPCell.borderColor = BaseColor.WHITE
             table.addCell(pdfPCell)
             p = Paragraph()
-            p.add(Chunk("Rs. " + "6847"))
+            p.add(Chunk("Rs. " + "7267"))
             pdfPCell = PdfPCell()
             pdfPCell.borderColor = BaseColor.WHITE
             pdfPCell.addElement(p)

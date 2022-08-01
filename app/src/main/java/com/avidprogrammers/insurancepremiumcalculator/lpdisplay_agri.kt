@@ -253,7 +253,7 @@ class lpdisplay_agri : AppCompatActivity(), ConnectivityReceiverListener {
             pdfPCell.borderColor = BaseColor.WHITE
             table.addCell(pdfPCell)
             p = Paragraph()
-            p.add(Chunk("Rs. 6847"))
+            p.add(Chunk("Rs. 7267"))
             pdfPCell = PdfPCell()
             pdfPCell.borderColor = BaseColor.WHITE
             pdfPCell.addElement(p)
