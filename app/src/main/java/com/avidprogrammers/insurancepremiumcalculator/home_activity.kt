@@ -52,7 +52,7 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     var ad_frame: FrameLayout? = null
 
     var appOpenManager: AppOpenManager? = null
-    var currentNativeAd: NativeAd? = null
+//    var currentNativeAd: NativeAd? = null
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -125,7 +125,7 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
                 .build()
         )
 
-        refreshAd()
+//        refreshAd()
 
 
         FirebaseApp.initializeApp(this)
@@ -259,123 +259,123 @@ class home_activity : AppCompatActivity(), ConnectivityReceiverListener {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(conn)
-        currentNativeAd?.destroy()
+//        currentNativeAd?.destroy()
     }
 
-    private fun refreshAd() {
-
-        val builder = AdLoader.Builder(this, BuildConfig.ADMOB_NATIVE)
-
-        builder.forNativeAd { nativeAd ->
-            var activityDestroyed = false
-
-            if (activityDestroyed ) {
-                nativeAd.destroy()
-                return@forNativeAd
-            }
-            currentNativeAd?.destroy()
-            currentNativeAd = nativeAd
-            val adView = layoutInflater
-                .inflate(R.layout.native_ad, null) as NativeAdView
-            populateNativeAdView(nativeAd, adView)
-
-            ad_frame!!.visibility = View.VISIBLE
-
-            ad_frame!!.removeAllViews()
-            ad_frame!!.addView(adView)
-        }
-
-        val videoOptions = VideoOptions.Builder()
-            .build()
-
-        val adOptions = NativeAdOptions.Builder()
-            .setVideoOptions(videoOptions)
-            .build()
-
-        builder.withNativeAdOptions(adOptions)
-
-        val adLoader = builder.withAdListener(object : AdListener() {
-            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                Log.d("admobAd123","ad failed" +loadAdError?.message)
-                Log.d("admobAd123"," native ad failed" +loadAdError)
-                val error =
-                    """
-           domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
-          """"
-            }
-
-            override fun onAdImpression() {
-                super.onAdImpression()
-            }
-
-        }).build()
-
-        adLoader.loadAd(AdRequest.Builder().build())
-
-    }
-
-    private fun populateNativeAdView(nativeAd: NativeAd, adView: NativeAdView) {
-        // Set the media view.
-        adView.mediaView = adView.findViewById<MediaView>(R.id.ad_media)
-
-        // Set other ad assets.
-        adView.headlineView = adView.findViewById(R.id.ad_headline)
-        adView.bodyView = adView.findViewById(R.id.ad_body)
-        adView.callToActionView = adView.findViewById(R.id.ad_call_to_action)
-//        adView.iconView = adView.findViewById(R.id.ad_app_icon)
-//        adView.priceView = adView.findViewById(R.id.ad_price)
-        adView.starRatingView = adView.findViewById(R.id.ad_stars)
-//        adView.storeView = adView.findViewById(R.id.ad_store)
-        adView.advertiserView = adView.findViewById(R.id.ad_advertiser)
-
-        // The headline and media content are guaranteed to be in every UnifiedNativeAd.
-        (adView.headlineView as TextView).text = nativeAd.headline
-        adView.mediaView!!.setMediaContent(nativeAd.mediaContent!!)
-
-        // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
-        // check before trying to display them.
-        if (nativeAd.body == null) {
-            adView.bodyView!!.visibility = View.INVISIBLE
-        } else {
-            adView.bodyView!!.visibility = View.VISIBLE
-            (adView.bodyView as TextView).text = nativeAd.body
-        }
-
-        if (nativeAd.callToAction == null) {
-            adView.callToActionView!!.visibility = View.INVISIBLE
-        } else {
-            adView.callToActionView!!.visibility = View.VISIBLE
-            (adView.callToActionView as Button).text = nativeAd.callToAction
-        }
-
-        if (nativeAd.starRating == null) {
-            adView.starRatingView!!.visibility = View.INVISIBLE
-        } else {
-            (adView.starRatingView as RatingBar).rating = nativeAd.starRating!!.toFloat()
-            adView.starRatingView!!.visibility = View.VISIBLE
-        }
-
-        if (nativeAd.advertiser == null) {
-            adView.advertiserView!!.visibility = View.INVISIBLE
-        } else {
-            (adView.advertiserView as TextView).text = nativeAd.advertiser
-            adView.advertiserView!!.visibility = View.VISIBLE
-        }
-
-        adView.setNativeAd(nativeAd)
-
-        val vc = nativeAd.mediaContent!!.videoController
-
-        if (vc.hasVideoContent()) {
-            vc.videoLifecycleCallbacks = object : VideoController.VideoLifecycleCallbacks() {
-                override fun onVideoEnd() {
-                    super.onVideoEnd()
-                }
-            }
-        } else {
-
-        }
-    }
+//    private fun refreshAd() {
+//
+//        val builder = AdLoader.Builder(this, BuildConfig.ADMOB_NATIVE)
+//
+//        builder.forNativeAd { nativeAd ->
+//            var activityDestroyed = false
+//
+//            if (activityDestroyed ) {
+//                nativeAd.destroy()
+//                return@forNativeAd
+//            }
+//            currentNativeAd?.destroy()
+//            currentNativeAd = nativeAd
+//            val adView = layoutInflater
+//                .inflate(R.layout.native_ad, null) as NativeAdView
+//            populateNativeAdView(nativeAd, adView)
+//
+//            ad_frame!!.visibility = View.VISIBLE
+//
+//            ad_frame!!.removeAllViews()
+//            ad_frame!!.addView(adView)
+//        }
+//
+//        val videoOptions = VideoOptions.Builder()
+//            .build()
+//
+//        val adOptions = NativeAdOptions.Builder()
+//            .setVideoOptions(videoOptions)
+//            .build()
+//
+//        builder.withNativeAdOptions(adOptions)
+//
+//        val adLoader = builder.withAdListener(object : AdListener() {
+//            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+//                Log.d("admobAd123","ad failed" +loadAdError?.message)
+//                Log.d("admobAd123"," native ad failed" +loadAdError)
+//                val error =
+//                    """
+//           domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
+//          """"
+//            }
+//
+//            override fun onAdImpression() {
+//                super.onAdImpression()
+//            }
+//
+//        }).build()
+//
+//        adLoader.loadAd(AdRequest.Builder().build())
+//
+//    }
+//
+//    private fun populateNativeAdView(nativeAd: NativeAd, adView: NativeAdView) {
+//        // Set the media view.
+//        adView.mediaView = adView.findViewById<MediaView>(R.id.ad_media)
+//
+//        // Set other ad assets.
+//        adView.headlineView = adView.findViewById(R.id.ad_headline)
+//        adView.bodyView = adView.findViewById(R.id.ad_body)
+//        adView.callToActionView = adView.findViewById(R.id.ad_call_to_action)
+////        adView.iconView = adView.findViewById(R.id.ad_app_icon)
+////        adView.priceView = adView.findViewById(R.id.ad_price)
+//        adView.starRatingView = adView.findViewById(R.id.ad_stars)
+////        adView.storeView = adView.findViewById(R.id.ad_store)
+//        adView.advertiserView = adView.findViewById(R.id.ad_advertiser)
+//
+//        // The headline and media content are guaranteed to be in every UnifiedNativeAd.
+//        (adView.headlineView as TextView).text = nativeAd.headline
+//        adView.mediaView!!.setMediaContent(nativeAd.mediaContent!!)
+//
+//        // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
+//        // check before trying to display them.
+//        if (nativeAd.body == null) {
+//            adView.bodyView!!.visibility = View.INVISIBLE
+//        } else {
+//            adView.bodyView!!.visibility = View.VISIBLE
+//            (adView.bodyView as TextView).text = nativeAd.body
+//        }
+//
+//        if (nativeAd.callToAction == null) {
+//            adView.callToActionView!!.visibility = View.INVISIBLE
+//        } else {
+//            adView.callToActionView!!.visibility = View.VISIBLE
+//            (adView.callToActionView as Button).text = nativeAd.callToAction
+//        }
+//
+//        if (nativeAd.starRating == null) {
+//            adView.starRatingView!!.visibility = View.INVISIBLE
+//        } else {
+//            (adView.starRatingView as RatingBar).rating = nativeAd.starRating!!.toFloat()
+//            adView.starRatingView!!.visibility = View.VISIBLE
+//        }
+//
+//        if (nativeAd.advertiser == null) {
+//            adView.advertiserView!!.visibility = View.INVISIBLE
+//        } else {
+//            (adView.advertiserView as TextView).text = nativeAd.advertiser
+//            adView.advertiserView!!.visibility = View.VISIBLE
+//        }
+//
+//        adView.setNativeAd(nativeAd)
+//
+//        val vc = nativeAd.mediaContent!!.videoController
+//
+//        if (vc.hasVideoContent()) {
+//            vc.videoLifecycleCallbacks = object : VideoController.VideoLifecycleCallbacks() {
+//                override fun onVideoEnd() {
+//                    super.onVideoEnd()
+//                }
+//            }
+//        } else {
+//
+//        }
+//    }
 
     companion object {
         private const val TAG = "home_activity"

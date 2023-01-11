@@ -43,7 +43,7 @@ class MainActivity : Activity(), ConnectivityReceiverListener {
         )
         setContentView(R.layout.activity_main)
 
-        appOpenManager = AppOpenManager(applicationContext as MyApplication)
+        interstitialAdManager = InterstitialAdManager(applicationContext as MyApplication)
 
         splash()
     }
@@ -65,8 +65,8 @@ class MainActivity : Activity(), ConnectivityReceiverListener {
                 val i = Intent(this@MainActivity, home_activity::class.java)
                 startActivity(i)
                 finish()
-                if (appOpenManager!=null){
-                    appOpenManager!!.showAdIfAvailable()
+                if (interstitialAdManager!=null){
+                    interstitialAdManager!!.showInterstitial(this)
                 }
             } else {
                 Toast.makeText(this@MainActivity, "Check Internet Connection !", Toast.LENGTH_SHORT)
