@@ -18,16 +18,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="remove all old code">
+    <list default="true" id="6290d87b-f490-4872-9ec7-1cee077e4885" name="Default" comment="remove native and app open ads">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/InsurancePremiumCalculator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/InsurancePremiumCalculator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/InsurancePremiumCalculator.app.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/home_activity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/avidprogrammers/insurancepremiumcalculator/home_activity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,13 +232,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550811862045</updated>
-    </task>
-    <task id="LOCAL-00002" summary="remove old versions">
-      <created>1653941904987</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1653941904987</updated>
     </task>
     <task id="LOCAL-00003" summary="update private car rates">
       <created>1653944402950</created>
@@ -583,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655783286168</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="remove native and app open ads">
+      <created>1673398129827</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1673398129827</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -599,7 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="git ignore" />
     <MESSAGE value="update permissions" />
     <MESSAGE value="add interstitials for motorcycle" />
     <MESSAGE value="add interstitials for longterm" />
@@ -624,6 +616,7 @@
     <MESSAGE value="add admob native ads" />
     <MESSAGE value="update nd values" />
     <MESSAGE value="inc ver" />
-    <option name="LAST_COMMIT_MESSAGE" value="inc ver" />
+    <MESSAGE value="remove native and app open ads" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove native and app open ads" />
   </component>
 </project>
