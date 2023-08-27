@@ -9,13 +9,13 @@ def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
-    compileSdk 32
+    compileSdk 34
     defaultConfig {
         applicationId "com.avidprogrammers.insurancepremiumcalculator"
         minSdk 28
-        targetSdk 32
-        versionCode 27
-        versionName "2.7"
+        targetSdk 34
+        versionCode 28
+        versionName "2.8"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         multiDexEnabled true
 

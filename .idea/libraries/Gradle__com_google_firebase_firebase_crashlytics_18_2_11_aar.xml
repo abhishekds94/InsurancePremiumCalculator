@@ -2,7 +2,6 @@
   <library name="Gradle: com.google.firebase:firebase-crashlytics:18.2.11@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9b145196508a5957c4f9a423f708b04c/transformed/firebase-crashlytics-18.2.11/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9b145196508a5957c4f9a423f708b04c/transformed/firebase-crashlytics-18.2.11/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9b145196508a5957c4f9a423f708b04c/transformed/firebase-crashlytics-18.2.11/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

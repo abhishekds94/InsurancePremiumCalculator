@@ -2,7 +2,6 @@
   <library name="Gradle: com.jakewharton.timber:timber:5.0.1@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9c24b847c2a624305f8382a4078dd292/transformed/timber-5.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9c24b847c2a624305f8382a4078dd292/transformed/timber-5.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9c24b847c2a624305f8382a4078dd292/transformed/timber-5.0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
